@@ -1,5 +1,4 @@
-// components/LangSwitcher.tsx
-"use client"; 
+"use client";
 
 import { useRouter } from "next/navigation";
 
@@ -7,9 +6,9 @@ const LanguageSwitcher = () => {
   const router = useRouter();
 
   const switchLanguage = (locale: string) => {
-    // Get the current path without the locale
+
     const currentPath = window.location.pathname.split("/").slice(2).join("/");
-    router.push(`/${locale}/${currentPath}`); // Navigate with the new locale
+    router.push(`/${locale}/${currentPath}`); 
   };
 
   return (

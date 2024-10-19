@@ -1,18 +1,17 @@
 "use client";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { useParams } from "next/navigation";
 import React from "react";
+import { Link } from "../../navigation";
+import LanguageSwitcher from "./LangSwitcher";
 
 const AnotherOne = () => {
   const t = useTranslations();
-  const params = useParams();
-  const locale = params.locale;
   return (
     <>
-      <div>{t("welcome")}</div>
-      <div>{t("description")}</div>
-      <Link href={`../${locale}`}>Back</Link>
+      <div className="dark:text-red-600 text-green-600">{t("welcome")}</div>
+      <div className="dark:text-red-600 text-green-600">{t("description")}</div>
+      <Link href={`/`}>Back</Link>
+      <LanguageSwitcher />
     </>
   );
 };

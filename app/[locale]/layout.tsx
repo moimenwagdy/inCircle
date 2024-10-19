@@ -3,6 +3,7 @@ import "./globals.css";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
 // const apiURL = process.env.NEXT_PUBLIC_API_URL;
 export const metadata: Metadata = {
   title: "IN social club",
@@ -23,8 +24,10 @@ export default async function RootLayout({
   console.log(locale);
   return (
     <NextIntlClientProvider messages={messages}>
-      <html lang={locale}>
-        <body>{children}</body>
+      <html lang={locale} className="">
+        <body>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        </body>
       </html>
     </NextIntlClientProvider>
   );

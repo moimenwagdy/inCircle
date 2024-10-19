@@ -6,8 +6,8 @@ const FirstTest = () => {
 
   return (
     <>
-      <div className="">{t("welcome")}</div>
-      <p>{t("description")}</p>
+      <div className="dark:text-red-600 text-green-600">{t("welcome")}</div>
+      <p className="dark:text-red-600 text-green-600">{t("description")}</p>
     </>
   );
 };

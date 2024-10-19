@@ -1,15 +1,18 @@
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import FirstTest from "../components/FirstTest";
 import LanguageSwitcher from "../components/LangSwitcher";
-import Link from "next/link";
+import { Link } from "../../navigation";
+import Dark_light from "../components/mood/DarkLightMood";
+import { getTranslations } from "next-intl/server";
 
-export default async function Home({ params }: { params: Params }) {
-  const locale = params.locale;
+export default async function Home() {
+  const t = await getTranslations();
   return (
-    <div>
+    <div className="w-1/2 mx-auto text-center mt-20">
       <FirstTest />
+      <h1 className="text-4xl"> {t("Name")} </h1>
       <LanguageSwitcher />
-      <Link href={`${locale}/gege`}>to gege</Link>
+      <Link href={`/gege`}>to gege</Link>
+      <Dark_light />
     </div>
   );
 }
