@@ -1,5 +1,25 @@
 {
-    "welcome": "مرحبًا بك في موقعنا!",
+    "auth": {
+        "formHeader": "انشاء حساب",
+        "usernameInput": "الأسم ",
+        "emailInput": "البريد الالكترونى",
+        "passwordInput": "كلمة السر",
+        "passwordRepeatInput": " اعادة كلمة السر",
+        "ageInput": "تاريخ الميلاد"
+    },
+    "authPlaceholders": {
+        "usernamePLaceholder": "اسم المستخدم",
+        "emailPLaceholder": " ادخل البريد الالكترونى ",
+        "passwordPLaceholder": " ادخل كلمة السر",
+        "passwordRepeatPLaceholder": " اعد ادخال كلمة السر"
+    },
+    "buttons": {
+        "submit":"تأكيد",
+        "chooseImage": "تحديد صورة",
+        "dragImage": "او اسحب و ادرج هنا"
+
+    },
+    "welcome": "مرحبًا بك في موقعنا! ",
     "description": "هنا يمكنك العثور على منتجات رائعة.",
-    "Name": "النادى الاجتماعى - إن"
+    "Name": "فى الدائرة"
 }

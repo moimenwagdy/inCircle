@@ -1,5 +1,25 @@
 {
+  "auth": {
+    "formHeader": "Signup",
+    "usernameInput": "User name",
+    "emailInput": "Email",
+    "passwordInput": "Password",
+    "passwordRepeatInput": "Password Check",
+    "ageInput": "birth date"
+  },
+  "authPlaceholders": {
+    "usernamePLaceholder": " your name ",
+    "emailPLaceholder": "example@example.com",
+    "passwordPLaceholder": "enter your password",
+    "passwordRepeatPLaceholder": "repeat password"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "chooseImage": "Choose Image",
+    "dragImage": "or drag image here"
+
+  },
   "welcome": "Welcome to our website!",
   "description": "Here you can find amazing products.",
-  "Name": "IN Social Club"
+  "Name": "inCircle"
 }

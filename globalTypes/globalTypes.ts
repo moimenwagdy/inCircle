@@ -7,6 +7,8 @@ export interface user {
   follwing: string[];
   follwers: string[];
   createdAt: Date;
+  age: number;
+  verified: boolean;
 }
 
 export interface post {
