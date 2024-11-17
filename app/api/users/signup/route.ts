@@ -5,8 +5,8 @@ const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 export async function GET() {
   const client = await MongoClient.connect(mongoCredentials!);
   const db = client.db("socialApp");
-  const feedbackCollection = db.collection("users");
-  const result = await feedbackCollection.findOne({ age: 40 });
+  const usersCollection = db.collection("users");
+  const result = await usersCollection.findOne({ age: 40 });
   client.close();
   return NextResponse.json(result, {
     status: 201,
@@ -25,9 +25,12 @@ export async function POST(request: NextRequest) {
 
   if (exist) {
     client.close();
-    return NextResponse.json("User name or Email already exist", {
-      status: 400,
-    });
+    return NextResponse.json(
+      { message: "User name or Email already exist" },
+      {
+        status: 400,
+      }
+    );
   }
   const result = await usersCollection.insertOne(body);
   client.close();

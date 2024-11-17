@@ -2,7 +2,9 @@ import { NextAuthOptions } from "next-auth";
 import googlProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoClient } from "mongodb";
-// import bcrypt from "bcryptjs";
+import { user } from "@/globalTypes/globalTypes";
+
+import bcrypt from "bcryptjs";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
@@ -27,7 +29,7 @@ export const authOptions: NextAuthOptions = {
       },
       type: "credentials",
 
-      authorize: async (credentials) => {
+      authorize: async (credentials, req) => {
         if (!credentials) {
           throw new Error("Credentials not provided");
         }
@@ -35,61 +37,71 @@ export const authOptions: NextAuthOptions = {
         const client = await MongoClient.connect(mongoCredentials!);
         const db = client.db("socialApp");
 
-        const user = await db
+        const user: user | null = await db
           .collection("users")
-          .findOne({ email: credentials.email });
+          .findOne<user>({ email: credentials.email });
         if (!user) {
           client.close();
-          throw new Error("No user found with the entered email", {});
+
+          return null;
+        }
+        const isPasswordCorrect = await bcrypt.compare(
+          credentials.password,
+          user.passwordHash
+        );
+
+        if (!isPasswordCorrect) {
+          client.close();
+          return null;
         }
 
         client.close();
-
         return {
           id: user._id.toString(),
-          name: user.name,
+          name: user.username,
           email: user.email,
+          profile: user.profile,
+          following: user.following,
+          followers: user.followers,
+          createdAt: user.createdAt,
+          age: user.age,
+          verified: user.verified,
         };
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
+      const customUser = user as unknown as user;
       if (user) {
-        token.id = user.id; // Set custom fields on the token
-        token.name = user.name;
-        token.email = user.email;
+        token._id = customUser._id;
+        token.username = customUser.username;
+        token.email = customUser.email;
+        token.profile = customUser.profile;
+        token.following = customUser.following;
+        token.followers = customUser.followers;
+        token.createdAt = customUser.createdAt;
+        token.age = customUser.age;
+        token.verified = customUser.verified;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
-        session.user._id = token.id as string; // Add id to session user
-        session.user.name = token.name as string; // Set custom fields on session
+        session.user._id = token.id as string;
+        session.user.username = token.name as string;
         session.user.email = token.email as string;
+        session.user.profile = token.profile as { bio: string; avatar: string };
+        session.user.following = token.following as string[];
+        session.user.followers = token.followers as string[];
+        session.user.createdAt = token.createdAt as Date;
+        session.user.age = token.age as number;
+        session.user.verified = token.verified as boolean;
       }
       return session;
     },
+    redirect: async () => {
+      return "/";
+    },
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const isPasswordCorrect = await bcrypt.compare(
-//   credentials.password,
-//   user.password
-// );
-// if (!isPasswordCorrect) {
-//   client.close();
-//   throw new Error("Invalid password");
-// }

@@ -53,13 +53,12 @@ export const signup = async (_prvState: any, formData: FormData) => {
         bio: "",
         avatar: userData.imgPath,
       },
-      follwing: [],
-      follwers: [],
+      following: [],
+      followers: [],
       createdAt: new Date(),
       age: userData.age || 18,
       verified: false,
     };
-
     const response = await fetch(`${apiURL}/users/signup`, {
       method: "post",
       body: JSON.stringify(newUser),
@@ -67,13 +66,13 @@ export const signup = async (_prvState: any, formData: FormData) => {
         "Content-Type": "application/json",
       },
     });
+    const responsed = await response.json();
     if (!response.ok) {
       return {
         success: false,
-        message: "sending failed!, please try again later.",
+        message: responsed?.message,
       };
     }
-    const responsed = await response.json();
     return {
       success: true,
       data: responsed,

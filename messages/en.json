@@ -1,6 +1,7 @@
 {
   "auth": {
-    "formHeader": "Signup",
+    "formHeaderSignUP": "SignUp",
+    "formHeaderSignIn": "SignIn",
     "usernameInput": "User name",
     "emailInput": "Email",
     "passwordInput": "Password",
@@ -8,18 +9,26 @@
     "ageInput": "birth date"
   },
   "authPlaceholders": {
-    "usernamePLaceholder": " your name ",
-    "emailPLaceholder": "example@example.com",
-    "passwordPLaceholder": "enter your password",
-    "passwordRepeatPLaceholder": "repeat password"
+    "usernamePlaceholder": " your name ",
+    "emailPlaceholder": "example@example.com",
+    "passwordPlaceholder": "enter your password",
+    "passwordRepeatPlaceholder": "repeat password"
   },
   "buttons": {
     "submit": "Submit",
-    "chooseImage": "Choose Image",
-    "dragImage": "or drag image here"
-
+    "chooseDragImage": "drag and drop here or click to choose an image",
+    "submitting": "submitting",
+    "logout": "Logout",
+    "sendEmail": "send code",
+    "validateEmail": "Validate Email",
+    "skipStep": "Skip this step",
+    "code": "recieved code"
   },
-  "welcome": "Welcome to our website!",
-  "description": "Here you can find amazing products.",
-  "Name": "inCircle"
+  "validation": {
+    "validationDescription": "To verify your account, we'll send a code to your inbox. Press \"validate email,\" then enter the code below to complete verification. While you may skip this step, it is recommended for more security."
+  },
+  "homePage": {
+    "Name": "inCircle",
+    "welcomeMessage": "Each of us is a unique circle, sharing different parts of ourselves with others around us. Just like circles that overlap and create beautiful shared spaces, inCircle is where friends and family come together, connect, and share moments that matter. We deeply respect each person’s personal space the parts of their circle they choose to keep private. InCircle is all about building a community where everyone can feel connected, respected, and valued. Thank you for joining us, and welcome to inCircle!"
+  }
 }

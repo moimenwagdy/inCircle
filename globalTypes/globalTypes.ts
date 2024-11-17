@@ -4,8 +4,8 @@ export interface user {
   email: string;
   passwordHash: string;
   profile: { bio: string; avatar: string };
-  follwing: string[];
-  follwers: string[];
+  following: string[];
+  followers: string[];
   createdAt: Date;
   age: number;
   verified: boolean;

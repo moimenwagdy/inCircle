@@ -21,17 +21,24 @@ const SignupInput: React.FC<{
 }) => {
   return (
     <div className="w-full flex flex-col justify-between">
-      <div className="w-full flex justify-between">
-        <label className="font-basicFont" htmlFor={id}>{text}</label>
+      <div className="w-full flex justify-between gap-x-3">
+        <label className="font-basicFont" htmlFor={id}>
+          {text}
+        </label>
         <input
+          key={name}
           name={name}
           type={type}
           defaultValue={defaultValue}
           placeholder={placeholder}
-          className={`placeholder:font-descripFont ps-4 py-1 ${className ? className : ""}`}
+          className={`placeholder:font-descripFont ps-4 py-1 placeholder:text-xs ${
+            className ? className : ""
+          }`}
         />
       </div>
-      {error && <p className="text-xs text-red-200">{error}</p>}
+      {error && (
+        <p className="text-xs text-red-500 dark:text-red-200">{error}</p>
+      )}
     </div>
   );
 };

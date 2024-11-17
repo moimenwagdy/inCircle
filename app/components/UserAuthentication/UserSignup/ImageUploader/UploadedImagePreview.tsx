@@ -6,8 +6,8 @@ const UploadedImagePreview: React.FC<{ url: string }> = ({ url }) => {
       src={url}
       alt="userImage"
       width={70}
-      height={100}
-      className="rounded-3xl"
+      height={1}
+      className="rounded-full"
     />
   );
 };

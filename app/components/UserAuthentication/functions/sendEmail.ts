@@ -1,11 +1,15 @@
 "use server";
 
+import { date } from "zod";
+
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
-export const sendEmail = async (_prvState: any, formData: any) => {
+export const sendEmail = async (_prvState: any, formData: FormData) => {
   const verificationCode = Math.floor(
     100000 + Math.random() * 900000
   ).toString();
+  const userID = formData.get("userID") as string;
+
   try {
     const response = await fetch(`${apiURL}/twilio/`, {
       method: "POST",
@@ -13,16 +17,39 @@ export const sendEmail = async (_prvState: any, formData: any) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        to: "moimenwy@gmail.com", // Replace with your service ID
-        subject: "TEST", // Replace with your template ID
-        text: "TEST TEST TEST", // Replace with your User ID
+        userID,
+        verificationCode,
       }),
     });
-
+    if (!response.ok) {
+      return {
+        success: false,
+        message: "sending failed!, please try again",
+      };
+    }
+    const response_DB = await fetch(`${apiURL}/sendCode/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: userID,
+        verificationCode,
+      }),
+    });
+    if (!response_DB.ok) {
+      return {
+        success: false,
+        message: "sending failed, please try again",
+      };
+    }
+    console.log(response_DB);
     const data = await response.json();
-
-    console.log(data);
+    return {
+      success: true,
+      data: data,
+    };
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error(error);
   }
 };

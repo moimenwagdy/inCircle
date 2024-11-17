@@ -1,28 +1,31 @@
-"use server";
-
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
-export const uploadImage = async (_prvState: any, formData: FormData) => {
-  const img = formData.get("img") as File | null;
+export const uploadImage = async (img: File) => {
+  console.log("Image upload function triggered");
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   if (!img) {
+    console.log("no Image");
     return { error: "No image file provided" };
   }
 
-  if (!img.type.startsWith("image/")) {
-    return { error: "The file must be an image" };
+  if (img) {
+    const startsWithImagePath = img?.type?.startsWith("image/");
+    if (!startsWithImagePath) {
+      return { error: "The file must be an image" };
+    }
   }
-
-  const fileName = `${Date.now()}-${img.name}`;
-
+  
   try {
     const arrayBuffer = await img.arrayBuffer();
     const fileBuffer = Buffer.from(arrayBuffer);
+    const fileName = `${Date.now()}-${img.name}`;
 
     const response = await fetch(`${apiURL}/imgUpload`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fileName, file: fileBuffer.toString("base64") }), // Convert buffer to base64 string for transport
+      body: JSON.stringify({ fileName, file: fileBuffer.toString("base64") }),
     });
 
     if (!response.ok) {

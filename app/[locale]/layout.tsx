@@ -6,13 +6,14 @@ import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import SessionWrapper from "../components/sessionWrapper/sessionWrapper";
 import Navbar from "../components/Header/Navbar/Navbar";
-// const apiURL = process.env.NEXT_PUBLIC_API_URL;
+import "/app/[locale]/globals.css";
+import StoreProvider from "@/store/StoreProvider";
+
 export const metadata: Metadata = {
   title: "inCircle",
   description:
     "an online club where family and friends connect, chat, and share moments together.",
 };
-
 export default async function RootLayout({
   children,
   params,
@@ -22,19 +23,23 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   const locale = params.locale;
-  const dir = locale === "ar" ? "rtl" : "ltr";
   return (
     <SessionWrapper>
-      <NextIntlClientProvider messages={messages}>
-        <html lang={locale} dir={dir} className="dark">
-          <body>
-            <ThemeProvider attribute="class">
-              <Navbar />
-              {children}
-            </ThemeProvider>
-          </body>
-        </html>
-      </NextIntlClientProvider>
+      <StoreProvider>
+        <NextIntlClientProvider messages={messages}>
+          <html lang={locale} suppressHydrationWarning>
+            <body className="bg-offWhite dark:bg-black font-basicFont">
+              <ThemeProvider
+                attribute="class"
+                disableTransitionOnChange
+                enableColorScheme={false}>
+                <Navbar />
+                {children}
+              </ThemeProvider>
+            </body>
+          </html>
+        </NextIntlClientProvider>
+      </StoreProvider>
     </SessionWrapper>
   );
 }
