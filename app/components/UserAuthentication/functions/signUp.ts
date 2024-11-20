@@ -78,6 +78,9 @@ export const signup = async (_prvState: any, formData: FormData) => {
       data: responsed,
     };
   } catch (error) {
-    throw new Error("failed to send feedback");
+    return {
+      success: false,
+      message: "network error, check your connection",
+    };
   }
 };

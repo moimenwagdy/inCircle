@@ -1,7 +1,7 @@
-import PostForm from "@/app/components/Posts/NewPost/PostForm";
+import PostForm from "@/app/components/Posts/NewPost/NewPost/PostForm";
 import React from "react";
 
-const page = () => {
+const page = async () => {
   return (
     <div className="container mx-auto">
       <PostForm />

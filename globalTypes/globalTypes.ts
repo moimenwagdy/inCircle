@@ -19,6 +19,7 @@ export interface post {
   comments: comment[];
   likes: string[];
   createdAt: Date;
+  feeling: string;
 }
 
 export interface comment {
@@ -53,4 +54,10 @@ export interface message {
   content: string;
   readBy: string[];
   createdAt: Date;
+}
+
+export interface postImageUpload {
+  fileName: string;
+  success: boolean;
+  url: string;
 }

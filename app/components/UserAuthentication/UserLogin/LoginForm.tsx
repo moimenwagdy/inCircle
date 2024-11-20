@@ -1,36 +1,47 @@
 "use client";
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import { signIn, useSession } from "next-auth/react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import FormContainer from "../FormContainer";
-import Button from "../../Buttons/Button";
 import GoogleSigninButton from "./GoogleSigninButton";
 import LoginInput from "./LoginInput";
 import LoginSubmitButton from "./LoginSubmitButton";
+import { handleSignIn } from "../functions/login";
+import { useRouter } from "next/navigation";
 const LoginForm = () => {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>();
+  const [loading, seIsLoading] = useState<boolean>(false);
+  const router = useRouter();
   const emailHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
   const passwordlHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  const formHandler = (e: FormEvent<HTMLFormElement>) => {
+  const formHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signIn("credentials", { email: email, password: password });
+    seIsLoading(true);
+    const response = await handleSignIn(email!, password!);
+    seIsLoading(false);
+    if (!response?.success) {
+      setError(response?.error);
+    } else {
+      router.push("/");
+    }
   };
   const session = useSession();
   const tInputs = useTranslations("auth");
   const tPlaceholders = useTranslations("authPlaceholders");
-  const tButtons = useTranslations("buttons");
   const t_inputs = useTranslations("auth");
+
   return (
     <FormContainer>
       {!session.data ? (
         <form
           onSubmit={formHandler}
-          className="flex flex-col w-1/2 mx-auto py-8 gap-y-8">
+          className="flex flex-col w-1/2 mx-auto py-8 gap-y-4">
           <label className="text-6xl md:text-7xl text-center font-bold font-headerFont mb-4 text-redColor ">
             {t_inputs("formHeaderSignIn")}
           </label>
@@ -46,8 +57,11 @@ const LoginForm = () => {
             placeholder={tPlaceholders("passwordPlaceholder")}>
             {tInputs("passwordInput")}
           </LoginInput>
-          <section className="space-y-3">
-            <LoginSubmitButton />
+          <div className="h-1 -mt-3">
+            <p className="text-xs">{error}</p>
+          </div>
+          <section className="space-y-3 mt-2">
+            <LoginSubmitButton loading={loading} />
             <GoogleSigninButton />
           </section>
         </form>

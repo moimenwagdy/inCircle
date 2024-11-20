@@ -36,9 +36,11 @@ const SignupInput: React.FC<{
           }`}
         />
       </div>
-      {error && (
-        <p className="text-xs text-red-500 dark:text-red-200">{error}</p>
-      )}
+      <div className="h-1 mb-1">
+        {error && (
+          <p className="text-xs text-red-500 dark:text-red-200">{error}</p>
+        )}
+      </div>
     </div>
   );
 };

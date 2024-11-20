@@ -6,7 +6,6 @@ export const uploadImage = async (img: File) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   if (!img) {
-    console.log("no Image");
     return { error: "No image file provided" };
   }
 

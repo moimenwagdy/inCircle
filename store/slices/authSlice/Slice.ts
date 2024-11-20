@@ -21,7 +21,6 @@ export const authMood = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export default authMood.reducer;
 export const authActions = authMood.actions;
 

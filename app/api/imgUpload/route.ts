@@ -1,7 +1,6 @@
 import { storage } from "@/lib/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { NextResponse } from "next/server";
-
 export async function POST(req: Request) {
   try {
     const { file, fileName } = await req.json();
@@ -11,12 +10,9 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-
     const storageRef = ref(storage, `images/${fileName}`);
-
     const fileBuffer = Buffer.from(file, "base64");
     await uploadBytes(storageRef, fileBuffer);
-
     const downloadURL = await getDownloadURL(storageRef);
     return NextResponse.json({ url: downloadURL }, { status: 200 });
   } catch (error) {
@@ -27,6 +23,7 @@ export async function POST(req: Request) {
     );
   }
 }
+
 export async function GET() {
   return NextResponse.json({ message: "Method Not Allowed" }, { status: 405 });
 }

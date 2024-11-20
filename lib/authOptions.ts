@@ -3,7 +3,6 @@ import googlProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoClient } from "mongodb";
 import { user } from "@/globalTypes/globalTypes";
-
 import bcrypt from "bcryptjs";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
@@ -34,44 +33,62 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Credentials not provided");
         }
 
-        const client = await MongoClient.connect(mongoCredentials!);
-        const db = client.db("socialApp");
-
-        const user: user | null = await db
-          .collection("users")
-          .findOne<user>({ email: credentials.email });
-        if (!user) {
-          client.close();
-
-          return null;
+        if (credentials.email.length === 0 || credentials.email === "") {
+          throw new Error("enter valid email");
         }
-        const isPasswordCorrect = await bcrypt.compare(
-          credentials.password,
-          user.passwordHash
-        );
-
-        if (!isPasswordCorrect) {
-          client.close();
-          return null;
+        if (credentials.password.length < 8 || credentials.password === "") {
+          throw new Error("Password must be at least 8 characters");
         }
-
-        client.close();
-        return {
-          id: user._id.toString(),
-          name: user.username,
-          email: user.email,
-          profile: user.profile,
-          following: user.following,
-          followers: user.followers,
-          createdAt: user.createdAt,
-          age: user.age,
-          verified: user.verified,
-        };
+        try {
+          if (!credentials) {
+            throw new Error("Credentials not provided");
+          }
+          if (credentials.email.length === 0) {
+            throw new Error("enter valid email");
+          }
+          const client = await MongoClient.connect(mongoCredentials!);
+          const db = client.db("socialApp");
+          const user: user | null = await db
+            .collection("users")
+            .findOne<user>({ email: credentials.email });
+          if (!user) {
+            client.close();
+            throw new Error("User not found");
+          }
+          const isPasswordCorrect = await bcrypt.compare(
+            credentials.password,
+            user?.passwordHash!
+          );
+          if (!isPasswordCorrect) {
+            client.close();
+            throw new Error("Invalid password");
+          }
+          client.close();
+          return {
+            id: user?._id.toString()!,
+            _id: user?._id.toString()!,
+            name: user?.username!,
+            email: user?.email!,
+            profile: user?.profile!,
+            following: user?.following!,
+            followers: user?.followers!,
+            createdAt: user?.createdAt!,
+            age: user?.age!,
+            verified: user?.verified!,
+          };
+        } catch (error) {
+          throw new Error("network error, check your connection");
+        }
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
+      if (account?.provider === "google") {
+        token.id_token = user.id;
+        return token;
+      }
+
       const customUser = user as unknown as user;
       if (user) {
         token._id = customUser._id;
@@ -88,7 +105,8 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (token) {
-        session.user._id = token.id as string;
+        session.user._id = token.sub as string;
+        session.user._id = token._id as string;
         session.user.username = token.name as string;
         session.user.email = token.email as string;
         session.user.profile = token.profile as { bio: string; avatar: string };
@@ -99,9 +117,6 @@ export const authOptions: NextAuthOptions = {
         session.user.verified = token.verified as boolean;
       }
       return session;
-    },
-    redirect: async () => {
-      return "/";
     },
   },
 };

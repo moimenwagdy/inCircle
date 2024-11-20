@@ -29,7 +29,7 @@ const SignUpForm: React.FC<{ urlImagePath: string }> = ({ urlImagePath }) => {
       dir={ar ? "rtl" : "ltr"}
       action={formAction}
       ref={formRef}
-      className="flex flex-col gap-y-3  py-8">
+      className="flex flex-col gap-y-3 py-7">
       <label className="text-6xl md:text-7xl text-center font-bold font-headerFont mb-10 text-redColor ">
         {t_inputs("formHeaderSignUP")}
       </label>

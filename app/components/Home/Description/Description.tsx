@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../../Buttons/Button";
 import { useRouter } from "@/navigation";
 import { useAppDispatch } from "@/store/reduxHooks";
-import { authActions } from "@/store/slices/Slice";
+import { authActions } from "@/store/slices/authSlice/Slice";
 import { useLocale, useTranslations } from "next-intl";
 
 const Description = () => {
