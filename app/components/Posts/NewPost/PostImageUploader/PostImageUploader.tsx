@@ -21,17 +21,17 @@ const PostImageUploader = () => {
     accept: { "image/*": [] },
   });
   return (
-    <section className="ms-auto">
+    <>
       <div {...getRootProps()} className="hidden">
-        <input {...getInputProps()} />
+        <input className="" {...getInputProps()} />
       </div>
       <button
         type="button"
-        className="px-4 bg-gray-300 text-xs py-1"
+        className="px-4 bg-whiteColor  "
         onClick={open}>
         photo
       </button>
-    </section>
+    </>
   );
 };
 

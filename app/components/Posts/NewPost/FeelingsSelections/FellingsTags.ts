@@ -1,6 +1,6 @@
 export interface feelinType {
-  feeling: string;
-  shape: string;
+  feeling: string 
+  shape: string 
 }
 
 export const feelings: feelinType[] = [

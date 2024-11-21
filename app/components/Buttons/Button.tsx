@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 import React, { ReactNode } from "react";
 
-const BlueButton: React.FC<{
+const Button: React.FC<{
   children: ReactNode;
   onclick?: () => void;
   color: string;
@@ -28,11 +28,11 @@ const BlueButton: React.FC<{
       ${color === "blue" && "bg-blueColor"} 
       ${color === "black" && "bg-black dark:bg-offWhite dark:text-black "}
       text-lg font-basicFont text-white self-center 
-       ${margin ? "mt-44 md:mt-0" : ""}
+       ${margin ? "mt-10 md:mt-0" : ""}
       `}>
       {children}
     </motion.button>
   );
 };
 
-export default BlueButton;
+export default Button;

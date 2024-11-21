@@ -15,7 +15,6 @@ const Description = () => {
   };
   const toSignin = () => {
     dispatch(authActions.setAuthMoodToSignIn());
-
     router.push("/auth");
   };
   const tHome = useTranslations("homePage");

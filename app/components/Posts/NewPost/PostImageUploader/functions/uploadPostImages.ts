@@ -8,7 +8,7 @@ const uploadPostImages = async (
     fileName: string;
   }[]
 ) => {
-  const response = await fetch(`${apiURL}/postImageUpload`, {
+  const response = await fetch(`${apiURL}/post/postImageUpload`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ files: files }),

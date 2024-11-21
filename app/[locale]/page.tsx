@@ -4,7 +4,7 @@ import MainHeaderAdress from "../components/Home/MainHeaderAdress/MainHeaderAdre
 
 export default async function Home() {
   return (
-    <main className="relative md:h-screen overflow-hidden z-0 ">
+    <main className="relative h-[85vh] md:h-screen overflow-hidden z-0 ">
       <HomePageBackGround />
       <div className=" text-center">
         <MainHeaderAdress />

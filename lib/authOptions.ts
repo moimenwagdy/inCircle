@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import googlProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { user } from "@/globalTypes/globalTypes";
 import bcrypt from "bcryptjs";
 
@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
       },
       type: "credentials",
 
-      authorize: async (credentials, req) => {
+      authorize: async (credentials) => {
         if (!credentials) {
           throw new Error("Credentials not provided");
         }
@@ -85,7 +85,48 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user, account }) {
       if (account?.provider === "google") {
-        token.id_token = user.id;
+        const client = await MongoClient.connect(mongoCredentials!);
+        const db = client.db("socialApp");
+        const usersCollection = db.collection("users");
+
+        const newUser: any = {
+          _id: user.id,
+          username: user.name!,
+          email: user.email!,
+          passwordHash: "googelSignin",
+          profile: {
+            bio: "",
+            avatar: user.image!,
+          },
+          following: [],
+          followers: [],
+          createdAt: new Date(),
+          age: 0,
+          verified: false,
+        };
+
+        try {
+          const existingUser = await usersCollection.findOne({
+            email: user.email,
+          });
+
+          if (!existingUser) {
+            await usersCollection.insertOne(newUser);
+          }
+        } catch (error) {
+          throw new Error("Database error");
+        } finally {
+          client.close();
+        }
+        token._id = user.id;
+        token.email = user.email;
+        token.profile = { bio: "", avatar: "" };
+        token.following = [];
+        token.followers = [];
+        token.createdAt = 0;
+        token.age = 0;
+        token.verified = true;
+
         return token;
       }
 

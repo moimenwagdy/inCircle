@@ -5,10 +5,13 @@ import { sendEmail } from "../functions/sendEmail";
 import { useRouter, useSearchParams } from "next/navigation";
 import UserValidatationCodeForm from "./UserValidatationCodeForm";
 import { useTranslations } from "next-intl";
+import { useAppDispatch } from "@/store/reduxHooks";
+import { authActions } from "@/store/slices/authSlice/Slice";
 
 const EmailValidation = () => {
   const [validate, setValidate] = useState<boolean>(false);
   const [formState, formAction] = useFormState(sendEmail, null);
+  const disptach = useAppDispatch();
   const router = useRouter();
   const handleValidation = () => {
     setValidate(true);
@@ -16,7 +19,8 @@ const EmailValidation = () => {
   const params = useSearchParams();
   const userID = params.get("userID") as string;
   const handleSkipValidation = () => {
-    router.push("/auth/signin");
+    disptach(authActions.setAuthMoodToSignIn());
+    router.push("/auth");
   };
   useEffect(() => {
     if (!formState?.success) setValidate(false);

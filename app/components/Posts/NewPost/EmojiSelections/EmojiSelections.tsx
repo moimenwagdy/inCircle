@@ -1,20 +1,25 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Emojis } from "./EmojiCodes";
+import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
+import { newPostActions } from "@/store/slices/newPostSlice/slice";
 
 const EmojiSelections = () => {
-  const [openEmojis, setOpenEmojis] = useState(false);
   const [ele, setEle] = useState<HTMLTextAreaElement | null>(null);
-
+  const emojiISOpened = useAppSelector((state) => state.newPost.emojisIsOpened);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     const element = window.document.getElementById(
-      "new-post"
+      "postContent"
     ) as HTMLTextAreaElement;
     setEle(element);
   }, []);
 
   const handleOpenEmojis = () => {
-    setOpenEmojis((prv) => !prv);
+    emojiISOpened
+      ? dispatch(newPostActions.closeEmoji())
+      : dispatch(newPostActions.openEmoji());
+    !emojiISOpened && dispatch(newPostActions.closeFeeling());
   };
 
   const handleSelectedEmoji = (shape: string) => {
@@ -23,14 +28,14 @@ const EmojiSelections = () => {
     }
   };
   return (
-    <section>
-      {openEmojis && (
-        <ul className="flex flex-wrap h-20 overflow-y-scroll scrollbar-thumb-redColor scrollbar scrollbar-track-transparent">
+    <section className=" space-y-2">
+      {emojiISOpened && (
+        <ul className="flex bg-offWhite dark:bg-black w-40 flex-wrap h-24 overflow-y-scroll scrollbar-thumb-redColor scrollbar-thin scrollbar-track-transparent">
           {Emojis.map((emo, i) => {
             return (
               <li key={i} id={i.toFixed(1)}>
                 <p
-                  className="cursor-pointer"
+                  className="cursor-pointer "
                   onClick={() => handleSelectedEmoji(emo.shape)}
                   dangerouslySetInnerHTML={{ __html: emo.code }}></p>
               </li>
@@ -38,13 +43,15 @@ const EmojiSelections = () => {
           })}
         </ul>
       )}
-      <button
-      className="bg-redColor px-1"
-        type="button"
-        onClick={handleOpenEmojis}
-        dangerouslySetInnerHTML={{
-          __html: openEmojis ? "close" : "&#x1F600;",
-        }}></button>
+      <p>
+        <button
+          className="bg-redColor px-1 font-basicFont"
+          type="button"
+          onClick={handleOpenEmojis}
+          dangerouslySetInnerHTML={{
+            __html: emojiISOpened ? "close" : "&#x1F600;",
+          }}></button>
+      </p>
     </section>
   );
 };

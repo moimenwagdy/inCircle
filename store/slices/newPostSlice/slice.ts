@@ -1,19 +1,22 @@
-import { feelinType } from "@/app/components/Posts/NewPost/Feelings/FellingsTags";
+import { feelinType } from "@/app/components/Posts/NewPost/FeelingsSelections/FellingsTags";
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
-export interface authMood {
-  postImagesURLs: string[];
-  feeling: feelinType;
+export interface newPost {
+  postImagesURLs: string[] | null;
+  feeling: feelinType | null;
+  feelingIsOpened: boolean;
+  emojisIsOpened: boolean;
 }
 
-const initialState: authMood = {
-  postImagesURLs: [],
-  feeling: { feeling: "", shape: "" },
+const initialState: newPost = {
+  postImagesURLs: null,
+  feeling: null,
+  feelingIsOpened: false,
+  emojisIsOpened: false,
 };
 
 export const newPost = createSlice({
-  name: "authMood",
+  name: "newPost",
   initialState,
   reducers: {
     setPostImagesURLs: (state, action) => {
@@ -22,6 +25,18 @@ export const newPost = createSlice({
     setFeeling: (state, action) => {
       const payed = { ...action.payload };
       state.feeling = { ...payed };
+    },
+    openFeeling: (state) => {
+      state.feelingIsOpened = true;
+    },
+    closeFeeling: (state) => {
+      state.feelingIsOpened = false;
+    },
+    openEmoji: (state) => {
+      state.emojisIsOpened = true;
+    },
+    closeEmoji: (state) => {
+      state.emojisIsOpened = false;
     },
   },
 });
