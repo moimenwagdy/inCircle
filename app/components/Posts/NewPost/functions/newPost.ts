@@ -51,6 +51,12 @@ export const newPost = async (_prvState: any, formData: FormData) => {
     },
   });
 
+  if (!response.ok) {
+    return {
+      success: false,
+      message: "Network error, check your connection.",
+    };
+  }
   const result = await response.json();
 
   return { success: true, result };

@@ -61,11 +61,11 @@ const Post = () => {
                         </div>
                         <div className="">
                           <p className="text-xs dark:text-white/50 text-black/80">
-                            {post.createdAt.toLocaleString("en-US", {
+                            {new Date(post.createdAt).toLocaleString("en-US", {
                               year: "numeric",
                               month: "short",
                               day: "2-digit",
-                              hour: "2-digit",
+                              hour: "numeric",
                               minute: "2-digit",
                               hour12: true,
                             })}

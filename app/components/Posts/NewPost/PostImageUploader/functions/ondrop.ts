@@ -1,4 +1,3 @@
-import { postImageUpload } from "@/globalTypes/globalTypes";
 import uploadPostImages from "./uploadPostImages";
 
 export const ondrop = async (acceptedFiles: File[]) => {
@@ -6,7 +5,7 @@ export const ondrop = async (acceptedFiles: File[]) => {
     acceptedFiles.map(async (file) => {
       const base64File = await fileToBase64(file);
       return {
-        file: base64File.split(",")[1], // Extract Base64 content after the MIME type prefix
+        file: base64File.split(",")[1],
         fileName: file.name,
       };
     })
@@ -20,6 +19,6 @@ function fileToBase64(file: File): Promise<string> {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = reject;
-    reader.readAsDataURL(file); // Converts file to a Base64 string
+    reader.readAsDataURL(file);
   });
 }

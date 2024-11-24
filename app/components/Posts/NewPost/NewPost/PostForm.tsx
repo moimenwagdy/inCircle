@@ -2,18 +2,24 @@
 import React, { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 import { newPost } from "../functions/newPost";
-import Button from "../../../Buttons/Button";
 import PostTextContentInput from "./PostTextContentInput";
-import PostAdditionOptions from "./PostAdditionOptions";
 import DefaultValueInputs from "./DefaultValueInputs";
 import PostOptionsAndSubmit from "./PostOptionsAndSubmit";
+import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
+import { newPostActions } from "@/store/slices/newPostSlice/slice";
 
 const PostForm = () => {
   const [formState, formAction] = useFormState(newPost, null);
+  const dispatch = useAppDispatch();
+  const errorMSG = useAppSelector((state) => state.newPost.posetErrorMessage);
+
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
-    formState?.success && formRef.current?.reset();
-  }, [formState]);
+    formState?.success
+      ? formRef.current?.reset()
+      : dispatch(newPostActions.enableErrorMsg());
+  }, [dispatch, formState]);
+
   return (
     <form
       ref={formRef}
@@ -24,7 +30,7 @@ const PostForm = () => {
       </label>
       <PostTextContentInput />
       <PostOptionsAndSubmit />
-      {!formState?.success && (
+      {errorMSG && !formState?.success && (
         <p className="text-redColor text-xs">{formState?.message}</p>
       )}
       <DefaultValueInputs />

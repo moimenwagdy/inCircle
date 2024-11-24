@@ -26,6 +26,7 @@ const EmojiSelections = () => {
     if (ele) {
       ele.value = ele.value + `${shape}`;
     }
+    dispatch(newPostActions.disableErrorMsg());
   };
   return (
     <section className=" space-y-2">

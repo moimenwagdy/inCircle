@@ -6,6 +6,7 @@ export interface newPost {
   feeling: feelinType | null;
   feelingIsOpened: boolean;
   emojisIsOpened: boolean;
+  posetErrorMessage: boolean;
 }
 
 const initialState: newPost = {
@@ -13,6 +14,7 @@ const initialState: newPost = {
   feeling: null,
   feelingIsOpened: false,
   emojisIsOpened: false,
+  posetErrorMessage: false,
 };
 
 export const newPost = createSlice({
@@ -37,6 +39,12 @@ export const newPost = createSlice({
     },
     closeEmoji: (state) => {
       state.emojisIsOpened = false;
+    },
+    enableErrorMsg: (state) => {
+      state.posetErrorMessage = true;
+    },
+    disableErrorMsg: (state) => {
+      state.posetErrorMessage = false;
     },
   },
 });

@@ -12,6 +12,8 @@ const FeelingsSelections = () => {
   const handleFeelSelect = (feelings: feelinType) => {
     dispatch(newPostActions.setFeeling(feelings));
     dispatch(newPostActions.closeFeeling());
+    dispatch(newPostActions.disableErrorMsg());
+
   };
   const handleOpenFeeling = () => {
     feelingIsOpened

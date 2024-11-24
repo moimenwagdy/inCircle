@@ -51,7 +51,9 @@ export const signup = async (_prvState: any, formData: FormData) => {
       passwordHash: hashedPassword,
       profile: {
         bio: "",
-        avatar: userData.imgPath,
+        avatar:
+          userData.imgPath ||
+          "https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/defaultProfileImage.png?alt=media&token=ca08e50d-ac0e-4d49-99a3-c0b61e5c0404",
       },
       following: [],
       followers: [],

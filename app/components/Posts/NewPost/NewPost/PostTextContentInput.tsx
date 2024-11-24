@@ -10,6 +10,7 @@ const PostTextContentInput = () => {
   const handlePostState = () => {
     dispatch(newPostActions.closeFeeling());
     dispatch(newPostActions.closeEmoji());
+    dispatch(newPostActions.disableErrorMsg());
   };
 
   return (
