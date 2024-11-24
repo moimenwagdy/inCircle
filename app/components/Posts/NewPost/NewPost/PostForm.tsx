@@ -12,14 +12,13 @@ const PostForm = () => {
   const [formState, formAction] = useFormState(newPost, null);
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
-    console.log(formState);
     formState?.success && formRef.current?.reset();
   }, [formState]);
   return (
     <form
       ref={formRef}
       action={formAction}
-      className="flex flex-col justify-center items-center w-4/5 sm:w-3/5 md:w-2/5 mx-auto font-descripFont">
+      className="flex flex-col justify-center items-center w-4/5 sm:w-3/5 md:w-2/5 mx-auto">
       <label className=" hidden font-descripFont font-extrabold dark:text-white">
         new post
       </label>

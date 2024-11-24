@@ -23,8 +23,8 @@ const config: Config = {
       },
       fontFamily: {
         headerFont: "Young Serif, serif",
-        descripFont: "Flamenco, system-ui",
-        basicFont: "Bree Serif, serif",
+        descripFont: "Mali, cursive",
+        basicFont: "Afacad Flux, sans-serif",
         heavyFont: "Alfa Slab One, serif",
         arBasic: "Almarai, sans-serif",
         arFreehand: "Marhey, sans-serif",

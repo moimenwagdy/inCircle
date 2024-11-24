@@ -43,7 +43,6 @@ export const newPost = async (_prvState: any, formData: FormData) => {
     createdAt: date,
     feeling: feeling,
   };
-  console.log(post);
   const response = await fetch(`${apiURL}/post/newPost`, {
     method: "post",
     body: JSON.stringify(post),

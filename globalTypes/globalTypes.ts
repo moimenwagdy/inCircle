@@ -13,13 +13,20 @@ export interface user {
 
 export interface post {
   _id: string;
-  authorId: string;
   content: string;
   media: string[];
+  authorId: string;
   comments: comment[];
   likes: string[];
   createdAt: Date;
   feeling: string;
+  author: author;
+}
+
+export interface author {
+  profile: { avatar: string };
+  username: string;
+  _id: string;
 }
 
 export interface comment {

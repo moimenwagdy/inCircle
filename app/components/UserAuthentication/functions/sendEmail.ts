@@ -43,7 +43,6 @@ export const sendEmail = async (_prvState: any, formData: FormData) => {
         message: "sending failed, please try again",
       };
     }
-    console.log(response_DB);
     const data = await response.json();
     return {
       success: true,

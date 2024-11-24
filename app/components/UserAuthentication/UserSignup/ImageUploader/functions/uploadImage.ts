@@ -1,8 +1,6 @@
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
 export const uploadImage = async (img: File) => {
-  console.log("Image upload function triggered");
-
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   if (!img) {

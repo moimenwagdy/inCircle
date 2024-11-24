@@ -26,7 +26,7 @@ const Description = () => {
       <div className="w-4/5 md:w-2/4 mx-auto ">
         <p
           className={`${
-            ar ? "font-arFreehand text-sm" : "font-basicFont text-xs font-thin"
+            ar ? "font-arFreehand text-sm" : "text-normal text-sm "
           }  dark:text-white/80`}>
           {tHome("welcomeMessage")}
         </p>
