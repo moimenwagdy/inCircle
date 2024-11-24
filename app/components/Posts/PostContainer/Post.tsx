@@ -46,6 +46,7 @@ const Post = () => {
                           width={60}
                           height={60}
                           className="w-10 rounded-full"
+                          priority
                         />
                       )}
                       <div className="w-full flex justify-between">
