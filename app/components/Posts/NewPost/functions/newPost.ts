@@ -1,6 +1,6 @@
 "use server";
 
-import { post } from "@/globalTypes/globalTypes";
+import { newPostType } from "@/globalTypes/globalTypes";
 import { nanoid } from "nanoid";
 import { Filter } from "bad-words";
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
@@ -33,7 +33,7 @@ export const newPost = async (_prvState: any, formData: FormData) => {
       message: "Empty content",
     };
   }
-  const post: post = {
+  const post: newPostType = {
     content,
     media: ArrayFromImagesURLs,
     authorId: userID,

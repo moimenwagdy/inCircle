@@ -22,6 +22,16 @@ export interface post {
   feeling: string;
   author: author;
 }
+export interface newPostType {
+  _id: string;
+  content: string;
+  media: string[];
+  authorId: string;
+  comments: comment[];
+  likes: string[];
+  createdAt: Date;
+  feeling: string;
+}
 
 export interface author {
   profile: { avatar: string };
