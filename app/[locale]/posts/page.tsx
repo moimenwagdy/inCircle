@@ -1,17 +1,17 @@
 import PostForm from "@/app/components/Posts/NewPost/NewPost/PostForm";
 import PostImagesPreviewer from "@/app/components/Posts/NewPost/NewPost/PostImagesPreviewer";
-import Post from "@/app/components/Posts/PostContainer/Post";
+import Post from "@/app/components/Posts/PostContainer/Posts";
 import React from "react";
 
 const page = async () => {
   return (
-    <div className="container mx-auto space-y-2">
-      <div className="space-y-2">
+    <main className="container mx-auto space-y-2">
+      <section className="space-y-2">
         <PostForm />
         <PostImagesPreviewer />
-      </div>
+      </section>
       <Post />
-    </div>
+    </main>
   );
 };
 

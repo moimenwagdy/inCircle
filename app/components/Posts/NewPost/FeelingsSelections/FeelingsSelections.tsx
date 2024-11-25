@@ -29,7 +29,7 @@ const FeelingsSelections = () => {
     <section className="space-y-2">
       {feelingIsOpened && (
         <>
-          <ul className="w-32 max-h-40 overflow-y-scroll bg-offWhite dark:bg-black dark:text-white scrollbar-thin scrollbar-thumb-blueColor scrollbar-track-transparent">
+          <ul className="w-32 max-h-36 overflow-y-scroll bg-offWhite dark:bg-black dark:text-white scrollbar-thin scrollbar-thumb-blueColor scrollbar-track-transparent">
             {feelings.map((feel, i) => {
               return (
                 <li key={i}>

@@ -6,7 +6,6 @@ const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 export async function POST(req: Request) {
   try {
     const { userId } = await req.json();
-    console.log(userId);
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");

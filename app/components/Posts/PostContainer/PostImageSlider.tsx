@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 const PostImageSlider: React.FC<{ imgURLs: string[] }> = ({ imgURLs }) => {
@@ -29,7 +30,7 @@ const PostImageSlider: React.FC<{ imgURLs: string[] }> = ({ imgURLs }) => {
               className="min-w-full max-h-full overflow-hidden">
               <Image
                 priority
-                className="min-w-full "
+                className="min-w-full"
                 src={imgURLs[imageIndex]}
                 width={600}
                 height={1}

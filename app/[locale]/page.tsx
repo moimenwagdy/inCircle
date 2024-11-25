@@ -1,15 +1,10 @@
-import HomePageBackGround from "../components/Home/BackGround/HomePageBackGround";
-import Description from "../components/Home/Description/Description";
-import MainHeaderAdress from "../components/Home/MainHeaderAdress/MainHeaderAdress";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
+import MainHomeLanding from "../components/Home/HomeLanding/MainHomeLanding";
+import HomePosts from "../components/Home/HomePosts/HomePosts";
 
 export default async function Home() {
-  return (
-    <main className="relative h-[85vh] md:h-screen overflow-hidden z-0 ">
-      <HomePageBackGround />
-      <div className=" text-center">
-        <MainHeaderAdress />
-        <Description />
-      </div>
-    </main>
-  );
+  const session = await getServerSession(authOptions);
+  const nosession = session === null;
+  return <>{nosession ? <MainHomeLanding /> : <HomePosts />}</>;
 }

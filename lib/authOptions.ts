@@ -1,9 +1,10 @@
 import { NextAuthOptions } from "next-auth";
 import googlProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 import { user } from "@/globalTypes/globalTypes";
 import bcrypt from "bcryptjs";
+import { revalidatePath } from "next/cache";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
@@ -63,6 +64,7 @@ export const authOptions: NextAuthOptions = {
             client.close();
             throw new Error("Invalid password");
           }
+          revalidatePath("/");
           client.close();
           return {
             id: user?._id.toString()!,

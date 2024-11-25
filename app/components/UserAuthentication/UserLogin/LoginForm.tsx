@@ -14,6 +14,7 @@ const LoginForm = () => {
   const [error, setError] = useState<string>();
   const [loading, seIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const session = useSession();
   const emailHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
@@ -27,18 +28,16 @@ const LoginForm = () => {
     seIsLoading(false);
     if (!response?.success) {
       setError(response?.error);
-    } else {
-      router.push("/");
     }
   };
-  const session = useSession();
+
   const tInputs = useTranslations("auth");
   const tPlaceholders = useTranslations("authPlaceholders");
   const t_inputs = useTranslations("auth");
 
   return (
     <FormContainer>
-      {!session.data ? (
+      {!session.data && (
         <form
           onSubmit={formHandler}
           className="flex flex-col w-1/2 mx-auto py-8 gap-y-4">
@@ -65,8 +64,6 @@ const LoginForm = () => {
             <GoogleSigninButton />
           </section>
         </form>
-      ) : (
-        <></>
       )}
     </FormContainer>
   );
