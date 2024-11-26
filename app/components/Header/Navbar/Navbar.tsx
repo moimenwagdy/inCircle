@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import LanguageSwitcher from "../../LangSwitcher/LangSwitcher";
 import DarkLightMood from "../../mood/DarkLightMood";
@@ -9,12 +9,14 @@ import { useSession } from "next-auth/react";
 const Navbar = () => {
   const session = useSession();
   return (
-    <nav className="z-10">
-      <div className="    dark:text-white mx-auto sticky top-0 flex gap-x-4">
-        <LanguageSwitcher />
-        <DarkLightMood />
+    <nav className="z-10 h-12 w-full">
+      <div className="  dark:text-white mx-auto sticky top-0 flex gap-x-2 max-h-full justify-between container">
+        <div className="flex gap-x-2 w-fit">
+          <LanguageSwitcher />
+          <DarkLightMood />
+        </div>
         {session.data && (
-          <div className="flex">
+          <div className="flex justify-start items-center gap-x-2 pe-6">
             <div>
               <Image
                 src={
@@ -23,16 +25,16 @@ const Navbar = () => {
                 }
                 width={40}
                 height={40}
-                className="rounded-full"
+                className="rounded-full w-10"
                 alt="noImage"
               />
             </div>
-            <div className="flex gap-x-4">
+            <div className="flex flex-col justify-center items-center">
               <p>{session.data?.user.username}</p>
               <p>{session.data?.user.email}</p>
               <p>{session.data?.user.followers}</p>
-              <LogoutButton />
             </div>
+            <LogoutButton />
           </div>
         )}
       </div>

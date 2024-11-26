@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { post } from "@/globalTypes/globalTypes";
 import { getFollowingPosts } from "./functions/getFollowingPosts";
 import { getServerSession } from "next-auth";
@@ -13,12 +13,12 @@ const Posts = async () => {
     <>
       <PostsContainer>
         {session && (
-          <>
+          <ul className="w-full space-y-6">
             {posts &&
               posts?.map((post) => {
                 return <Post key={post._id} post={post} />;
               })}
-          </>
+          </ul>
         )}
       </PostsContainer>
     </>

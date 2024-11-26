@@ -1,7 +1,8 @@
 "use server";
+
+import { revalidatePath } from "next/cache";
+
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
-
-
 
 export const getFollowingPosts = async (currentUserId: string) => {
   const response = await fetch(`${apiURL}/post/getFollowingPosts`, {
@@ -13,6 +14,7 @@ export const getFollowingPosts = async (currentUserId: string) => {
   });
   if (response.ok) {
     const result = await response.json();
+    revalidatePath("/");
     return result;
   }
 

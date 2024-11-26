@@ -9,33 +9,28 @@ export async function POST(req: NextRequest) {
   if (!currentUserId) {
     return NextResponse.json({ error: "User ID is required" }, { status: 400 });
   }
-
   const client = await MongoClient.connect(mongoCredentials!);
   try {
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");
 
-    // Find the current user's following array
     const currentUser = await usersCollection.findOne(
       { _id: currentUserId },
-      { projection: { following: 1 } } // Only retrieve the 'following' field
+      { projection: { following: 1 } }
     );
 
     if (!currentUser) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-
     const following = currentUser.following || [];
-
-    // Query for users not in the following array
+    const excludedIds = [...following.map((id: string) => id), currentUserId];
     const users = await usersCollection
       .find(
-        { _id: { $nin: following.map((id: string) => id) } }, // Exclude followed users
-        { projection: { username: 1, profile: 1 } } // Return only required fields
+        { _id: { $nin: excludedIds } },
+        { projection: { username: 1, profile: 1 } }
       )
-      .limit(10) // Limit to 10 results
+      .limit(10)
       .toArray();
-
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error("Error fetching users:", error);

@@ -7,12 +7,12 @@ import FriendSuggetions from "../../FriendSuggetions/FriendSuggetions";
 const HomePosts = () => {
   return (
     <main className="container mx-auto space-y-2">
-      <section className="w-full flex justify-between">
+      <section className="w-full flex justify-between gap-x-1">
         {/*  */}
         <section
           id="LeftContent"
           className="hidden md:flex md:w-1/5 md:justify-center">
-          <p> Left Side </p>
+          {/* <p> Left Side </p> */}
         </section>
         {/*  */}
         <section
@@ -32,7 +32,10 @@ const HomePosts = () => {
         {/*  */}
         <section
           id="RightContent"
-          className="hidden md:flex md:w-1/5 md:justify-center mt-20">
+          className="hidden md:flex flex-col justify-start items-center md:w-1/5 my-6 py-5 gap-y-4 ring-1 ring-black/10 dark:ring-white/10 ">
+          <p className="text-redColor font-descripFont font-bold text-xs">
+            People you may know
+          </p>
           <FriendSuggetions />
         </section>
         {/*  */}
