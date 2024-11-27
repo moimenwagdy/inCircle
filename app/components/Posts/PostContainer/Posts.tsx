@@ -1,10 +1,9 @@
-"use server";
 import { post } from "@/globalTypes/globalTypes";
-import { getFollowingPosts } from "./functions/getFollowingPosts";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/authOptions";
 import PostsContainer from "./PostContainer";
 import Post from "./Post";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/authOptions";
+import { getFollowingPosts } from "./functions/getFollowingPosts";
 
 const Posts = async () => {
   const session = await getServerSession(authOptions);
@@ -12,14 +11,12 @@ const Posts = async () => {
   return (
     <>
       <PostsContainer>
-        {session && (
-          <ul className="w-full space-y-6">
-            {posts &&
-              posts?.map((post) => {
-                return <Post key={post._id} post={post} />;
-              })}
-          </ul>
-        )}
+        <ul className="w-full space-y-6">
+          {posts &&
+            posts?.map((post) => {
+              return <Post key={post._id} post={post} />;
+            })}
+        </ul>
       </PostsContainer>
     </>
   );

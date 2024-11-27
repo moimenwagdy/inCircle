@@ -10,21 +10,18 @@ export const POST = async (req: NextRequest) => {
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");
-
     const result = await usersCollection.updateOne(
       { _id: currentId },
       { $addToSet: { following: userToFollowId } }
     );
-
     if (result.matchedCount === 0) {
       return NextResponse.json({
         success: false,
         message: "User not found",
-      }); 
+      });
     }
-    revalidatePath("/api/post/getFollowingPosts");
-    revalidatePath("/");
-    revalidatePath("/api/users/friendSugg");
+    revalidatePath("/components/Home/HomeContent");
+
     return NextResponse.json({
       success: true,
       message: "User followed successfully",

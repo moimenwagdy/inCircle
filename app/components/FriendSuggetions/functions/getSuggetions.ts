@@ -1,3 +1,5 @@
+import { userSuggetion } from "@/globalTypes/globalTypes";
+
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
 export const getUsersSuggetions = async (id: string) => {
@@ -13,5 +15,5 @@ export const getUsersSuggetions = async (id: string) => {
     return;
   }
   const result = await response.json();
-  return result;
+  return result as userSuggetion[];
 };

@@ -12,25 +12,17 @@ const PostForm = () => {
   const [formState, formAction] = useFormState(newPost, null);
   const dispatch = useAppDispatch();
   const errorMSG = useAppSelector((state) => state.newPost.posetErrorMessage);
-
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
     formState?.success
       ? formRef.current?.reset()
       : dispatch(newPostActions.enableErrorMsg());
   }, [dispatch, formState]);
-
   return (
     <form
       ref={formRef}
       action={formAction}
       className="flex flex-col justify-center items-center w-full sm:w-[75%] lg:w-[85%] mx-auto">
-    {/* <form
-      ref={formRef}
-      action={formAction}
-      className="flex flex-col justify-center items-center w-4/5 sm:w-3/5 md:w-2/5 mx-auto"> */}
-
-
       <label className=" hidden font-descripFont font-extrabold dark:text-white">
         new post
       </label>

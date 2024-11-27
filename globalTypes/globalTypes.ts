@@ -78,3 +78,9 @@ export interface postImageUpload {
   success: boolean;
   url: string;
 }
+
+export interface userSuggetion {
+  _id: string;
+  username: string;
+  profile: { avatar: string };
+}
