@@ -6,7 +6,7 @@ const PostSubmitButton = () => {
   const state = useFormStatus();
 
   return (
-    <div className=" w-12 ">
+    <div className="min-w-2 ms-auto">
       <Button dir={-1} color="black" submittButton>
         {state.pending ? "Posting" : "Post"}
       </Button>

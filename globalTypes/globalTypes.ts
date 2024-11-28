@@ -79,7 +79,7 @@ export interface postImageUpload {
   url: string;
 }
 
-export interface userSuggetion {
+export interface usersuggestion {
   _id: string;
   username: string;
   profile: { avatar: string };

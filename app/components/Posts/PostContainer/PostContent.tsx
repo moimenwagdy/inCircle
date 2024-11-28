@@ -8,7 +8,7 @@ const PostContent: React.FC<{ content: string; postMedia: string[] }> = ({
 }) => {
   const postContainsImages = postMedia.length > 0;
   return (
-    <article className="w-full ">
+    <article className="w-full">
       <h3 dangerouslySetInnerHTML={{ __html: content }}></h3>
       {postContainsImages && <PostImageSlider imgURLs={postMedia} />}
     </article>

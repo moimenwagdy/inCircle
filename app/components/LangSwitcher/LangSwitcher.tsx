@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
   const locale = useLocale();
   const ar = locale === "ar";
   return (
-    <div className="bg-transparent flex">
+    <div className="bg-transparent hidden sm:flex">
       <button
         onClick={() => switchLanguage("en")}
         className="p-2 mx-2 bg-blue-500 text-white rounded">

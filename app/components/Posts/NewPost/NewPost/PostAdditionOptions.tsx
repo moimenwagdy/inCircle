@@ -2,6 +2,7 @@ import React from "react";
 import PostImageUploader from "../PostImageUploader/PostImageUploader";
 import EmojiSelections from "../EmojiSelections/EmojiSelections";
 import FeelingsSelections from "../FeelingsSelections/FeelingsSelections";
+import PostSubmitButton from "./PostSubmitButton";
 
 const PostAdditionOptions = () => {
   return (
@@ -15,6 +16,7 @@ const PostAdditionOptions = () => {
       <div className="z-0 ">
         <FeelingsSelections />
       </div>
+      <PostSubmitButton />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import PostButtonsLikeAndComment from "./PostButtonsLikeAndComment";
 const Post: React.FC<{ post: post }> = ({ post }) => {
   return (
     <li className="w-full flex flex-col gap-y-1">
-      <div className="ring-[1px] ring-black/10 dark:ring-white/10 py-6 px-6 h-full">
+      <div className="ring-[1px] ring-black/5 dark:ring-white/5 py-6 px-6 h-full">
         <PostUserData
           avatar={post.author.profile.avatar}
           createdAt={post.createdAt}
