@@ -50,9 +50,8 @@ export async function POST(req: Request) {
         },
       ])
       .toArray();
-    const shuffledPosts = postsWithUserData.sort(() => Math.random() - 0.5);
     await client.close();
-    return NextResponse.json(shuffledPosts);
+    return NextResponse.json(postsWithUserData);
   } catch (error) {
     console.error("Error fetching posts:", error);
     return NextResponse.json(

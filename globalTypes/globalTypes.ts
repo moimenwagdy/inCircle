@@ -84,3 +84,8 @@ export interface usersuggestion {
   username: string;
   profile: { avatar: string };
 }
+export interface likeRsopnse {
+  added: boolean;
+  message: string;
+  removed: boolean;
+}

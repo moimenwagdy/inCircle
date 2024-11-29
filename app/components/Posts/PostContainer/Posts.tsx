@@ -11,7 +11,7 @@ const Posts = async () => {
   return (
     <>
       <PostsContainer>
-        <ul className="w-full space-y-6">
+        <ul className="w-full space-y-6 mt-2">
           {posts &&
             posts?.map((post) => {
               return <Post key={post._id} post={post} />;
@@ -21,5 +21,4 @@ const Posts = async () => {
     </>
   );
 };
-
 export default Posts;

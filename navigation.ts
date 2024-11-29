@@ -1,3 +1,4 @@
+"navigation"
 import {
   createNavigation,
   createSharedPathnamesNavigation,

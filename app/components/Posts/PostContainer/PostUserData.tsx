@@ -6,6 +6,7 @@ const PostUserData: React.FC<{
   feeling: string;
   createdAt: Date;
 }> = ({ avatar, userName, feeling, createdAt }) => {
+  const isFeeling = feeling !== "";
   return (
     <header className=" w-full flex justify-start items-end gap-x-2 ">
       <Image
@@ -19,23 +20,27 @@ const PostUserData: React.FC<{
       <div className="w-full flex justify-between">
         <div className="flex gap-x-1">
           <h1 className="text-lg capitalize">{userName}</h1>
-          <p
-            className="font-bold text-redColor"
-            dangerouslySetInnerHTML={{
-              __html: `is ${feeling} `,
-            }}></p>
+          {isFeeling && (
+            <p
+              className="font-bold text-redColor"
+              dangerouslySetInnerHTML={{
+                __html: `is ${feeling} `,
+              }}></p>
+          )}
         </div>
         <div className="">
-          <p className="text-xs dark:text-white/50 text-black/80">
+          <time
+            dateTime={new Date(createdAt).toISOString()} // Ensures semantic accuracy for accessibility
+            className="text-xs dark:text-white/50 text-black/80">
             {new Date(createdAt).toLocaleString("en-US", {
-              year: "numeric",
-              month: "short",
+              year: "2-digit",
+              month: "narrow",
               day: "2-digit",
               hour: "numeric",
               minute: "2-digit",
               hour12: true,
             })}
-          </p>
+          </time>
         </div>
       </div>
     </header>
