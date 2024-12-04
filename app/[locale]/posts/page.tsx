@@ -1,7 +1,5 @@
-import PostLoading from "@/app/components/Posts/PostContainer/PostLoading";
-
 const page = () => {
-  return <PostLoading />;
+  return <div></div>;
 };
 
 export default page;

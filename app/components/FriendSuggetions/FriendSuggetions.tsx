@@ -16,7 +16,9 @@ const FriendSuggetions = () => {
   const [queryPayload, setQueryPayload] = useState<string>("");
 
   const handleQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setQueryPayload(e.target.value);
+    setTimeout(() => {
+      setQueryPayload(e.target.value);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -31,19 +33,22 @@ const FriendSuggetions = () => {
         setSuggetions(result);
       } else {
         setIsLoading(true);
-        const result = await getUsersFilteredSuggetions(
-          session?.data?.user._id!,
-          queryPayload
-        );
-        setIsLoading(false);
-        setSuggetions(result);
+        setTimeout(async () => {
+          const result = await getUsersFilteredSuggetions(
+            session?.data?.user._id!,
+            queryPayload
+          );
+          setIsLoading(false);
+          setSuggetions(result);
+        }, 200);
       }
     };
     getSug();
   }, [session?.data, queryPayload]);
   const SuggestionsAreEmpty = suggestions?.length === 0;
-
-  
+  useEffect(() => {
+    console.log(queryPayload);
+  }, [queryPayload]);
   return (
     <>
       <input

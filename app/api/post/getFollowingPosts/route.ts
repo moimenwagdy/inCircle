@@ -6,23 +6,34 @@ const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 export async function POST(req: Request) {
   try {
     const { userId } = await req.json();
+
+    if (!userId) {
+      return NextResponse.json(
+        { error: "User ID is required" },
+        { status: 400 }
+      );
+    }
+
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");
     const postsCollection = db.collection("posts");
-    const user = await usersCollection.findOne({ _id: userId });
-    if (!user || user.following.length === 0) {
-      return NextResponse.json(
-        { message: "User not found or no following" },
-        { status: 404 }
-      );
+
+    // Fetch user data to get following list
+    const user = await usersCollection.findOne(
+      { _id: userId },
+      { projection: { following: 1 } }
+    );
+    if (!user) {
+      await client.close();
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
+
+    const authorIds = [...user.following, userId]; // Include current user's ID
     const postsWithUserData = await postsCollection
       .aggregate([
         {
-          $match: {
-            authorId: { $in: user.following.map((id: string) => id) },
-          },
+          $match: { authorId: { $in: authorIds } }, // Match posts by the authors
         },
         {
           $lookup: {
@@ -32,13 +43,12 @@ export async function POST(req: Request) {
             as: "author",
           },
         },
-        { $unwind: "$author" },
+        { $unwind: "$author" }, // Flatten the author array
         {
           $project: {
             _id: 1,
             content: 1,
             createdAt: 1,
-            authorId: 1,
             feeling: 1,
             likes: 1,
             comments: 1,
@@ -48,8 +58,10 @@ export async function POST(req: Request) {
             "author.profile.avatar": 1,
           },
         },
+        { $sort: { createdAt: -1 } }, // Sort posts by creation date (most recent first)
       ])
       .toArray();
+
     await client.close();
     return NextResponse.json(postsWithUserData);
   } catch (error) {

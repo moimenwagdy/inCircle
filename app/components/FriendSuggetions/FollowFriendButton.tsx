@@ -22,7 +22,7 @@ const FollowFriendButton: React.FC<{ userToFollowId: string }> = ({
     <button
       disabled={state?.success}
       onClick={handleFollowUser}
-      className="text-xs text-blueColor hover:text-black dark:hover:text-white disabled:text-gray-500 w-1/4">
+      className="text-xs text-blueColor hover:text-black dark:hover:text-white disabled:text-gray-500 me-2">
       {state?.success ? "Following" : "Follow"}
     </button>
   );

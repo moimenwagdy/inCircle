@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slices/authSlice/Slice";
+import authMood from "./slices/authSlice/Slice";
 import newPost from "./slices/newPostSlice/slice";
+import commentsSlice from "./slices/commentsSlice/commentsSlice";
 
 export const store = configureStore({
-  reducer: { authMood: counterReducer, newPost: newPost },
+  reducer: { authMood, newPost, commentsSlice },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

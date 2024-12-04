@@ -1,4 +1,4 @@
-import { feelinType } from "@/app/components/Posts/NewPost/FeelingsSelections/FellingsTags";
+import { feelinType } from "@/app/components/NewPost/FeelingsSelections/FellingsTags";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface newPost {
@@ -22,7 +22,12 @@ export const newPost = createSlice({
   initialState,
   reducers: {
     setPostImagesURLs: (state, action) => {
-      state.postImagesURLs = [...action.payload];
+      if (action.payload === null) {
+        state.postImagesURLs = [];
+      } else {
+        const images = [...action.payload];
+        state.postImagesURLs = [...images];
+      }
     },
     setFeeling: (state, action) => {
       const payed = { ...action.payload };

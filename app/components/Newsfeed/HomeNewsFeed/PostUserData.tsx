@@ -8,7 +8,7 @@ const PostUserData: React.FC<{
 }> = ({ avatar, userName, feeling, createdAt }) => {
   const isFeeling = feeling !== "";
   return (
-    <header className=" w-full flex justify-start items-end gap-x-2 ">
+    <header className=" w-full flex justify-start items-end gap-x-2">
       <Image
         src={avatar}
         alt={userName}

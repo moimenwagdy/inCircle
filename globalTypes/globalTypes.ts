@@ -41,7 +41,7 @@ export interface author {
 
 export interface comment {
   _id: string;
-  userId: string;
+  userID: string;
   postId: string;
   comment: string;
   likes: string[];

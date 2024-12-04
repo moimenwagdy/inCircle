@@ -14,9 +14,13 @@ const PostForm = () => {
   const errorMSG = useAppSelector((state) => state.newPost.posetErrorMessage);
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
-    formState?.success
-      ? formRef.current?.reset()
-      : dispatch(newPostActions.enableErrorMsg());
+    if (formState?.success) {
+      formRef.current?.reset();
+      dispatch(newPostActions.setFeeling(null));
+      dispatch(newPostActions.setPostImagesURLs(null));
+    }
+    if (!formState?.success) formState?.success;
+    dispatch(newPostActions.enableErrorMsg());
   }, [dispatch, formState]);
   return (
     <form
