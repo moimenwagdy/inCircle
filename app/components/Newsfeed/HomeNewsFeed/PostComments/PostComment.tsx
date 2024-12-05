@@ -23,36 +23,36 @@ const PostComment: React.FC<{
       <div className="w-full">
         <CommentHeader userID={comment.userID} key={comment.userID} />
       </div>
-      <div className="ps-9 text-sm">
+      <div className="mx-5 px-4 text-sm bg-white/[.10] py-1 rounded-md first-letter:capitalize">
         <p>{comment.comment}</p>
       </div>
-      <div className="flex justify-between ms-9">
-        <div className="flex gap-x-2">
-          <div className="space-x-2">
+      <div className="flex justify-between items-center ms-9">
+        <div className="flex justify-start items-center gap-x-2">
+          <div className="space-x-2 flex">
             <button
               className="
-              text-xs">
-              like
+              text-xs hover:text-blueColor">
+              Like
             </button>
           </div>
           <div className="flex justify-start items-center gap-x-2">
             {allowDel && (
-              <button className="text-xs" onClick={handleAllowDelete}>
-                {showDelete ? "delete ?" : "delete"}
+              <button
+                className="text-xs hover:text-redColor"
+                onClick={handleAllowDelete}>
+                {showDelete ? "Delete ?" : "Delete"}
               </button>
             )}
             {
               <>
                 {showDelete && (
                   <div className="text-xs">
-                    <button
-                      className=""
-                      onClick={() => onClick(comment._id)}>
-                      yes
+                    <button className="" onClick={() => onClick(comment._id)}>
+                      Yes
                     </button>{" "}
                     /{" "}
                     <button className="" onClick={disableAllowDelete}>
-                      no
+                      No
                     </button>
                   </div>
                 )}
@@ -60,7 +60,7 @@ const PostComment: React.FC<{
             }
           </div>
         </div>
-        <p className="text-xs">
+        <p className="text-xs text-black/60 dak:text-white/70">
           {new Date(comment.createdAt).toLocaleString("en-US", {
             day: "2-digit",
             hour: "numeric",

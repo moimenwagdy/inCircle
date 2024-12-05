@@ -3,6 +3,7 @@ import PostForm from "../../NewPost/NewPostForm/PostForm";
 import PostImagesPreviewer from "../../NewPost/NewPostForm/PostImagesPreviewer";
 import Posts from "../../Newsfeed/HomeNewsFeed/Posts";
 import PostLoading from "../../Newsfeed/HomeNewsFeed/PostLoading";
+import MoreNewsFeed from "../../Newsfeed/MoreNewsFeed/MoreNewsFeed";
 
 const MiddleSide = () => {
   return (
@@ -16,6 +17,7 @@ const MiddleSide = () => {
       <Suspense fallback={<PostLoading />}>
         <Posts />
       </Suspense>
+      <MoreNewsFeed />
     </section>
   );
 };

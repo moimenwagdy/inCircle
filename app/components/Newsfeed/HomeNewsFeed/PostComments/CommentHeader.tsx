@@ -2,6 +2,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import CommentedUserImage from "./CommentedUserImage";
 import { getUserCommentData } from "./functions/getUserCommentData";
+import UserImage from "@/app/components/UserImage/UserImage";
 
 const CommentHeader: React.FC<{ userID: string }> = ({ userID }) => {
   const [userData, setUserData] = useState<{
@@ -19,20 +20,24 @@ const CommentHeader: React.FC<{ userID: string }> = ({ userID }) => {
     getUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <>
       {!loading ? (
-        <div className="flex justify-start items-center gap-x-1 ">
+        <div className=" flex justify-start items-center gap-x-2 ">
           {userData && (
-            <div>
-              <CommentedUserImage
-                imgUrl={userData?.profile.avatar!}
-                key={userData?.profile.avatar}
+            <div className="relative">
+              <UserImage
+                src={userData.profile.avatar}
+                alt={userData.username}
+                biggerImg={false}
+                userName={userData.username}
               />
             </div>
           )}
-          <h2 className="text-sm capitalize"> {userData?.username}</h2>
+          <h2 className=" capitalize font-bold text-redColor">
+            {" "}
+            {userData?.username}
+          </h2>
         </div>
       ) : (
         <div className="flex animate-pulse h-10 justify-start items-center gap-x-4">

@@ -12,9 +12,9 @@ const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
   } = useLikeFeature(postId);
 
   return (
-    <aside className="flex flex-col justify-start w-full self-start items-start">
+    <aside className="flex flex-row-reverse justify-between w-full self-start items-center">
       <div
-        className={`group relative flex w-fit self-end h-[12px] justify-end items-start  gap-x-[2px] ${
+        className={`group relative flex w-fit  h-[12px] justify-end items-start  gap-x-[2px] ${
           LikesIsNOtEmpty ? "cursor-pointer" : ""
         }`}>
         <p className="text-xs">&#x1F5A4;</p>

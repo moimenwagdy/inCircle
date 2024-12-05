@@ -7,7 +7,7 @@ import { getFollowingPosts } from "./functions/getFollowingPosts";
 
 const Posts = async () => {
   const session = await getServerSession(authOptions);
-  const posts: post[] = await getFollowingPosts(session?.user._id!);
+  const posts: post[] = await getFollowingPosts(session?.user._id!, 1, 3);
   return (
     <>
       <PostsContainer>

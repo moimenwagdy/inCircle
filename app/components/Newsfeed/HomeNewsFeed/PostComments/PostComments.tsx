@@ -17,7 +17,7 @@ const PostComments: React.FC<{ postId: string }> = ({ postId }) => {
     <>
       <>
         {!isEmpty && (
-          <ul className="space-y-1">
+          <ul className="space-y-1 mt-2">
             {comments &&
               comments?.map((comment) => {
                 return (

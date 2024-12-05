@@ -5,7 +5,7 @@ const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
 export async function POST(req: Request) {
   try {
-    const { userId } = await req.json();
+    const { userId, page, limit } = await req.json(); // Default values
 
     if (!userId) {
       return NextResponse.json(
@@ -19,7 +19,6 @@ export async function POST(req: Request) {
     const usersCollection = db.collection("users");
     const postsCollection = db.collection("posts");
 
-    // Fetch user data to get following list
     const user = await usersCollection.findOne(
       { _id: userId },
       { projection: { following: 1 } }
@@ -29,12 +28,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    const authorIds = [...user.following, userId]; // Include current user's ID
+    const authorIds = [...user.following, userId];
+    const skip = (page - 1) * limit;
+
     const postsWithUserData = await postsCollection
       .aggregate([
-        {
-          $match: { authorId: { $in: authorIds } }, // Match posts by the authors
-        },
+        { $match: { authorId: { $in: authorIds } } },
         {
           $lookup: {
             from: "users",
@@ -43,7 +42,7 @@ export async function POST(req: Request) {
             as: "author",
           },
         },
-        { $unwind: "$author" }, // Flatten the author array
+        { $unwind: "$author" },
         {
           $project: {
             _id: 1,
@@ -58,7 +57,9 @@ export async function POST(req: Request) {
             "author.profile.avatar": 1,
           },
         },
-        { $sort: { createdAt: -1 } }, // Sort posts by creation date (most recent first)
+        { $sort: { createdAt: -1 } },
+        { $skip: skip },
+        { $limit: limit },
       ])
       .toArray();
 

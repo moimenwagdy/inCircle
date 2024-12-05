@@ -3,6 +3,7 @@
 import { newPostType } from "@/globalTypes/globalTypes";
 import { nanoid } from "nanoid";
 import { Filter } from "bad-words";
+import { revalidatePath } from "next/cache";
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 const filter = new Filter();
 
@@ -57,6 +58,7 @@ export const newPost = async (_prvState: any, formData: FormData) => {
       message: "Network error, check your connection.",
     };
   }
+  revalidatePath("/");
   const result = await response.json();
 
   return { success: true, result };
