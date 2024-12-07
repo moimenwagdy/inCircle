@@ -3,6 +3,7 @@ import { comment } from "@/globalTypes/globalTypes";
 import CommentHeader from "./CommentHeader";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import TimePrint from "@/app/components/TimePrint/TimePrint";
 
 const PostComment: React.FC<{
   comment: comment;
@@ -60,14 +61,7 @@ const PostComment: React.FC<{
             }
           </div>
         </div>
-        <p className="text-xs text-black/60 dak:text-white/70">
-          {new Date(comment.createdAt).toLocaleString("en-US", {
-            day: "2-digit",
-            hour: "numeric",
-            month: "short",
-            minute: "2-digit",
-          })}
-        </p>
+        <TimePrint createdAt={comment.createdAt.toString()} />
       </div>
     </article>
   );

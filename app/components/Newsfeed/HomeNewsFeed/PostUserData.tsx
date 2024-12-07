@@ -1,3 +1,4 @@
+import TimePrint from "../../TimePrint/TimePrint";
 import UserImage from "../../UserImage/UserImage";
 
 const PostUserData: React.FC<{
@@ -29,18 +30,7 @@ const PostUserData: React.FC<{
           )}
         </div>
         <div className="">
-          <time
-            dateTime={new Date(createdAt).toISOString()} // Ensures semantic accuracy for accessibility
-            className="text-xs dark:text-white/50 text-black/80">
-            {new Date(createdAt).toLocaleString("en-US", {
-              year: "2-digit",
-              month: "narrow",
-              day: "2-digit",
-              hour: "numeric",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </time>
+          <TimePrint createdAt={createdAt.toString()} />
         </div>
       </div>
     </header>

@@ -2,6 +2,7 @@ import { usersuggestion } from "@/globalTypes/globalTypes";
 import FollowFriendButton from "./FollowFriendButton";
 import Image from "next/image";
 import UserImage from "../UserImage/UserImage";
+import Link from "next/link";
 
 const FriendSuggetion: React.FC<{ userSuggetion: usersuggestion }> = ({
   userSuggetion,
@@ -21,9 +22,11 @@ const FriendSuggetion: React.FC<{ userSuggetion: usersuggestion }> = ({
               biggerImg={false}
             />
           </div>
-          <h2 className="text-xs lg:text-sm shrink capitalize font-bold">
+          <Link
+            href={`/user/${userSuggetion._id}`}
+            className="text-xs lg:text-sm shrink capitalize font-bold">
             {userSuggetion.username}
-          </h2>
+          </Link>
         </div>
         <FollowFriendButton
           key={userSuggetion._id}
