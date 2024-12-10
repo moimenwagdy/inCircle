@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
     );
 
     if (!currentUser) {
+      client.close()
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
@@ -48,6 +49,7 @@ export async function POST(req: NextRequest) {
       .limit(10)
       .toArray();
     revalidatePath("/");
+    await client.close()
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error("Error fetching users:", error);

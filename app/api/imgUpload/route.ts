@@ -12,6 +12,7 @@ export async function POST(req: Request) {
     }
     const storageRef = ref(storage, `images/${fileName}`);
     const fileBuffer = Buffer.from(file, "base64");
+   
     await uploadBytes(storageRef, fileBuffer);
     const downloadURL = await getDownloadURL(storageRef);
     return NextResponse.json({ url: downloadURL }, { status: 200 });

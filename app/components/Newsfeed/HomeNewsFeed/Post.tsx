@@ -5,7 +5,7 @@ import PostUserData from "./PostUserData";
 import PostContent from "./PostContent";
 import PostInteractButtons from "./PostInteractButtons";
 
-const Post: React.FC<{ post: post }> =  ({ post }) => {
+const Post: React.FC<{ post: post }> = ({ post }) => {
   return (
     <li className="w-full flex flex-col gap-y-1 ring-[1px] ring-black/5 dark:ring-white/5 px-3">
       <div className=" py-6 px-3 h-full space-y-3 border-b-[1px] border-black/5">
@@ -14,6 +14,7 @@ const Post: React.FC<{ post: post }> =  ({ post }) => {
           createdAt={post.createdAt}
           feeling={post.feeling}
           userName={post.author.username}
+          userID={post.author._id}
         />
         <PostContent content={post.content} postMedia={post.media} />
       </div>

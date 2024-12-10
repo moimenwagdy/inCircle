@@ -9,6 +9,8 @@ export interface user {
   createdAt: Date;
   age: number;
   verified: boolean;
+  status: string;
+  gender: string;
 }
 
 export interface post {

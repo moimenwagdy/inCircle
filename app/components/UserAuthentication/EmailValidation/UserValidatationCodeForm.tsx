@@ -5,17 +5,21 @@ import { verfiySentCode } from "../functions/verfiySentCode";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useAppDispatch } from "@/store/reduxHooks";
+import { authActions } from "@/store/slices/authSlice/Slice";
 
 const UserValidatationCodeForm = () => {
   const [formState, foreAction] = useFormState(verfiySentCode, null);
   const params = useSearchParams();
   const id = params.get("userID") as string;
   const router = useRouter();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     let timeOut: NodeJS.Timeout | undefined;
     if (formState?.success) {
       timeOut = setTimeout(() => {
-        router.push("/auth/signin");
+        dispatch(authActions.setAuthMoodToSignIn());
+        router.push("/auth");
       }, 1500);
     }
     return () => {

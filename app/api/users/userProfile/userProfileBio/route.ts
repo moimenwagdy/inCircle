@@ -4,11 +4,11 @@ const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
 export async function POST(req: NextRequest) {
   try {
-    const { userID } = await req.json();
+    const { userID, bio } = await req.json();
 
     if (!userID) {
       return NextResponse.json(
-        { error: "User ID is required" },
+        { success: false, message: "User ID is required" },
         { status: 400 }
       );
     }
@@ -17,19 +17,25 @@ export async function POST(req: NextRequest) {
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");
 
-    const currentUser = await usersCollection.findOne(
+    const result = await usersCollection.updateOne(
       { _id: userID },
-      { projection: { passwordHash: 0 } }
+      { $set: { "profile.bio": bio } }
     );
 
-    if (!currentUser) {
+    if (result.matchedCount === 0) {
       await client.close();
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json(
+        { success: false, message: "User not found" },
+        { status: 404 }
+      );
     }
     await client.close();
-    return NextResponse.json(currentUser, { status: 200 });
+    return NextResponse.json(
+      { success: true, message: "Bio updated successfully" },
+      { status: 200 }
+    );
   } catch (error) {
-    console.error("Error fetching users:", error);
+    console.error("Error updating bio:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

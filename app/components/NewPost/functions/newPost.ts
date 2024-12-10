@@ -27,7 +27,7 @@ export const newPost = async (_prvState: any, formData: FormData) => {
   if (
     (content.trim().length === 0 || content === "") &&
     ArrayFromImagesURLs.length === 0 &&
-    (feeling === null || feeling === "")
+    feeling === ""
   ) {
     return {
       success: false,

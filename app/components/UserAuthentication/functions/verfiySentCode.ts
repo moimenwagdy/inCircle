@@ -1,7 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
-
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
 export const verfiySentCode = async (_prvState: any, formData: FormData) => {

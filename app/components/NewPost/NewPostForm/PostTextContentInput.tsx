@@ -15,13 +15,13 @@ const PostTextContentInput = () => {
   return (
     <div className="w-full flex flex-col justify-start items-center ">
       <div className="self-start h-6 text-black dark:text-offWhite ms-2 flex justify-start items-center space-x-1">
-        {feeling?.feeling && (
+        {feeling && (
           <>
             <p> I&#39;m feeling</p>
             <p
               className="text-sm text-redColor font-bold"
               dangerouslySetInnerHTML={{
-                __html: ` ${feeling.feeling} ${feeling.shape}`,
+                __html: ` ${feeling}`,
               }}></p>
           </>
         )}

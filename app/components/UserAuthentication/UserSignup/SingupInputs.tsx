@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import SignupInput from "./SignupInput";
 import { ZodIssue } from "zod";
+import GenderForm from "./GenderForm";
+import StatusForm from "./StatusForm";
 
 const SingupInputs: React.FC<{
   formState:
@@ -90,8 +92,10 @@ const SingupInputs: React.FC<{
         name="age"
         text={t_inputs("ageInput")}
         error={ageER}
-        className="w-[250px]  border border-gray-300 rounded-md px-10 text-gray-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+        className="w-[250px] border border-gray-300 rounded-md px-10 text-gray-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
       />
+      <GenderForm />
+      <StatusForm />
       <SignupInput
         type="text"
         id="imgPath"
@@ -102,5 +106,4 @@ const SingupInputs: React.FC<{
     </>
   );
 };
-
 export default SingupInputs;

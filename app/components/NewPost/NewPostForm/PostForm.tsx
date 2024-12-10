@@ -16,7 +16,7 @@ const PostForm = () => {
   useEffect(() => {
     if (formState?.success) {
       formRef.current?.reset();
-      dispatch(newPostActions.setFeeling(null));
+      dispatch(newPostActions.setFeeling(""));
       dispatch(newPostActions.setPostImagesURLs(null));
     }
     if (!formState?.success) formState?.success;

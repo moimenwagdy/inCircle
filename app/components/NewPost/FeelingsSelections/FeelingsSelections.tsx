@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { feelings, feelinType } from "./FellingsTags";
+import { feelings } from "./FellingsTags";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
 
@@ -9,7 +8,7 @@ const FeelingsSelections = () => {
     (state) => state.newPost.feelingIsOpened
   );
   const dispatch = useAppDispatch();
-  const handleFeelSelect = (feelings: feelinType) => {
+  const handleFeelSelect = (feelings: string) => {
     dispatch(newPostActions.setFeeling(feelings));
     dispatch(newPostActions.closeFeeling());
     dispatch(newPostActions.disableErrorMsg());
@@ -21,9 +20,8 @@ const FeelingsSelections = () => {
   };
   const handleClearFeeling = () => {
     dispatch(newPostActions.closeFeeling());
-    dispatch(newPostActions.setFeeling(null));
+    dispatch(newPostActions.setFeeling(""));
   };
-
   return (
     <section className="space-y-2">
       {feelingIsOpened && (
@@ -36,7 +34,7 @@ const FeelingsSelections = () => {
                     onClick={() => handleFeelSelect(feel)}
                     className="text-sm"
                     dangerouslySetInnerHTML={{
-                      __html: feel.feeling + " " + feel.shape,
+                      __html: feel,
                     }}></p>
                 </li>
               );

@@ -4,8 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoClient } from "mongodb";
 import { user } from "@/globalTypes/globalTypes";
 import bcrypt from "bcryptjs";
-import { revalidatePath } from "next/cache";
-import { redirect, RedirectType } from "next/navigation";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
@@ -77,6 +75,8 @@ export const authOptions: NextAuthOptions = {
             createdAt: user?.createdAt!,
             age: user?.age!,
             verified: user?.verified!,
+            status: user?.status,
+            gender: user?.gender,
           };
         } catch (error) {
           throw new Error("network error, check your connection");
@@ -105,6 +105,8 @@ export const authOptions: NextAuthOptions = {
           createdAt: new Date(),
           age: 0,
           verified: false,
+          status: "Single",
+          gender: "Male",
         };
 
         try {
@@ -128,6 +130,8 @@ export const authOptions: NextAuthOptions = {
         token.createdAt = 0;
         token.age = 0;
         token.verified = true;
+        token.gender = "";
+        token.status = "";
 
         return token;
       }
@@ -143,6 +147,8 @@ export const authOptions: NextAuthOptions = {
         token.createdAt = customUser.createdAt;
         token.age = customUser.age;
         token.verified = customUser.verified;
+        token.status = customUser.status;
+        token.gender = customUser.gender;
       }
       return token;
     },
@@ -158,6 +164,8 @@ export const authOptions: NextAuthOptions = {
         session.user.createdAt = token.createdAt as Date;
         session.user.age = token.age as number;
         session.user.verified = token.verified as boolean;
+        session.user.status = token.status as string;
+        session.user.gender = token.gender as string;
       }
       return session;
     },

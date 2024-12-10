@@ -2,10 +2,9 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { ondrop } from "./functions/ondrop";
-import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
+import { useAppDispatch } from "@/store/reduxHooks";
 import { postImageUpload } from "@/globalTypes/globalTypes";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
-
 const PostImageUploader = () => {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(false);
@@ -40,5 +39,4 @@ const PostImageUploader = () => {
     </>
   );
 };
-
 export default PostImageUploader;

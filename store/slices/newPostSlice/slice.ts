@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface newPost {
   postImagesURLs: string[] | null;
-  feeling: feelinType | null;
+  feeling: string;
   feelingIsOpened: boolean;
   emojisIsOpened: boolean;
   posetErrorMessage: boolean;
@@ -11,7 +11,7 @@ export interface newPost {
 
 const initialState: newPost = {
   postImagesURLs: null,
-  feeling: null,
+  feeling: "",
   feelingIsOpened: false,
   emojisIsOpened: false,
   posetErrorMessage: false,
@@ -30,8 +30,7 @@ export const newPost = createSlice({
       }
     },
     setFeeling: (state, action) => {
-      const payed = { ...action.payload };
-      state.feeling = { ...payed };
+      state.feeling = action.payload;
     },
     openFeeling: (state) => {
       state.feelingIsOpened = true;

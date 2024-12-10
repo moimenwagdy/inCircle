@@ -15,13 +15,14 @@ export const POST = async (req: NextRequest) => {
       { $addToSet: { following: userToFollowId } }
     );
     if (result.matchedCount === 0) {
+      client.close();
       return NextResponse.json({
         success: false,
         message: "User not found",
       });
     }
     revalidatePath("/components/Home/HomeContent");
-
+    client.close();
     return NextResponse.json({
       success: true,
       message: "User followed successfully",

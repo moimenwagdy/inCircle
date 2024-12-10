@@ -31,10 +31,11 @@ export const signup = async (_prvState: any, formData: FormData) => {
     repeatedPassword: formData.get("repeatedPassword") as string,
     age: (age as number) || 17,
     imgPath: formData.get("imgPath") as string,
+    gender: formData.get("gender") as string,
+    status: formData.get("status") as string,
   };
   try {
     const validationResult = signupSchema.safeParse(userData);
-
     if (!validationResult.success) {
       return {
         success: false,
@@ -60,6 +61,8 @@ export const signup = async (_prvState: any, formData: FormData) => {
       createdAt: new Date(),
       age: userData.age || 18,
       verified: false,
+      status: userData.status,
+      gender: userData.gender,
     };
     const response = await fetch(`${apiURL}/users/signup`, {
       method: "post",

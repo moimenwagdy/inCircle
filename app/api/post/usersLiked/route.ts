@@ -20,13 +20,12 @@ export async function POST(req: Request) {
 
     const users = await usersCollection
       .find({ _id: { $in: usersLikesIds.map((id) => id) } })
-      .project({ username: 1, _id: 0 }) 
+      .project({ username: 1, _id: 0 })
       .toArray();
 
     await client.close();
 
     const usernames = users.map((user) => user.username);
-
     return NextResponse.json(usernames);
   } catch (error) {
     console.error("Error fetching likes:", error);

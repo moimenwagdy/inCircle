@@ -18,11 +18,7 @@ const DefaultValueInputs = () => {
         defaultValue={urls!}
       />
       <DefaultValueInput name="userID" id="userID" defaultValue={userID} />
-      <DefaultValueInput
-        name="feeling"
-        id="feeling"
-        defaultValue={feeling ? `${feeling.feeling} ${feeling.shape}` : ""}
-      />
+      <DefaultValueInput name="feeling" id="feeling" defaultValue={feeling} />
     </>
   );
 };

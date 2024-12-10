@@ -1,3 +1,4 @@
+import Link from "next/link";
 import TimePrint from "../../TimePrint/TimePrint";
 import UserImage from "../../UserImage/UserImage";
 
@@ -6,21 +7,25 @@ const PostUserData: React.FC<{
   userName: string;
   feeling: string;
   createdAt: Date;
-}> = ({ avatar, userName, feeling, createdAt }) => {
+  userID: string;
+}> = ({ avatar, userName, feeling, createdAt, userID }) => {
   const isFeeling = feeling !== "";
+
   return (
     <header className=" w-full flex justify-start items-end gap-x-2">
-      <div className="relative">
+      <Link href={`/user/${userID}`} className="relative cursor-pointer">
         <UserImage
           src={avatar}
           alt={userName}
           userName={userName}
           biggerImg={true}
         />
-      </div>
+      </Link>
       <div className="w-full flex justify-between">
         <div className="flex gap-x-1">
-          <h1 className="text-lg capitalize">{userName}</h1>
+          <Link href={`/user/${userID}`} className="text-lg capitalize cursor-pointer">
+            {userName}
+          </Link>
           {isFeeling && (
             <p
               className="font-bold text-redColor"

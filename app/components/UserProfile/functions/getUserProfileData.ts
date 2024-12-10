@@ -1,3 +1,4 @@
+
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 export const getUserProfileData = async (userID: string) => {
   try {
@@ -8,7 +9,7 @@ export const getUserProfileData = async (userID: string) => {
       },
       body: JSON.stringify({
         userID,
-      }),
+      }),cache:"no-cache"
     });
     if (!response.ok) {
       const data = await response.json();

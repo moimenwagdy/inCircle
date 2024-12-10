@@ -15,6 +15,8 @@ declare module "next-auth" {
       age: number;
       verified: boolean;
       image: string;
+      status: string;
+      gender: string;
     };
   }
   ff;

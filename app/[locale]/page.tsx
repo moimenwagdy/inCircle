@@ -9,4 +9,4 @@ export default async function Home() {
     redirect("/news");
   }
   return <MainHomeLanding />;
-}
+} 

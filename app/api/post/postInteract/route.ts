@@ -22,6 +22,7 @@ export async function POST(req: Request) {
     const post = await postsCollection.findOne({ _id: postId });
 
     if (!post) {
+      await client.close();
       return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
 
@@ -52,7 +53,7 @@ export async function POST(req: Request) {
         });
       }
     }
-
+    await client.close();
     return NextResponse.json({ message: "No changes made" });
   } catch (error) {
     console.error("Error updating post likes:", error);

@@ -5,6 +5,7 @@ import DarkLightMood from "../../mood/DarkLightMood";
 import Image from "next/image";
 import LogoutButton from "../LogoutButton";
 import { useSession } from "next-auth/react";
+import UserImage from "../../UserImage/UserImage";
 
 const Navbar = () => {
   const session = useSession();
@@ -17,16 +18,15 @@ const Navbar = () => {
         </div>
         {session.data && (
           <div className="flex justify-start items-center gap-x-2 pe-6">
-            <div>
-              <Image
+            <div className="relative">
+              <UserImage
                 src={
                   session.data?.user.profile?.avatar! ||
                   session.data?.user.image!
                 }
-                width={40}
-                height={40}
-                className="rounded-full w-10"
-                alt="noImage"
+                alt={session.data.user.username}
+                userName={session.data.user.username}
+                biggerImg
               />
             </div>
             <div className="flex flex-col justify-center items-center">
