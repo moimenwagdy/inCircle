@@ -10,6 +10,8 @@ export const POST = async (req: NextRequest) => {
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");
+
+    // Fetch current user
     const currentUser = await usersCollection.findOne({ _id: currentId });
     if (!currentUser) {
       client.close();
@@ -18,27 +20,50 @@ export const POST = async (req: NextRequest) => {
         message: "Current user not found",
       });
     }
+
+    // Determine follow/unfollow logic
     const isFollowing = currentUser.following?.includes(userToFollowId);
 
-    const updateAction = isFollowing
+    // Update following list of the current user
+    const updateFollowingAction = isFollowing
       ? { $pull: { following: userToFollowId } }
       : { $addToSet: { following: userToFollowId } };
 
-    const result = await usersCollection.updateOne(
+    const followingResult = await usersCollection.updateOne(
       { _id: currentId },
-      updateAction
+      updateFollowingAction
     );
 
-    if (result.matchedCount === 0) {
+    if (followingResult.matchedCount === 0) {
       client.close();
       return NextResponse.json({
         success: false,
-        message: "Update failed: User not found",
+        message: "Update failed: Current user not found",
       });
     }
 
+    // Update followers list of the user to follow/unfollow
+    const updateFollowersAction = isFollowing
+      ? { $pull: { followers: currentId } }
+      : { $addToSet: { followers: currentId } };
+
+    const followersResult = await usersCollection.updateOne(
+      { _id: userToFollowId },
+      updateFollowersAction
+    );
+
+    if (followersResult.matchedCount === 0) {
+      client.close();
+      return NextResponse.json({
+        success: false,
+        message: "Update failed: User to follow not found",
+      });
+    }
+
+    // Revalidate cache for paths
     revalidatePath("/components/Home/HomeContent");
     revalidatePath(`/user/[${currentId}]/followers`, "page");
+    revalidatePath(`/user/[${userToFollowId}]/followers`, "page");
 
     client.close();
     return NextResponse.json({
