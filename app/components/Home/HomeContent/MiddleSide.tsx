@@ -17,7 +17,7 @@ const MiddleSide = () => {
       <Suspense fallback={<PostLoading />}>
         <Posts />
       </Suspense>
-      <MoreNewsFeed />
+      <MoreNewsFeed initialPageIndex={2} />
     </section>
   );
 };

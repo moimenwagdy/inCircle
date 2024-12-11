@@ -46,9 +46,7 @@ const FriendSuggetions = () => {
     getSug();
   }, [session?.data, queryPayload]);
   const SuggestionsAreEmpty = suggestions?.length === 0;
-  useEffect(() => {
-    console.log(queryPayload);
-  }, [queryPayload]);
+ 
   return (
     <>
       <input
@@ -69,7 +67,7 @@ const FriendSuggetions = () => {
                     <li
                       key={result._id}
                       className="w-[95%] lg:w-[75%] ring-1 ring-black/10 dark:ring-white/10 py-1 px-2 rounded-md">
-                      <FriendSuggetion userSuggetion={result} />
+                      <FriendSuggetion userSuggetion={result}/>
                     </li>
                   );
                 })}

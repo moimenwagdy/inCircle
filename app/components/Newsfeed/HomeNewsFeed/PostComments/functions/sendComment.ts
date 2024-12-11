@@ -26,6 +26,5 @@ export const sendComment = async (
   if (!response.ok) {
     return result;
   }
-  console.log(result);
   return result;
 };

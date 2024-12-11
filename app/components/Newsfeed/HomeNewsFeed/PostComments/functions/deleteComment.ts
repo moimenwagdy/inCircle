@@ -12,6 +12,5 @@ export const deleteComment = async (commentID: string) => {
   if (!response.ok) {
     return result;
   }
-  console.log(result);
   return result;
 };

@@ -5,7 +5,6 @@ import getUserProfileData from "./functions/getUserProfileData";
 
 const UserProfile: React.FC<{ userID: string }> = async ({ userID }) => {
   const response: user = await getUserProfileData(userID);
-  console.log(response)
   return (
     <main className="">
       <ProfileHeader

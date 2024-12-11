@@ -27,7 +27,6 @@ export const useLikeFeature = (postId: string) => {
       setLikeAdded(false);
     }
     const result2 = await fetchLikes(postId);
-    console.log("likes after act", result2);
   };
 
   useEffect(() => {
@@ -44,7 +43,6 @@ export const useLikeFeature = (postId: string) => {
     const fetchUsernames = async () => {
       const usernames = await getLikesUserName(likes);
       setUserNames(usernames);
-      console.log("Usernames:", usernames);
     };
 
     if (likes.length > 0) {

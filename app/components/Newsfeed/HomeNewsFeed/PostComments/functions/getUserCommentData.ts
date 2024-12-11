@@ -12,6 +12,5 @@ export const getUserCommentData = async (userID: string) => {
   if (!response.ok) {
     return result;
   }
-  console.log(result);
   return result;
 };

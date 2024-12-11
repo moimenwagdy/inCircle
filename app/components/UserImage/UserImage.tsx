@@ -9,13 +9,13 @@ const UserImage: React.FC<{
   profilePageImage?: boolean;
 }> = ({ src, alt, biggerImg, userName, profilePageImage }) => {
   const defaultImage = src.includes("defaultProfileImage");
-  let width = "w-8";
+  let width = "w-8 h-8";
 
   if (biggerImg) {
-    width = "w-10";
+    width = "w-10 h-10";
   }
   if (profilePageImage) {
-    width = "w-40";
+    width = "w-40 h-40";
   }
 
   return (

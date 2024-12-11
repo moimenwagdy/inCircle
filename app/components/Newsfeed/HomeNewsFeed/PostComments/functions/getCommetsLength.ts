@@ -12,6 +12,5 @@ export const getCommetsLength = async (postId:string) => {
   if (!response.ok) {
     return result;
   }
-  console.log(result);
   return result;
 };

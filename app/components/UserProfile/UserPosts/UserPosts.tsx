@@ -1,26 +1,20 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { post } from "@/globalTypes/globalTypes";
-import PostsContainer from "../HomeNewsFeed/PostContainer";
-import Post from "../HomeNewsFeed/Post";
-import { getFollowingPosts } from "../HomeNewsFeed/functions/getFollowingPosts";
-import { useSession } from "next-auth/react";
+import Post from "../../Newsfeed/HomeNewsFeed/Post";
+import PostsContainer from "../../Newsfeed/HomeNewsFeed/PostContainer";
+import { getCurrentUserPosts } from "./functions/getCurrentUserPosts";
 
-const MoreNewsFeed = () => {
+const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
   const [posts, setPosts] = useState<post[]>([]);
   const [allowGetMorePosts, setAllowGetMorePosts] = useState<boolean>(false);
   const [MoreExist, setMoreExist] = useState<boolean>(true);
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const session = useSession();
 
   const getPosts = async () => {
     setLoading(true);
-    const responsePosts: post[] = await getFollowingPosts(
-      session.data?.user._id!,
-      page,
-      3
-    );
+    const responsePosts: post[] = await getCurrentUserPosts(userID, page, 3);
     setLoading(false);
     if (responsePosts) {
       setPosts((prev) => [...prev, ...responsePosts]);
@@ -32,6 +26,10 @@ const MoreNewsFeed = () => {
       setMoreExist(false);
     }
   };
+
+  useEffect(() => {
+    setAllowGetMorePosts(true);
+  }, []);
 
   useEffect(() => {
     if (allowGetMorePosts && MoreExist) {
@@ -66,6 +64,7 @@ const MoreNewsFeed = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log("from profile posts", posts);
 
   return (
     <>
@@ -77,10 +76,13 @@ const MoreNewsFeed = () => {
         </ul>
         <span className="w-fit mx-auto h-2">
           {loading && <p className="text-center tracking-widest">Loading...</p>}
+          {!MoreExist && !loading && (
+            <p className="text-center">No posts anymore</p>
+          )}
         </span>
       </PostsContainer>
     </>
   );
 };
 
-export default MoreNewsFeed;
+export default UserProfilePosts;

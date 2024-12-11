@@ -1,15 +1,11 @@
 import { usersuggestion } from "@/globalTypes/globalTypes";
 import FollowFriendButton from "./FollowFriendButton";
-import Image from "next/image";
 import UserImage from "../UserImage/UserImage";
 import Link from "next/link";
 
-const FriendSuggetion: React.FC<{ userSuggetion: usersuggestion }> = ({
-  userSuggetion,
-}) => {
-  const defaultImage = userSuggetion.profile.avatar.includes(
-    "defaultProfileImage"
-  );
+const FriendSuggetion: React.FC<{
+  userSuggetion: usersuggestion;
+}> = ({ userSuggetion }) => {
   return (
     <>
       <div className="flex justify-between items-center gap-x-2 w-full">

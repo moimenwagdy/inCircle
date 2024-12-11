@@ -4,8 +4,6 @@ export const ondrop = async (acceptedFiles: File[]) => {
   const filesArray = await Promise.all(
     acceptedFiles.map(async (file) => {
       const base64File = await fileToBase64(file);
-      console.log("form file",file);
-      console.log("from base64", base64File);
       return {
         file: base64File.split(",")[1],
         fileName: file.name,

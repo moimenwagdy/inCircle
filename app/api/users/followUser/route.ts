@@ -10,22 +10,42 @@ export const POST = async (req: NextRequest) => {
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
     const usersCollection = db.collection("users");
+    const currentUser = await usersCollection.findOne({ _id: currentId });
+    if (!currentUser) {
+      client.close();
+      return NextResponse.json({
+        success: false,
+        message: "Current user not found",
+      });
+    }
+    const isFollowing = currentUser.following?.includes(userToFollowId);
+
+    const updateAction = isFollowing
+      ? { $pull: { following: userToFollowId } }
+      : { $addToSet: { following: userToFollowId } };
+
     const result = await usersCollection.updateOne(
       { _id: currentId },
-      { $addToSet: { following: userToFollowId } }
+      updateAction
     );
+
     if (result.matchedCount === 0) {
       client.close();
       return NextResponse.json({
         success: false,
-        message: "User not found",
+        message: "Update failed: User not found",
       });
     }
+
     revalidatePath("/components/Home/HomeContent");
+    revalidatePath(`/user/[${currentId}]/followers`, "page");
+
     client.close();
     return NextResponse.json({
       success: true,
-      message: "User followed successfully",
+      message: isFollowing
+        ? "User unfollowed successfully"
+        : "User followed successfully",
     });
   } catch (error) {
     console.error(error);

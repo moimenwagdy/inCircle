@@ -16,7 +16,6 @@ const PostCommentsContainer: React.FC<{ postId: string }> = ({ postId }) => {
       setCommentsLength(response);
     };
     getLength();
-    console.log("get Length ran");
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enableGetComments]);

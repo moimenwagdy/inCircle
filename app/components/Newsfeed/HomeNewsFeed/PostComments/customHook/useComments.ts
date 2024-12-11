@@ -22,7 +22,6 @@ export const useComments = (postId: string) => {
 
   const handleCommentChange = (e: ChangeEvent<HTMLInputElement>) => {
     setComment(e.target.value);
-    console.log(e.target.value);
   };
   const submitComment = async (e: FormEvent) => {
     e.preventDefault();

@@ -7,7 +7,6 @@ const UserBio: React.FC<{ bio: string; userID: string }> = ({
   bio,
   userID,
 }) => {
-  console.log(bio);
   const [editBio, setEditBio] = useState(false);
   const [formState, fromAction] = useFormState(changeBio, null);
   const session = useSession();
