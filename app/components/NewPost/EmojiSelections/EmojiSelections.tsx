@@ -1,30 +1,29 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { Emojis } from "./EmojiCodes";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
 
 const EmojiSelections = () => {
-  const [ele, setEle] = useState<HTMLTextAreaElement | null>(null);
   const emojiISOpened = useAppSelector((state) => state.newPost.emojisIsOpened);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    const element = window.document.getElementById(
-      "postContent"
-    ) as HTMLTextAreaElement;
-    setEle(element);
-  }, []);
-
   const handleOpenEmojis = () => {
     emojiISOpened
       ? dispatch(newPostActions.closeEmoji())
       : dispatch(newPostActions.openEmoji());
     !emojiISOpened && dispatch(newPostActions.closeFeeling());
   };
-
   const handleSelectedEmoji = (shape: string) => {
+    const ele = window.document.getElementById(
+      "postContent"
+    ) as HTMLTextAreaElement;
     if (ele) {
-      ele.value = ele.value + `${shape}`;
+      const { selectionStart, selectionEnd } = ele;
+      const beforeCursor = ele.value.slice(0, selectionStart);
+      const afterCursor = ele.value.slice(selectionEnd);
+      ele.value = `${beforeCursor}${shape}${afterCursor}`;
+      const newCursorPosition = selectionStart + shape.length;
+      ele.setSelectionRange(newCursorPosition, newCursorPosition);
+      ele.focus();
     }
     dispatch(newPostActions.disableErrorMsg());
   };
@@ -36,7 +35,7 @@ const EmojiSelections = () => {
             return (
               <li key={i} id={i.toFixed(1)}>
                 <p
-                  className="cursor-pointer "
+                  className="cursor-pointer"
                   onClick={() => handleSelectedEmoji(emo.shape)}
                   dangerouslySetInnerHTML={{ __html: emo.code }}></p>
               </li>

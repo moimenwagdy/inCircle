@@ -13,7 +13,7 @@ const PostUserData: React.FC<{
 
   return (
     <header className=" w-full flex justify-start items-end gap-x-2">
-      <Link href={`/user/${userID}`} className="relative cursor-pointer">
+      <Link href={`/user/${userID}/posts`} className="relative cursor-pointer">
         <UserImage
           src={avatar}
           alt={userName}
@@ -23,7 +23,9 @@ const PostUserData: React.FC<{
       </Link>
       <div className="w-full flex justify-between">
         <div className="flex gap-x-1">
-          <Link href={`/user/${userID}`} className="text-lg capitalize cursor-pointer">
+          <Link
+            href={`/user/${userID}/posts`}
+            className="text-lg capitalize cursor-pointer">
             {userName}
           </Link>
           {isFeeling && (

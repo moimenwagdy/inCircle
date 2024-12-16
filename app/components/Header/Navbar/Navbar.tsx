@@ -2,7 +2,6 @@
 import React from "react";
 import LanguageSwitcher from "../../LangSwitcher/LangSwitcher";
 import DarkLightMood from "../../mood/DarkLightMood";
-import Image from "next/image";
 import LogoutButton from "../LogoutButton";
 import { useSession } from "next-auth/react";
 import UserImage from "../../UserImage/UserImage";
@@ -32,7 +31,12 @@ const Navbar = () => {
             <div className="flex flex-col justify-center items-center">
               <p>{session.data?.user.username}</p>
               <p>{session.data?.user.email}</p>
-              <p>{session.data?.user.followers}</p>
+              <div className="flex justify-start items-center gap-x-1">
+                <p className="text-sm text-black dark:text-white">Followers</p>
+                <p className="text-xs text-redColor">
+                  {session.data?.user.followers.length}
+                </p>
+              </div>
             </div>
             <LogoutButton />
           </div>

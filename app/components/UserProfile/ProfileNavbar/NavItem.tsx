@@ -7,7 +7,7 @@ const NavItem: React.FC<{
   href: string;
   className?: string;
   active: boolean;
-}> = ({ children, href, className,active }) => {
+}> = ({ children, href, className, active }) => {
   return (
     <Link
       href={href}
@@ -20,5 +20,4 @@ const NavItem: React.FC<{
     </Link>
   );
 };
-
 export default NavItem;

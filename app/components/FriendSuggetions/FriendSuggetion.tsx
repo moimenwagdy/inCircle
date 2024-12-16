@@ -10,16 +10,18 @@ const FriendSuggetion: React.FC<{
     <>
       <div className="flex justify-between items-center gap-x-2 w-full">
         <div className="w-3/4 flex gap-x-2 justify-start items-center">
-          <div className=" relative">
+          <Link
+            href={`/user/${userSuggetion._id}/posts`}
+            className="relative cursor-pointer">
             <UserImage
               src={userSuggetion.profile.avatar}
               alt={userSuggetion.username}
               userName={userSuggetion.username}
               biggerImg={false}
             />
-          </div>
+          </Link>
           <Link
-            href={`/user/${userSuggetion._id}`}
+            href={`/user/${userSuggetion._id}/posts`}
             className="text-xs lg:text-sm shrink capitalize font-bold">
             {userSuggetion.username}
           </Link>
@@ -32,5 +34,4 @@ const FriendSuggetion: React.FC<{
     </>
   );
 };
-
 export default FriendSuggetion;
