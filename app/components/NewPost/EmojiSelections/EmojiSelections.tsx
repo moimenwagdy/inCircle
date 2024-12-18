@@ -23,7 +23,6 @@ const EmojiSelections = () => {
       ele.value = `${beforeCursor}${shape}${afterCursor}`;
       const newCursorPosition = selectionStart + shape.length;
       ele.setSelectionRange(newCursorPosition, newCursorPosition);
-      ele.focus();
     }
     dispatch(newPostActions.disableErrorMsg());
   };

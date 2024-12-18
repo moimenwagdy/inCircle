@@ -4,7 +4,7 @@ import React from "react";
 
 const page = async ({ params }: { params: Params }) => {
   return (
-    <main className="w-full px-2 sm:px-20 md:px-0 md:w-4/6 lg:w-[45%] mx-auto mt-20">
+    <main className="w-full px-2 sm:px-20 md:px-0 md:w-4/6 lg:w-[45%] mx-auto mt-10">
       <UserProfilePosts userID={params.userID} />
     </main>
   );

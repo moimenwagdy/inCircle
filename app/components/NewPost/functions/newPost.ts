@@ -1,5 +1,4 @@
 "use server";
-
 import { newPostType } from "@/globalTypes/globalTypes";
 import { nanoid } from "nanoid";
 import { Filter } from "bad-words";

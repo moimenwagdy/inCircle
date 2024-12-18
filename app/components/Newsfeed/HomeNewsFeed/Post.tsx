@@ -15,6 +15,7 @@ const Post: React.FC<{ post: post }> = ({ post }) => {
           feeling={post.feeling}
           userName={post.author.username}
           userID={post.author._id}
+          postId={post._id}
         />
         <PostContent content={post.content} postMedia={post.media} />
       </div>

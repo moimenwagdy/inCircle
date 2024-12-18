@@ -35,7 +35,9 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
         href={`/user/${userID}/following`}>
         Following
       </NavItem>
-      {!isCurrentUser && <FollowFriendButton userToFollowId={userID} />}
+      {!isCurrentUser && session.data && (
+        <FollowFriendButton userToFollowId={userID} />
+      )}
     </nav>
   );
 };

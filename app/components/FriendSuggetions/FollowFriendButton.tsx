@@ -38,7 +38,7 @@ const FollowFriendButton: React.FC<{
     if (!following.includes(userToFollowId)) {
       setAreFriends(false);
     }
-  }, [following]);
+  }, [following,userToFollowId]);
   return (
     <button
       onClick={handleFollowUser}

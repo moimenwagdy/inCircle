@@ -1,11 +1,9 @@
 "use client";
-import React from "react";
 import LanguageSwitcher from "../../LangSwitcher/LangSwitcher";
 import DarkLightMood from "../../mood/DarkLightMood";
 import LogoutButton from "../LogoutButton";
 import { useSession } from "next-auth/react";
 import UserImage from "../../UserImage/UserImage";
-
 const Navbar = () => {
   const session = useSession();
   return (

@@ -1,8 +1,8 @@
+import LoadingNormalIndicator from "@/app/components/LoadingNormalIndicator/LoadingNormalIndicator";
 import ProfileNavbar from "@/app/components/UserProfile/ProfileNavbar/ProfileNavbar";
 import UserProfile from "@/app/components/UserProfile/UserProfile";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React, { Suspense } from "react";
-
 const layout = ({
   children,
   params,
@@ -12,7 +12,7 @@ const layout = ({
 }) => {
   return (
     <main>
-      <Suspense fallback={<p className="min-h-64">loading</p>}>
+      <Suspense fallback={<LoadingNormalIndicator className="min-h-64"/>}>
         <UserProfile userID={params.userID} />
       </Suspense>
       <ProfileNavbar userID={params.userID} />

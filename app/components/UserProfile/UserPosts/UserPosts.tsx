@@ -4,6 +4,7 @@ import { post } from "@/globalTypes/globalTypes";
 import Post from "../../Newsfeed/HomeNewsFeed/Post";
 import PostsContainer from "../../Newsfeed/HomeNewsFeed/PostContainer";
 import { getCurrentUserPosts } from "./functions/getCurrentUserPosts";
+import LoadingNormalIndicator from "../../LoadingNormalIndicator/LoadingNormalIndicator";
 
 const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
   const [posts, setPosts] = useState<post[]>([]);
@@ -61,10 +62,7 @@ const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
       if (timeout) clearTimeout(timeout);
       window.removeEventListener("scroll", handleScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log("from profile posts", posts);
 
   return (
     <>
@@ -75,7 +73,7 @@ const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
           ))}
         </ul>
         <span className="w-fit mx-auto h-2">
-          {loading && <p className="text-center tracking-widest">Loading...</p>}
+          {loading && <LoadingNormalIndicator />}
           {!MoreExist && !loading && (
             <p className="text-center">No posts anymore</p>
           )}
