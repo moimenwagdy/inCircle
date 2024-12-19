@@ -8,6 +8,7 @@ export const sendComment = async (
 ) => {
   const commentId = nanoid(6);
   const currentDate = new Date();
+  const notifID = nanoid(4);
 
   const response = await fetch(`${apiURL}/post/comments/sendComment`, {
     method: "post",
@@ -17,6 +18,7 @@ export const sendComment = async (
       userID,
       createdAt: currentDate,
       _id: commentId,
+      notifID,
     }),
     headers: {
       "Content-Type": "application/json",

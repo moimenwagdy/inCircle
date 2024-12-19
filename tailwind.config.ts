@@ -29,6 +29,12 @@ const config: Config = {
         arBasic: "Almarai, sans-serif",
         arFreehand: "Marhey, sans-serif",
       },
+      backgroundImage: {
+        LightLogo:
+          "url(https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/incircle3.png?alt=media&token=46528dbb-4af9-4891-b8a4-bdc89cae5d4d)",
+        DarkLogo:
+          "url(https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/incircle2.png?alt=media&token=2db277eb-a1aa-49e0-986e-05a4fa6409ea)",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],

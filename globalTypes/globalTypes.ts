@@ -91,3 +91,14 @@ export interface likeRsopnse {
   message: string;
   removed: boolean;
 }
+export interface notification {
+  _id: string;
+  toUserId: string;
+  fromUserId: string;
+  type: string;
+  content: string;
+  link: string;
+  isRead: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
