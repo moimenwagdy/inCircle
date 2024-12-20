@@ -1,4 +1,4 @@
-import UserProfilePosts from "@/app/components/UserProfile/UserPosts/UserPosts";
+import UserProfilePosts from "@/app/components/UserProfile/UserPosts/UserProfilePosts";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React from "react";
 
