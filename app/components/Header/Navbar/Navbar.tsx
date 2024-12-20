@@ -25,7 +25,7 @@ const Navbar = () => {
         onClick={handleNavigation}
       />
       <div className="dark:text-white mx-auto sticky top-0 flex gap-x-2 h-20 justify-between items-center w-full">
-        <div className="flex gap-x-2 w-fit">
+        <div className="flex gap-x-10 w-fit">
           <LanguageSwitcher />
           <DarkLightMood />
         </div>

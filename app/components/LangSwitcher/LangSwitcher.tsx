@@ -1,30 +1,47 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 const LanguageSwitcher = () => {
+  const [showLangSwitcher, setShowLangSwitcher] = useState<boolean>(false);
   const router = useRouter();
   const switchLanguage = (locale: string) => {
     const currentPath = window.location.pathname.split("/").slice(2).join("/");
     router.push(`/${locale}/${currentPath}`);
+    setShowLangSwitcher(false);
   };
 
   const locale = useLocale();
   const ar = locale === "ar";
+
+  const handleShowLangSwitcher = () => {
+    setShowLangSwitcher(prv=>!prv);
+  };
   return (
-    <div className="bg-transparent hidden sm:flex gap-x-1 h-fit">
+    <section className="flex justify-center items-center gap-x-1">
       <button
-        onClick={() => switchLanguage("en")}
-        className="px-2 bg-blue-500 text-white rounded">
-        English
+        className="text-lg text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
+        onClick={handleShowLangSwitcher}>
+        <FontAwesomeIcon icon={faGlobe} />
       </button>
-      <button
-        onClick={() => switchLanguage("ar")}
-        className="px-2 bg-green-500 text-white rounded">
-        العربية
-      </button>
-    </div>
+      {showLangSwitcher && (
+        <div className="bg-transparent hidden sm:flex gap-x-1 h-fit">
+          <button
+            onClick={() => switchLanguage("en")}
+            className="px-1 bg-blue-500 text-white rounded text-sm">
+            English
+          </button>
+          <button
+            onClick={() => switchLanguage("ar")}
+            className="px-1 bg-green-500 text-white rounded text-sm">
+            العربية
+          </button>
+        </div>
+      )}
+    </section>
   );
 };
 
