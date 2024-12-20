@@ -16,7 +16,7 @@ const UserCard: React.FC<{
         <p className="font-bold font-descripFont text-redColor capitalize bg-blueColor/30 px-1 rounded">
           {username}
         </p>
-        <p className="text-xs bg-blueColor/30 rounded px-1">{email}</p>
+        {/* <p className="text-xs bg-blueColor/30 rounded px-1">{email}</p> */}
         <div className="flex justify-start items-center gap-x-1 text-xs bg-blueColor/30 px-1 rounded">
           <p className="text-sm text-black dark:text-white">Followers</p>
           <p className="text-xs text-redColor">{followers}</p>

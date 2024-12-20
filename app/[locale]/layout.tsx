@@ -8,6 +8,8 @@ import SessionWrapper from "../components/sessionWrapper/sessionWrapper";
 import Navbar from "../components/Header/Navbar/Navbar";
 import "/app/[locale]/globals.css";
 import StoreProvider from "@/store/StoreProvider";
+import ProfileAlerts from "../components/ProfileAlerts/ProfileAlerts";
+import QueryClientProivderComponent from "../QueryClinet/QueryClient";
 
 export const metadata: Metadata = {
   title: "inCircle",
@@ -23,6 +25,7 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   const locale = params.locale;
+
   return (
     <SessionWrapper>
       <StoreProvider>
@@ -33,8 +36,11 @@ export default async function RootLayout({
                 attribute="class"
                 disableTransitionOnChange
                 enableColorScheme={false}>
-                <Navbar />
-                {children}
+                <QueryClientProivderComponent>
+                  <Navbar />
+                  <ProfileAlerts />
+                  {children}
+                </QueryClientProivderComponent>
               </ThemeProvider>
             </body>
           </html>

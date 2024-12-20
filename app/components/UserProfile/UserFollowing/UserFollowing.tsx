@@ -5,7 +5,6 @@ import { getUserFollowing } from "./functions/getUserFollowing";
 const UserFollowing: React.FC<{ userID: string }> = async ({ userID }) => {
   const result = await getUserFollowing(userID);
 
-  console.log("from folloing", result);
   return (
     <>
       <ul className="w-3/4 md:w-1/2 mx-auto flex flex-col justify-center items-center mt-16 gap-y-2">

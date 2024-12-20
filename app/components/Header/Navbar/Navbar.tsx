@@ -15,9 +15,9 @@ const Navbar = () => {
     router.push("/");
   };
   return (
-    <nav className=" z-10 h-fit w-full flex items-start ">
+    <nav className=" z-10 h-16 w-full flex items-center bg-black/10 dark:bg-white/20 mt-2">
       <Image
-        className="hidden sm:block w-28 h-28 ms-4 mt-1 cursor-pointer"
+        className="hidden sm:block w-20 h-20 cursor-pointer mx-10 ring-8 rounded-full ring-offWhite dark:ring-black"
         alt="Logo"
         src="https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/finalLogoLarg.png?alt=media&token=5bdeac30-cffb-49dd-b563-efe419592ff7"
         width={1000}
@@ -28,21 +28,6 @@ const Navbar = () => {
         <div className="flex gap-x-2 w-fit">
           <LanguageSwitcher />
           <DarkLightMood />
-        </div>
-        <div className="flex justify-center items-center gap-x-2 h-fit px-20 py-1 fixed top-14 left-1/2 -translate-x-[50%]">
-          <button
-            type="button"
-            className="bg-blueColor flex text-start px-6 py-2 rounded-md shadow-md shadow-black/20 hover:scale-95 ">
-            <FontAwesomeIcon icon={faBell} className="text-white text-xl " />
-          </button>
-          <button
-            type="button"
-            className="bg-blueColor  flex text-start px-6 py-2 rounded-md shadow-md shadow-black/20 hover:scale-95 ">
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              className="text-white text-xl "
-            />
-          </button>
         </div>
         {session.data && (
           <UserCard
