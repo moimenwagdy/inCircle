@@ -10,6 +10,7 @@ import "/app/[locale]/globals.css";
 import StoreProvider from "@/store/StoreProvider";
 import ProfileAlerts from "../components/ProfileAlerts/ProfileAlerts";
 import QueryClientProivderComponent from "../QueryClinet/QueryClient";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "inCircle",
@@ -31,7 +32,14 @@ export default async function RootLayout({
       <StoreProvider>
         <NextIntlClientProvider messages={messages}>
           <html lang={locale} suppressHydrationWarning>
-            <body className="bg-offWhite dark:bg-black font-basicFont">
+            <body className="bg-offWhite dark:bg-black font-basicFont relative">
+              <Image
+                src="https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/backgrounds%2F60.png?alt=media&token=53dab48f-dcc0-4a5a-bc3e-1a8ccbb22243"
+                width={2000}
+                height={2000}
+                alt="sda"
+                className="absolute min-h-full w-full opacity-5 dark:opacity-30 -z-10"
+              />
               <ThemeProvider
                 attribute="class"
                 disableTransitionOnChange

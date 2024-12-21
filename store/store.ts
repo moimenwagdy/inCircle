@@ -2,9 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import authMood from "./slices/authSlice/Slice";
 import newPost from "./slices/newPostSlice/slice";
 import commentsSlice from "./slices/commentsSlice/commentsSlice";
+import ProfileAlertsSlice from "./slices/ProfileAlertsSlice/ProfileAlertsSlice";
 
 export const store = configureStore({
-  reducer: { authMood, newPost, commentsSlice },
+  reducer: { authMood, newPost, commentsSlice, ProfileAlertsSlice },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -13,22 +13,18 @@ const LanguageSwitcher = () => {
     router.push(`/${locale}/${currentPath}`);
     setShowLangSwitcher(false);
   };
-
   const locale = useLocale();
   const ar = locale === "ar";
-
   const handleShowLangSwitcher = () => {
-    setShowLangSwitcher(prv=>!prv);
+    setShowLangSwitcher((prv) => !prv);
   };
   return (
-    <section className="flex justify-center items-center gap-x-1">
-      <button
-        className="text-lg text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
-        onClick={handleShowLangSwitcher}>
+    <section className="flex justify-start items-center gap-x-3 min-w-32">
+      <button className="text-xl  text-white" onClick={handleShowLangSwitcher}>
         <FontAwesomeIcon icon={faGlobe} />
       </button>
       {showLangSwitcher && (
-        <div className="bg-transparent hidden sm:flex gap-x-1 h-fit">
+        <div className="bg-transparent hidden sm:flex gap-x-1 h-fit mt-3">
           <button
             onClick={() => switchLanguage("en")}
             className="px-1 bg-blue-500 text-white rounded text-sm">
@@ -44,5 +40,4 @@ const LanguageSwitcher = () => {
     </section>
   );
 };
-
 export default LanguageSwitcher;

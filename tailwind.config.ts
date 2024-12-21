@@ -30,10 +30,9 @@ const config: Config = {
         arFreehand: "Marhey, sans-serif",
       },
       backgroundImage: {
-        LightLogo:
-          "url(https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/incircle3.png?alt=media&token=46528dbb-4af9-4891-b8a4-bdc89cae5d4d)",
-        DarkLogo:
-          "url(https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/incircle2.png?alt=media&token=2db277eb-a1aa-49e0-986e-05a4fa6409ea)",
+        light:
+          "url(https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/backgrounds%2F60.png?alt=media&token=53dab48f-dcc0-4a5a-bc3e-1a8ccbb22243)",
+        dark: "url(https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/backgrounds%2F60606060.png?alt=media&token=5c55e033-70f4-4ddd-b882-8a9da721f569)",
       },
     },
   },

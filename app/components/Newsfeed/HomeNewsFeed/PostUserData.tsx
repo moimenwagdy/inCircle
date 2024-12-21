@@ -17,20 +17,24 @@ const PostUserData: React.FC<{
   const session = useSession();
   const isPostCreator = session?.data?.user._id === userID;
   return (
-    <header className=" w-full flex justify-start items-end gap-x-2">
-      <Link href={`/user/${userID}/posts`} className="relative cursor-pointer">
-        <UserImage
-          src={avatar}
-          alt={userName}
-          userName={userName}
-          biggerImg={true}
-        />
-      </Link>
+    <header className=" w-full flex justify-start items-end gap-x-2 ">
+      <div className="relative max-w-fit max-h-fit">
+        <Link
+          href={`/user/${userID}/posts`}
+          className="grow-0 relative cursor-pointer h-fit w-fit">
+          <UserImage
+            src={avatar}
+            alt={userName}
+            userName={userName}
+            biggerImg={true}
+          />
+        </Link>
+      </div>
       <div className="w-full flex justify-between ">
         <div className="flex gap-x-1">
           <Link
             href={`/user/${userID}/posts`}
-            className="text-lg capitalize cursor-pointer">
+            className=" font-[500] capitalize cursor-pointer font-descripFont">
             {userName}
           </Link>
           {isFeeling && (

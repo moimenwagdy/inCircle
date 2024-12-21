@@ -59,7 +59,7 @@ export const POST = async (req: NextRequest) => {
         toUserId: userToFollowId,
         fromUserId: currentId,
         content: `${fromUserName?.username} started following you`,
-        link: `/users/${currentId}`,
+        link: `/user/${currentId}`,
         isRead: false,
         createdAt: new Date(),
       };

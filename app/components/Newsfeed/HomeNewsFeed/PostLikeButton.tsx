@@ -31,18 +31,14 @@ const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
       </div>
       <button
         onClick={handleInteraction}
-        className={`group ${
+        className={`group  ${
           likeAdded || currentUserLike
-            ? "text-blueColor"
-            : "text-black dark:text-white"
+            ? "text-blueColor font-bold"
+            : "text-black dark:text-white "
         }`}>
-        Like
+        <p className="hover:text-blueColor">{likeAdded || currentUserLike ? "Liked" : "Like"}</p>
       </button>
     </aside>
   );
 };
 export default PostLikeButton;
-const AramexClient = "L02F835";
-("01010050118");
-50269452376;
-("01278359849");
