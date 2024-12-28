@@ -25,7 +25,7 @@ const ChatContentMessages: React.FC<{
     });
   });
   return (
-    <main className="w-full h-60 ">
+    <main className="w-full h-60 my-1">
       <ul
         ref={chatsRef}
         className="w-full max-h-full flex flex-col gap-y-1 px-3 mt-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blueColor">

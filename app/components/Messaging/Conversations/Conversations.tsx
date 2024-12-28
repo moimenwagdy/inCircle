@@ -2,9 +2,7 @@ import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import React from "react";
 import getConversations from "./functions/getConversations";
-import {
-  conversationItemResponse,
-} from "@/globalTypes/globalTypes";
+import { conversationItemResponse } from "@/globalTypes/globalTypes";
 import ConversationItem from "./ConversationItem";
 
 const Conversations = async () => {
@@ -14,7 +12,7 @@ const Conversations = async () => {
     conversations: conversationItemResponse[];
   } = await getConversations(session?.user._id!);
   return (
-    <ul className="w-full space-y-3">
+    <ul className="w-fit space-y-3 px-2 py-2  max-h-72 overflow-y-auto overflow-x-hidden scrollbar-thin">
       {result.success &&
         result?.conversations?.map((conversation) => {
           return (

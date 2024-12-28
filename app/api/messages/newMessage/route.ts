@@ -15,7 +15,6 @@ export async function POST(req: Request) {
     } = await req.json();
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
-
     const conversationsCollection = db.collection("conversations");
     const messagesCollection = db.collection("messages");
 

@@ -36,7 +36,7 @@ const ConversationItem: React.FC<{
           <p
             className={`${
               moreThanTwo && "pt-1"
-            } text-black/50 text-sm text-center dark:text-white/50 w-fit -mb-1 ps-5 line-clamp-1`}>
+            } text-black/50 text-sm text-start dark:text-white/50 w-fit -mb-1 ps-5 line-clamp-1`}>
             {lastMessage?.content}
           </p>
           <div className="text-xs dark:text-white self-end pe-2">

@@ -32,8 +32,10 @@ const MessagingModal: React.FC<{}> = () => {
     dispatch(MessagingSliceActions.setConversationId(""));
     dispatch(MessagingSliceActions.setParticipantsData([]));
   };
+
   return (
     <dialog
+      onCancel={handleCloseModal}
       ref={modalRef}
       className="backdrop:bg-black/20 w-full md:w-3/4 lg:w-1/2 bg-white dark:bg-black ring-2 ring-blueColor/50 ring-offset-transparent px-3 py-2 rounded-md shadow-lg">
       <section>
@@ -50,14 +52,14 @@ const MessagingModal: React.FC<{}> = () => {
         conversationID={conversationID}
         participantsIDS={participantsIDs}
       />
-      <form className="w-full px-2 flex justify-end">
+      <div className="w-full px-2 flex justify-start mt-1">
         <button
           className="bg-redColor px-3 mt-1 rounded-md text-white"
           onClick={handleCloseModal}
           type="button">
           Close
         </button>
-      </form>
+      </div>
     </dialog>
   );
 };
