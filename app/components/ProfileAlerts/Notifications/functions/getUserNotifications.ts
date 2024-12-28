@@ -11,5 +11,5 @@ export const getUserNotifications = async (id: string) => {
   if (!response.ok) {
     return result;
   }
-  return result.notifications;
+  return result;
 };

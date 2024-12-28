@@ -3,9 +3,16 @@ import authMood from "./slices/authSlice/Slice";
 import newPost from "./slices/newPostSlice/slice";
 import commentsSlice from "./slices/commentsSlice/commentsSlice";
 import ProfileAlertsSlice from "./slices/ProfileAlertsSlice/ProfileAlertsSlice";
+import MessagingSlice from "./slices/MessagingSlice/MessagingSlice";
 
 export const store = configureStore({
-  reducer: { authMood, newPost, commentsSlice, ProfileAlertsSlice },
+  reducer: {
+    authMood,
+    newPost,
+    commentsSlice,
+    ProfileAlertsSlice,
+    MessagingSlice,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

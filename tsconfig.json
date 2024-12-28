@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types",
-    "app/components/Home/Description"
+    "app/Components/Home/Description"
   ],
   "exclude": ["node_modules"]
 }

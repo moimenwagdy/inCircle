@@ -12,14 +12,15 @@ export async function POST(req: Request) {
     const unreadNotifications = await notificationsCollection
       .find({ toUserId: id, isRead: false })
       .toArray();
-
     await client.close();
-
-    return NextResponse.json({ notifications: unreadNotifications });
+    return NextResponse.json(
+      { sucess: true, notifications: unreadNotifications },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error fetching notifications:", error);
     return NextResponse.json(
-      { error: "Failed to fetch notifications" },
+      { success: false, error: "Failed to fetch notifications" },
       { status: 500 }
     );
   }

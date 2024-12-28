@@ -20,11 +20,11 @@ const PostComment: React.FC<{
     setShowDelete(false);
   };
   return (
-    <article className="bg-redColor/5 px-2 py-1 space-y-1">
+    <article className="bg-blueColor/[.03] px-2 py-1 space-y-1 rounded-md">
       <div className="w-full">
         <CommentHeader userID={comment.userID} key={comment.userID} />
       </div>
-      <div className="mx-5 px-4 text-sm bg-white/[.10] py-1 rounded-md first-letter:capitalize">
+      <div className="mx-5 px-4 text-sm bg-black/[.07] dark:bg-white/[.10] py-1 rounded-md first-letter:capitalize w-fit">
         <p>{comment.comment}</p>
       </div>
       <div className="flex justify-between items-center ms-9">

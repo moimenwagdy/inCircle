@@ -7,18 +7,18 @@ import Logo from "./Logo";
 import NavBackgroundImage from "./NavBackGroundImage";
 const Navbar = () => {
   const session = useSession();
-
   return (
-    <nav className="z-10 h-16 w-full flex items-center bg-Test bg-blueColor relative mt-2  overflow-hidden">
+    <nav className="h-16 w-full flex justify-between items-center relative bg-blueColor mt-1 overflow-hidden">
       <NavBackgroundImage />
       <Logo />
-      <div className="dark:text-white mx-auto sticky top-0 flex gap-x-2 h-20 justify-between items-center w-full">
-        <div className="flex gap-x-10 w-fit">
+      <div className="dark:text-white gap-x-2 flex w-fit h-full z-50 ">
+        <div className="absolute min-h-full flex justify-center items-center left-40  z-50 gap-x-2 ">
+          <DarkLightMood />
           <LanguageSwitcher />
         </div>
-        <DarkLightMood />
         {session.data && (
           <UserCard
+            userID={session.data.user._id}
             avatar={
               session.data?.user.profile?.avatar! || session.data?.user.image!
             }
@@ -31,5 +31,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

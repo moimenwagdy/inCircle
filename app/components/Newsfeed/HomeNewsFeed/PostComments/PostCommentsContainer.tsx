@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
 import PostComments from "./PostComments";
 import { getCommetsLength } from "./functions/getCommetsLength";
+import { usePathname } from "next/navigation";
 
 const PostCommentsContainer: React.FC<{ postId: string }> = ({ postId }) => {
   const [enableGetComments, setEnableGetComments] = useState<boolean>(false);
   const [commentsLength, setCommentsLength] = useState<number>(0);
-
+  const path = usePathname();
   const handleGetCommentsState = () => {
     setEnableGetComments((prv) => !prv);
   };
-
   useEffect(() => {
     const getLength = async () => {
       const response = await getCommetsLength(postId);
       setCommentsLength(response);
     };
     getLength();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enableGetComments]);
+
+  useEffect(() => {
+    if (path?.includes("activity")) {
+      setEnableGetComments(true);
+    }
+  }, [path]);
+
   return (
     <aside
       className={`flex m-0 ${

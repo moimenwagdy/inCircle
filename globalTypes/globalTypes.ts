@@ -64,15 +64,32 @@ export interface conversation {
   lastMessageId: string;
   createdAt: Date;
   updatedAt: Date;
+  lastMessage: string;
 }
 
 export interface message {
   _id: string;
-  conversationId: string;
-  senderId: string;
+  conversationID: string;
+  senderID: string;
   content: string;
   readBy: string[];
   createdAt: Date;
+}
+
+export interface participant {
+  _id: string;
+  username: string;
+  profile: { avatar: string; bio: string };
+}
+
+export interface conversationItemResponse {
+  _id: string;
+  participants: participant[];
+  lastMessageId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  lastMessage: message;
+  participantsIDS: string[];
 }
 
 export interface postImageUpload {

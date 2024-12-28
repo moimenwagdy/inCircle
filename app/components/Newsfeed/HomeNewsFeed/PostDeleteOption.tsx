@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { deletePost } from "./functions/DeletePost";
-
 const PostDeleteOption: React.FC<{ postId: string }> = ({ postId }) => {
   const [openList, setOpenList] = useState<boolean>(false);
   const [loading, setIsLoading] = useState<boolean>(false);
@@ -34,11 +33,13 @@ const PostDeleteOption: React.FC<{ postId: string }> = ({ postId }) => {
         *
       </button>
       {openList && (
-        <ul className="absolute right-1/5 w-32 bg-offWhite">
+        <ul className="absolute right-1/5 w-32 bg-offWhite dark:bg-black dark:text-white">
           {!showConfirmDeleteQuestion && (
-            <li className="cursor-pointer" onClick={handleDeletePost}>
-              Delete Post
-            </li>
+            <>
+              <li className="cursor-pointer" onClick={handleDeletePost}>
+                Delete Post
+              </li>
+            </>
           )}
           {showConfirmDeleteQuestion && !loading && (
             <li className="text-xs flex flex-col justify-start items-start me-2">

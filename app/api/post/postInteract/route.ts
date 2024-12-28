@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       toUserId: postAuthorId?.authorId!,
       fromUserId: currentUserId,
       content: `${fromUserName?.username} liked your post`,
-      link: `/posts/${postId}`,
+      link: `/activity/${postId}`,
       isRead: false,
       createdAt: new Date(),
     };

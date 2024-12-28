@@ -13,7 +13,7 @@ const NotificationsContainer: React.FC<{ userID: string }> = ({ userID }) => {
   return (
     <div className="relative">
       <NotificationsButton notifLength={notificationCount} />
-      {showNotifs && <NotificationsList notifications={notifications || []} />}
+      {showNotifs && <NotificationsList notifications={notifications} />}
     </div>
   );
 };

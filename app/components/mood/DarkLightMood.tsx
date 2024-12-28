@@ -7,7 +7,7 @@ const DarkLightMood = () => {
   };
   return (
     <div className="bg-transparent">
-      <button type="button" onClick={moodToggler}>
+      <button type="button" className="text-white" onClick={moodToggler}>
         moodToggle
       </button>
     </div>

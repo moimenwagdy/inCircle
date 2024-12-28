@@ -1,3 +1,4 @@
+import Link from "next/link";
 import UserImage from "../../UserImage/UserImage";
 import LogoutButton from "../LogoutButton";
 
@@ -6,25 +7,32 @@ const UserCard: React.FC<{
   username: string;
   email: string;
   followers: number;
-}> = ({ avatar, email, followers, username }) => {
+  userID: string;
+}> = ({ avatar, email, followers, username, userID }) => {
   return (
-    <div className="flex justify-start items-center gap-x-2 pe-6 h-fit p-2 mt-1">
-      <div className="relative">
+    <div className="flex justify-start items-center gap-x-2 px-3 rounded-lg me-5">
+      <Link
+        href={`/user/${userID}/posts`}
+        className="relative w-fit h-fit rounded-full ring-8 ring-offWhite dark:ring-black z">
         <UserImage src={avatar} alt={username} userName={username} biggerImg />
-      </div>
-      <div className="flex flex-col justify-center items-center ">
-        <p className="font-bold font-descripFont text-redColor capitalize bg-offWhite dark:bg-black px-1 rounded">
+      </Link>
+      <div className="flex flex-col justify-center items-end -ms-2 z-50">
+        <Link
+          href={`/user/${userID}/posts`}
+          className="font-bold min-w-28 text-center font-descripFont text-redColor capitalize bg-offWhite dark:bg-black rounded-tr-md mt-2 px-1">
           {username}
-        </p>
-        {/* <p className="text-xs bg-blueColor/30 rounded px-1">{email}</p> */}
-        <div className="flex justify-start items-center gap-x-1 text-xs bg-offWhite dark:bg-black px-1 rounded">
+        </Link>
+        <Link
+          href={`/user/${userID}/followers`}
+          className="flex justify-start items-center gap-x-1 text-xs bg-offWhite dark:bg-black rounded-bl-md rounded-br-md px-2">
           <p className="text-sm text-black dark:text-white">Followers</p>
           <p className="text-xs text-redColor">{followers}</p>
-        </div>
+        </Link>
       </div>
-      <LogoutButton />
+      <div className="mt-2">
+        <LogoutButton />
+      </div>
     </div>
   );
 };
-
 export default UserCard;

@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       toUserId: postAuthorId?.authorId!,
       fromUserId: userID,
       content: `${fromUserName?.username} commented on your post`,
-      link: `/posts/${postId}`,
+      link: `/activity/${postId}`,
       isRead: false,
       createdAt: new Date(),
     };

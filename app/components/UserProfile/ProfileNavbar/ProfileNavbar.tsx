@@ -1,14 +1,16 @@
 "use client";
-import React from "react";
 import NavItem from "./NavItem";
 import { usePathname } from "next/navigation";
 import FollowFriendButton from "../../FriendSuggetions/FollowFriendButton";
 import { useSession } from "next-auth/react";
+import StartNewConversation from "../../Messaging/StartNewConversation/StartNewConversation";
+import MessagingModal from "../../Messaging/MessagingModal/MessagingModal";
 
 const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
   const pathName = usePathname();
   const session = useSession();
   const isCurrentUser = session.data?.user._id === userID;
+
   return (
     <nav className="w-fit px-2 rounded mx-auto h-8 bg-black/10 dark:bg-white/10 mt-4 flex justify-center items-center gap-x-2">
       <NavItem
@@ -35,6 +37,14 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
         href={`/user/${userID}/following`}>
         Following
       </NavItem>
+      {!isCurrentUser && session.data && (
+        <>
+          <StartNewConversation
+            participantsIDs={[session.data.user._id, userID]}
+          />
+          <MessagingModal />
+        </>
+      )}
       {!isCurrentUser && session.data && (
         <FollowFriendButton userToFollowId={userID} />
       )}

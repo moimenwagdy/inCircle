@@ -10,7 +10,10 @@ const LogoutButton = () => {
     signOut();
   };
   return (
-    <Link className="text-xs dark:text-black" onClick={logOut} href="/">
+    <Link
+      className="text-xs text-black dark:text-white"
+      onClick={logOut}
+      href="/">
       {tButtons("logout")}
     </Link>
   );

@@ -4,11 +4,10 @@ import React from "react";
 import TimePrint from "../../TimePrint/TimePrint";
 import NotificationUserImage from "./NotificationUserImage";
 import Link from "next/link";
-import deleteNotification from "./functions/deleteNotification";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
 import NotificationBG from "./NotificationBG";
-
+import deleteNotification from "./functions/deleteNotifaications";
 const NotificationItem: React.FC<{ notification: notification }> = ({
   notification,
 }) => {
@@ -20,12 +19,15 @@ const NotificationItem: React.FC<{ notification: notification }> = ({
     await deleteNotification(notification._id);
     clearTimeout(timeout);
   };
+  const likeOrComment =
+    notification.type === "like" || notification.type === "comment";
   return (
     <Link
-      href={`${notification.link}/about`}
+      id="notifsIncluded"
+      href={`${notification.link}/${likeOrComment ? "" : "about"}`}
       key={notification._id}
       onClick={handleOpenedNotif}
-      className="bg-redColor   flex flex-col w-full rounded-md text-white hover:scale-[1.01] overflow-hidden">
+      className="bg-redColor  ring-1 ring-redColor ring-offset-2 ring-offset-offWhite dark:ring-offset-black flex flex-col w-full rounded-md text-white hover:scale-[1.01] overflow-hidden shadow-lg dark:shadow-white/5 ">
       <div className="flex justify-start items-center gap-x-2 p-1 relative ">
         <div className="ps-2 pt-1">
           <NotificationBG />
@@ -42,5 +44,4 @@ const NotificationItem: React.FC<{ notification: notification }> = ({
     </Link>
   );
 };
-
 export default NotificationItem;

@@ -3,7 +3,7 @@ import React from "react";
 const NavBackgroundImage = () => {
   return (
     <Image
-      className="absolute min-w-full "
+      className="absolute min-w-[100.8%] -left-1 opacity-60"
       alt="bg"
       width={2000}
       height={2000}
@@ -11,5 +11,4 @@ const NavBackgroundImage = () => {
     />
   );
 };
-
 export default NavBackgroundImage;

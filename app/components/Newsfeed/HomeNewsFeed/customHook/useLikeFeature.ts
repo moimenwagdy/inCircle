@@ -35,7 +35,7 @@ export const useLikeFeature = (postId: string) => {
   }, []);
 
   const currentUserLike = useMemo(
-    () => likes.includes(currentUserId!),
+    () => likes?.includes(currentUserId!),
     [likes, currentUserId]
   );
 

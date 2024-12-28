@@ -15,7 +15,7 @@ const config: Config = {
       colors: {
         black: "#1F2226",
         redColor: "#F41C54",
-        offWhite: "#FFF9E8",
+        offWhite: "#fcffe6",
         blueColor: "#19C2DE",
         whiteColor: "#FEFDF9",
         redExtra: "#F22727",
@@ -39,3 +39,4 @@ const config: Config = {
   plugins: [require("tailwind-scrollbar")],
 };
 export default config;
+("FFF9E8");
