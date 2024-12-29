@@ -54,7 +54,7 @@ export const POST = async (req: NextRequest) => {
       );
 
       const notification = {
-        type: "like",
+        type: "follow",
         _id: notifID,
         toUserId: userToFollowId,
         fromUserId: currentId,

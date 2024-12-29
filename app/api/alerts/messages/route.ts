@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       .find({
         toUserId: id,
         isRead: false,
-        type: { $in: ["like", "comment", "follow"] },
+        type: "message",
       })
       .toArray();
 

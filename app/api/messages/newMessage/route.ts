@@ -1,4 +1,4 @@
-import { MongoClient} from "mongodb";
+import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
@@ -12,12 +12,14 @@ export async function POST(req: Request) {
       currentDate,
       conversationID,
       participantsIDS,
+      notifID,
     } = await req.json();
     const client = await MongoClient.connect(mongoCredentials!);
     const db = client.db("socialApp");
     const conversationsCollection = db.collection("conversations");
     const messagesCollection = db.collection("messages");
-
+    const usersCollection = db.collection("users");
+    const notificationsCollection = db.collection("notifications");
     let conversation = await conversationsCollection.findOne({
       _id: conversationID,
     });
@@ -40,6 +42,7 @@ export async function POST(req: Request) {
         }
       );
     }
+
     const newMessage = {
       _id: messageID,
       conversationID,
@@ -48,7 +51,30 @@ export async function POST(req: Request) {
       createdAt: currentDate,
       readBy: [],
     };
+
+    const toUserId = participantsIDS.filter((id: string) => {
+      return id !== senderID;
+    });
+
+    const fromUserName = await usersCollection.findOne(
+      { _id: senderID },
+      { projection: { username: 1 } }
+    );
+
+    const notification = {
+      type: "message",
+      _id: notifID,
+      toUserId: toUserId[0],
+      fromUserId: senderID,
+      content: `${fromUserName?.username} sent you message`,
+      link: participantsIDS,
+      isRead: false,
+      createdAt: new Date(),
+    };
+
     await messagesCollection.insertOne(newMessage);
+
+    await notificationsCollection.insertOne(notification);
 
     await client.close();
 

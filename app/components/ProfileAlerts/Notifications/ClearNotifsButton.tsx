@@ -1,5 +1,5 @@
 import React from "react";
-import clearNotifications from "./functions/clearNotifications";
+import clearNotifications from "../functions/clearNotifications";
 
 const ClearNotifsButton: React.FC<{ userID: string }> = ({ userID }) => {
   const handleClearNotfs = async () => {

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import NotificationsButton from "./NotificationsButton";
-import { useNotifications } from "./functions/useNotifications";
+import { useNotifications } from "../functions/useNotifications";
 import NotificationsList from "./NotificationsList";
 import { useAppSelector } from "@/store/reduxHooks";
 
@@ -12,10 +12,11 @@ const NotificationsContainer: React.FC<{ userID: string }> = ({ userID }) => {
   );
   return (
     <div className="relative">
-      <NotificationsButton notifLength={notificationCount} />
-      {showNotifs && <NotificationsList notifications={notifications} />}
+      <NotificationsButton notifLength={notificationCount}  ulID="not" />
+      {showNotifs && (
+        <NotificationsList notifications={notifications} ulID="not" />
+      )}
     </div>
   );
 };
-
 export default NotificationsContainer;

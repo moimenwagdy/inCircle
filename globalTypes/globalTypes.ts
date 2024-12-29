@@ -114,7 +114,7 @@ export interface notification {
   fromUserId: string;
   type: string;
   content: string;
-  link: string;
+  link: string | string[];
   isRead: boolean;
   createdAt: Date;
   updatedAt: Date;

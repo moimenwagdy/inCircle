@@ -33,6 +33,7 @@ const NewMessageForm: React.FC<{
   };
   return (
     <form
+      autoComplete="off"
       ref={formRef}
       onSubmit={handleMutation}
       className="max-w-full relative  px-2">
@@ -43,6 +44,7 @@ const NewMessageForm: React.FC<{
         name="message"
         id="message"
         autoFocus
+        autoComplete="off"
       />
       <button
         className="absolute right-5 top-1/2 -translate-y-[50%] "

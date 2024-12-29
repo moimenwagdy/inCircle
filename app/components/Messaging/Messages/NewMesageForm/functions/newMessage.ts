@@ -10,6 +10,7 @@ const newMessage = async (
 ) => {
   const currentDate = new Date();
   const messageID = nanoid(6);
+  const notifID = nanoid(4);
   const newMessageObject = {
     content,
     senderID,
@@ -17,6 +18,7 @@ const newMessage = async (
     currentDate,
     participantsIDS,
     conversationID: conversationID,
+    notifID,
   };
   const response = await fetch(`${apiURL}/messages/newMessage`, {
     method: "post",

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   showNotifs: false,
+  showMsssages: false,
 };
 
 export const ProfileAlertsSlice = createSlice({
@@ -13,6 +14,12 @@ export const ProfileAlertsSlice = createSlice({
     },
     closeNotifs: (state) => {
       state.showNotifs = false;
+    },
+    openMessages: (state) => {
+      state.showMsssages = true;
+    },
+    closeMessages: (state) => {
+      state.showMsssages = false;
     },
   },
 });

@@ -18,3 +18,9 @@
 * {
   background-color: transparent;
 }
+
+@layer components {
+  .checkbox-label:has(input:checked) {
+    @apply outline outline-2  outline-redColor hover:outline hover:outline-2 hover:outline-redColor/40  dark:outline-blueColor dark:hover:outline-blueColor/40;
+  }
+}

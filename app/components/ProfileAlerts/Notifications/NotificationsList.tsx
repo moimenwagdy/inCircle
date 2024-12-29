@@ -2,15 +2,18 @@
 import { notification } from "@/globalTypes/globalTypes";
 import NotificationItem from "./NotificationItem";
 import ClearNotifsButton from "./ClearNotifsButton";
-const NotificationsList: React.FC<{ notifications: notification[] }> = ({
-  notifications,
-}) => {
+const NotificationsList: React.FC<{
+  notifications: notification[];
+  ulID: string;
+}> = ({ notifications, ulID }) => {
   const isEmpty = notifications.length === 0;
   return (
     <>
       {!isEmpty && (
-        <ul id="notifsIncluded" className="flex flex-col justify-start items-start gap-y-1 w-fit bg-trnsparent rounded-md absolute min-w-96 left-[108%] sm:left-1/2 -translate-x-[50%]  ">
-          <ClearNotifsButton userID={notifications[0].toUserId}/>
+        <ul
+          id={ulID}
+          className="flex flex-col justify-start items-start gap-y-1 w-fit bg-trnsparent rounded-md absolute min-w-96 left-[108%] sm:left-1/2 -translate-x-[50%]  ">
+          <ClearNotifsButton userID={notifications[0].toUserId} />
           {notifications.length > 0 &&
             notifications?.map((notif) => {
               return (
@@ -29,5 +32,4 @@ const NotificationsList: React.FC<{ notifications: notification[] }> = ({
     </>
   );
 };
-
 export default NotificationsList;
