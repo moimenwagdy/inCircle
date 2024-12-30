@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
@@ -11,10 +11,15 @@ export async function POST(req: Request) {
     const db = client.db("socialApp");
     const notificationsCollection = db.collection("notifications");
 
-    const notification = await notificationsCollection.findOne({ _id: new ObjectId(notifID) });
+    const notification = await notificationsCollection.findOne({
+      _id: notifID,
+    });
     if (!notification) {
       await client.close();
-      return NextResponse.json({ error: "Notification not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Notification not found" },
+        { status: 404 }
+      );
     }
 
     const updatedReadBy = [...notification.readBy, currentUserID];
@@ -24,14 +29,19 @@ export async function POST(req: Request) {
       { $set: { readBy: updatedReadBy } }
     );
 
-    const toUserId = Array.isArray(notification.toUserId) ? notification.toUserId : [];
+    const toUserId = Array.isArray(notification.toUserId)
+      ? notification.toUserId
+      : [];
 
-    const isReadByComplete = updatedReadBy.sort().join() === toUserId.sort().join();
+    const isReadByComplete =
+      updatedReadBy.sort().join() === toUserId.sort().join();
 
     if (isReadByComplete) {
-      await notificationsCollection.deleteOne({ _id:notifID });
+      await notificationsCollection.deleteOne({ _id: notifID });
       await client.close();
-      return NextResponse.json({ success: "Notification deleted successfully" });
+      return NextResponse.json({
+        success: "Notification deleted successfully",
+      });
     }
 
     await client.close();
