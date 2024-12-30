@@ -6,12 +6,13 @@ import getConversationsUsersData from "./functions/getConversationsUsersData";
 import { useEffect, useState } from "react";
 import checkConversationExist from "./functions/checkConversationExist";
 import { nanoid } from "nanoid";
-const StartNewConversation: React.FC<{ participantsIDs: string[] }> = ({
-  participantsIDs,
-}) => {
+const StartNewConversation: React.FC<{
+  participantsIDs: string[];
+}> = ({ participantsIDs }) => {
   const [conversationID, setConversationID] = useState<string>();
   const dispatch = useAppDispatch();
   const session = useSession();
+  console.log(participantsIDs);
 
   useEffect(() => {
     const conversationExist = async () => {

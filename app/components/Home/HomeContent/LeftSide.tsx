@@ -14,7 +14,7 @@ const LeftSide = () => {
       </h1>
       <Conversations />
       <NewCoversationSuggetions />
-      <MessagingModal />
+      
     </section>
   );
 };

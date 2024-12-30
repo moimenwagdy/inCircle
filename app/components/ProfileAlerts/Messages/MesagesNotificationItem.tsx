@@ -1,45 +1,34 @@
 "use client";
 import { notification } from "@/globalTypes/globalTypes";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import TimePrint from "../../TimePrint/TimePrint";
-import NotificationUserImage from "./NotificationUserImage";
-import Link from "next/link";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
-import NotificationBG from "./NotificationBG";
 import deleteNotification from "../functions/deleteNotifaications";
+import NotificationBG from "../Notifications/NotificationBG";
+import NotificationUserImage from "../Notifications/NotificationUserImage";
 import StartNewConversation from "../../Messaging/StartNewConversation/StartNewConversation";
-import TEST from "./TEST";
-import { MessagingSliceActions } from "@/store/slices/MessagingSlice/MessagingSlice";
-const NotificationItem: React.FC<{ notification: notification }> = ({
+const MesagesNotificationItem: React.FC<{ notification: notification }> = ({
   notification,
 }) => {
-  const [isShow, setIsShow] = useState<boolean>(false);
+  const [s, setS] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const isMessage = notification.type === "message";
   const handleOpenedNotif = async () => {
-    if (isMessage) {
-      setIsShow(true);
-    }
+    setS(true);
     const timeout = setTimeout(() => {
       dispatch(profileAlertsActions.closeNotifs());
       dispatch(profileAlertsActions.closeMessages());
-    }, 300);
-    await deleteNotification(notification._id);
+    }, 1000);
+    setTimeout(async () => {
+      await deleteNotification(notification._id);
+    }, 3000);
     clearTimeout(timeout);
   };
-  const likeOrComment =
-    notification.type === "like" || notification.type === "comment";
   console.log(notification);
   return (
     <>
-      <Link
+      <button
         id="not mes"
-        href={
-          likeOrComment
-            ? `${notification.link}/${likeOrComment ? "" : "about"}`
-            : ""
-        }
         key={notification._id}
         onClick={handleOpenedNotif}
         className="bg-redColor  ring-1 ring-redColor ring-offset-2 ring-offset-offWhite dark:ring-offset-black flex flex-col w-full rounded-md text-white hover:scale-[1.01] overflow-hidden shadow-lg dark:shadow-white/5 ">
@@ -56,9 +45,11 @@ const NotificationItem: React.FC<{ notification: notification }> = ({
         <div className="self-end text-xs -mt-3 pe-2 z-50">
           <TimePrint createdAt={notification.createdAt.toString()} />
         </div>
-      </Link>
-      {isShow && <TEST ids={notification.link as string[]} />}
+      </button>
+      {s && (
+        <StartNewConversation participantsIDs={notification.link as string[]} />
+      )}
     </>
   );
 };
-export default NotificationItem;
+export default MesagesNotificationItem;

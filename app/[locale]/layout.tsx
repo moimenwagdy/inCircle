@@ -11,6 +11,7 @@ import StoreProvider from "@/store/StoreProvider";
 import ProfileAlerts from "../components/ProfileAlerts/ProfileAlerts";
 import QueryClientProivderComponent from "../QueryClient/QueryClient";
 import DocumentBG from "../components/DocumentBG/DocumentBG";
+import MessagingModal from "../components/Messaging/MessagingModal/MessagingModal";
 
 export const metadata: Metadata = {
   title: "inCircle",
@@ -41,6 +42,7 @@ export default async function RootLayout({
                 <QueryClientProivderComponent>
                   <Navbar />
                   <ProfileAlerts />
+                  <MessagingModal />
                   {children}
                 </QueryClientProivderComponent>
               </ThemeProvider>

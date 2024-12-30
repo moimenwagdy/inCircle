@@ -10,6 +10,7 @@ const HomeContent = async () => {
         <LeftSide />
         <MiddleSide />
         <RightSide />
+        {/* <MessagingModal /> */}
       </section>
     </main>
   );
