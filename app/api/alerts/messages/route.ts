@@ -14,6 +14,7 @@ export async function POST(req: Request) {
       .find({
         toUserId: { $elemMatch: { $eq: id } },
         type: "message",
+        readBy: { $nin: [id] },
       })
       .toArray();
     await client.close();
