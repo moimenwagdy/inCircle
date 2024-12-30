@@ -6,6 +6,7 @@ const initialState = {
   chatState: false,
   conversationID: "",
   participantsData: [] as participant[],
+  profileChatState: false,
 };
 
 export const MessagingSlice = createSlice({
@@ -28,6 +29,12 @@ export const MessagingSlice = createSlice({
     },
     setParticipantsData: (state, action) => {
       state.participantsData = [...action.payload];
+    },
+    openProfileChat: (state) => {
+      state.profileChatState = true;
+    },
+    closeProfileChat: (state) => {
+      state.profileChatState = false;
     },
   },
 });

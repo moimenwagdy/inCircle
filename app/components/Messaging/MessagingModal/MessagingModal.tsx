@@ -1,7 +1,6 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { MessagingSliceActions } from "@/store/slices/MessagingSlice/MessagingSlice";
-import { useSession } from "next-auth/react";
 import React, { useEffect, useRef } from "react";
 import ConversationUsersData from "../Conversations/ConversationUsersData";
 import ChatContentMessages from "../Messages/Chat/ChatContentMessages";
@@ -31,6 +30,7 @@ const MessagingModal: React.FC<{}> = () => {
     dispatch(MessagingSliceActions.setRecipientIDs([]));
     dispatch(MessagingSliceActions.setConversationId(""));
     dispatch(MessagingSliceActions.setParticipantsData([]));
+    dispatch(MessagingSliceActions.closeProfileChat());
   };
 
   return (

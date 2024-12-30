@@ -64,11 +64,11 @@ export async function POST(req: Request) {
     const notification = {
       type: "message",
       _id: notifID,
-      toUserId: toUserId[0],
+      toUserId: toUserId,
       fromUserId: senderID,
       content: `${fromUserName?.username} sent you message`,
       link: participantsIDS,
-      isRead: false,
+      readBy: [],
       createdAt: new Date(),
     };
 

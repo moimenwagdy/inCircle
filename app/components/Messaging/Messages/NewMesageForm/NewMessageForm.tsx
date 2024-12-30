@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useMutation } from "@tanstack/react-query";
 import newMessage from "./functions/newMessage";
 import { queryClient } from "@/app/QueryClient/QueryClientOBJ";
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 
@@ -15,9 +15,11 @@ const NewMessageForm: React.FC<{
   const session = useSession();
   const formRef = useRef<HTMLFormElement>(null);
   const senderID = session.data?.user._id!;
+
   const handlChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value);
   };
+
   const { data, mutate } = useMutation({
     mutationFn: () =>
       newMessage(senderID, participantsIDS, content!, conversationID),
@@ -31,6 +33,12 @@ const NewMessageForm: React.FC<{
     e.preventDefault();
     mutate();
   };
+  
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <form
       autoComplete="off"

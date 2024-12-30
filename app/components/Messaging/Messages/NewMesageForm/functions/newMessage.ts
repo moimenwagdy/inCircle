@@ -31,6 +31,6 @@ const newMessage = async (
   if (!response.ok) {
     return result;
   }
-  return result;
+  return { result, notifID };
 };
 export default newMessage;

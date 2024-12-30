@@ -12,13 +12,12 @@ export async function POST(req: Request) {
 
     const unreadNotifications = await notificationsCollection
       .find({
-        toUserId: id,
-        isRead: false,
+        toUserId: { $elemMatch: { $eq: id } },
         type: "message",
       })
       .toArray();
-
     await client.close();
+
     return NextResponse.json(
       { success: true, notifications: unreadNotifications },
       { status: 200 }
