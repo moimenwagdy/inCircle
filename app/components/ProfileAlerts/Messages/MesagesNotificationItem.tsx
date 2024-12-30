@@ -4,15 +4,17 @@ import React, { useState } from "react";
 import TimePrint from "../../TimePrint/TimePrint";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
-import deleteNotification from "../functions/deleteNotifaications";
 import NotificationBG from "../Notifications/NotificationBG";
 import NotificationUserImage from "../Notifications/NotificationUserImage";
 import StartNewConversation from "../../Messaging/StartNewConversation/StartNewConversation";
+import { useSession } from "next-auth/react";
+import deleteMessageNotification from "../functions/deleteMessageNotification";
 const MesagesNotificationItem: React.FC<{ notification: notification }> = ({
   notification,
 }) => {
   const [s, setS] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const session = useSession();
   const handleOpenedNotif = async () => {
     setS(true);
     const timeout = setTimeout(() => {
@@ -20,8 +22,8 @@ const MesagesNotificationItem: React.FC<{ notification: notification }> = ({
       dispatch(profileAlertsActions.closeMessages());
     }, 1000);
     setTimeout(async () => {
-      await deleteNotification(notification._id);
-    }, 3000);
+      await deleteMessageNotification(notification._id,session.data?.user._id!);
+    }, 1000);
     clearTimeout(timeout);
   };
   console.log(notification);

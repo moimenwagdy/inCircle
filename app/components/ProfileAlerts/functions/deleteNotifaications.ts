@@ -3,7 +3,7 @@ const apiURL = process.env.NEXT_PUBLIC_API_URL;
 const deleteNotification = async (notifID: string) => {
   const response = await fetch(`${apiURL}/alerts/notifications/deleteNotifs`, {
     method: "post",
-    body: JSON.stringify({ notifID: notifID }),
+    body: JSON.stringify({ notifID }),
     headers: {
       "Content-Type": "application/json",
     },
