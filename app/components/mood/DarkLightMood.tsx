@@ -6,7 +6,7 @@ const DarkLightMood = () => {
     setTheme(() => (theme === "dark" ? "light" : "dark"));
   };
   return (
-    <div className="bg-transparent">
+    <div className="bg-transparent hidden sm:block">
       <button type="button" className="text-white" onClick={moodToggler}>
         moodToggle
       </button>

@@ -17,27 +17,27 @@ export async function POST(req: Request) {
       .find({ participants: userID })
       .toArray();
 
-    const enrichedConversations = await Promise.all(
-      conversations.map(async (conversation) => {
-        const participantIds = conversation.participants.filter(
-          (id: string) => id !== userID
-        );
-        const participants = await usersCollection
-          .find({ _id: { $in: participantIds } })
-          .project({ username: 1, profile: 1 })
-          .toArray();
+      const enrichedConversations = await Promise.all(
+        conversations.map(async (conversation) => {
+          const participantIds = conversation.participants.filter(
+            (id: string) => id !== userID
+          );
+          const participants = await usersCollection
+            .find({ _id: { $in: participantIds } })
+            .project({ username: 1, profile: 1 })
+            .toArray();
 
-        const lastMessage = await messagesCollection.findOne({
-          _id: conversation.lastMessageId,
-        });
-        return {
-          ...conversation,
-          participants,
-          lastMessage,
-          participantsIDS: conversation.participants,
-        };
-      })
-    );
+          const lastMessage = await messagesCollection.findOne({
+            _id: conversation.lastMessageId,
+          });
+          return {
+            ...conversation,
+            participants,
+            lastMessage,
+            participantsIDS: conversation.participants,
+          };
+        })
+      );
 
     await client.close();
 

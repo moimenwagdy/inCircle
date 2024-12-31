@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { followUser } from "./functions/followUser";
 import { getFollowing } from "./functions/getFollowing";
+import { queryClient } from "@/app/QueryClient/QueryClientOBJ";
 
 const FollowFriendButton: React.FC<{
   userToFollowId: string;
@@ -18,6 +19,7 @@ const FollowFriendButton: React.FC<{
   const handleFollowUser = async () => {
     const result = await followUser(userToFollowId, currentUserId!);
     setState(result);
+    queryClient.invalidateQueries({ queryKey: ["suggetions"] });
   };
   useEffect(() => {
     if (session.data?.user._id) {
@@ -38,7 +40,7 @@ const FollowFriendButton: React.FC<{
     if (!following.includes(userToFollowId)) {
       setAreFriends(false);
     }
-  }, [following,userToFollowId]);
+  }, [following, userToFollowId]);
   return (
     <button
       onClick={handleFollowUser}

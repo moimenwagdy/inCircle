@@ -16,7 +16,13 @@ export async function POST(req: Request) {
     if (!user || !user.following) {
       return NextResponse.json(
         { success: false, error: "User not found or no following" },
-        { status: 404 }
+        { status: 400 }
+      );
+    }
+    if (user.following.length === 0) {
+      return NextResponse.json(
+        { success: false, error: "you need to follow friends" },
+        { status: 200 }
       );
     }
 

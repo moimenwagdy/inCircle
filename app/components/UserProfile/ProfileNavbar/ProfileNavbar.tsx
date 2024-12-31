@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { MessagingSliceActions } from "@/store/slices/MessagingSlice/MessagingSlice";
 
 const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
+
   const pathName = usePathname();
   const session = useSession();
   const dispatch = useAppDispatch();
@@ -18,8 +19,11 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
   const handleOpenChat = () => {
     dispatch(MessagingSliceActions.openProfileChat());
   };
+
+ 
+
   return (
-    <nav className="w-fit px-2 rounded mx-auto h-8 bg-black/10 dark:bg-white/10 mt-4 flex justify-center items-center gap-x-2">
+    <nav className="w-fit px-2 relative rounded mx-auto h-8 bg-black/10 dark:bg-white/10 mt-4 flex justify-center items-center gap-x-2">
       <NavItem
         key="about"
         active={pathName.includes("about")}
@@ -44,13 +48,16 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
         href={`/user/${userID}/following`}>
         Following
       </NavItem>
-      <button onClick={handleOpenChat}>send message</button>
+        <button
+          className="absolute right-0 top-full sm:static px-2 text-white bg-redColor rounded-md mt-2 sm:mt-0 text-sm"
+          onClick={handleOpenChat}>
+          Send message
+        </button>
       {!isCurrentUser && session.data && openChat && (
         <StartNewConversation
           participantsIDs={[session.data.user._id, userID]}
         />
       )}
-
       {!isCurrentUser && session.data && (
         <FollowFriendButton userToFollowId={userID} />
       )}

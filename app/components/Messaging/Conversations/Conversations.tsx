@@ -4,7 +4,6 @@ import React from "react";
 import getConversations from "./functions/getConversations";
 import { conversationItemResponse } from "@/globalTypes/globalTypes";
 import ConversationItem from "./ConversationItem";
-import MessagingModal from "../MessagingModal/MessagingModal";
 
 const Conversations = async () => {
   const session = await getServerSession(authOptions);

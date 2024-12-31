@@ -13,7 +13,7 @@ const UserFollowers: React.FC<{ userID: string }> = async ({ userID }) => {
               <li
                 key={follower._id}
                 className="w-[95%] lg:w-[75%] ring-1 ring-black/10 dark:ring-white/10 py-1 px-2 rounded-md">
-                <FriendSuggetion userSuggetion={follower} />{" "}
+                <FriendSuggetion userSuggetion={follower} />
               </li>
             );
           })}

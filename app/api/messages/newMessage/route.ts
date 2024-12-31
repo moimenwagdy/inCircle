@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
 export function diff_minutes(dt2: Date, dt1: Date): number {
-  const diff = (dt2.getTime() - dt1.getTime()) / 1000 / 60; // Convert milliseconds to minutes
+  const diff = (dt2.getTime() - dt1.getTime()) / 1000 / 60;
   return Math.abs(Math.round(diff));
 }
 
@@ -31,46 +31,41 @@ export async function POST(req: Request) {
       _id: conversationID,
     });
 
-    const now = new Date(currentDate); // Ensure consistent timezone
+    const now = new Date(currentDate);
     let sendNotification = false;
 
     if (!conversation) {
-      // New conversation
       conversation = {
         _id: conversationID,
         participants: participantsIDS,
         lastMessageId: messageID,
         createdAt: currentDate,
-        updatedAt: currentDate, // Initialize updatedAt for a new conversation
+        updatedAt: currentDate, 
       };
       await conversationsCollection.insertOne(conversation);
       sendNotification = true;
     } else {
-      // Existing conversation
       const lastUpdated = conversation.updatedAt
         ? new Date(conversation.updatedAt)
         : new Date(conversation.createdAt);
 
       const timeDifference = diff_minutes(now, lastUpdated);
 
-      // Check if more than 15 minutes have passed (15 * 60,000 ms)
       if (timeDifference > 15) {
         sendNotification = true;
       }
 
-      // Update conversation with the new message ID and updatedAt
       await conversationsCollection.updateOne(
         { _id: conversation._id },
         {
           $set: {
             lastMessageId: messageID,
-            updatedAt: currentDate, // Update to the current timestamp
+            updatedAt: currentDate, 
           },
         }
       );
     }
 
-    // Insert the new message into the messages collection
     const newMessage = {
       _id: messageID,
       conversationID,
@@ -83,7 +78,6 @@ export async function POST(req: Request) {
     await messagesCollection.insertOne(newMessage);
 
     if (sendNotification) {
-      // Generate notification
       const toUserId = participantsIDS.filter((id: string) => id !== senderID);
       const fromUserName = await usersCollection.findOne(
         { _id: senderID },

@@ -9,7 +9,7 @@ const ProfileHeader: React.FC<{
   userID: string;
 }> = ({ imgURL, bio, userName, userID }) => {
   return (
-    <header className="flex flex-col justify-center items-center mt-16">
+    <header className="flex flex-col justify-center items-center mt-16"> 
       <div className="relative w-fit after:w-[200%] after:h-20 after:bg-redColor after:absolute after:-z-10 after:top-full after:-translate-y-1/2 after:left-1/2 after:-translate-x-1/2 after:shadow-xl rounded-full shadow-md shadow-black after:rounded-3xl">
         <UserImage
           profilePageImage

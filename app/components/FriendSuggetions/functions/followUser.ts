@@ -17,6 +17,8 @@ export const followUser = async (userToFollowId: string, currentId: string) => {
     return;
   }
   revalidatePath("/news");
+  revalidatePath("/api/auth");
+  revalidatePath("/lib/authOptions");
   const result = await response.json();
   return result;
 };

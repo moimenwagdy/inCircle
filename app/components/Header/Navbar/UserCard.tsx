@@ -8,31 +8,40 @@ const UserCard: React.FC<{
   email: string;
   followers: number;
   userID: string;
-}> = ({ avatar, email, followers, username, userID }) => {
+}> = ({ avatar, followers, username, userID }) => {
   return (
-    <div className="flex justify-start items-center gap-x-2 px-3 rounded-lg me-5">
-      <Link
-        href={`/user/${userID}/posts`}
-        className="relative w-fit h-fit rounded-full ring-8 ring-offWhite dark:ring-black z">
-        <UserImage src={avatar} alt={username} userName={username} biggerImg />
-      </Link>
-      <div className="flex flex-col justify-center items-end -ms-2 z-50">
+    <section className=" flex justify-start items-center h-full gap-x-1 pe-6">
+      <header className=" flex flex-col justify-center items-center ">
         <Link
           href={`/user/${userID}/posts`}
-          className="font-bold min-w-28 text-center font-descripFont text-redColor capitalize bg-offWhite dark:bg-black rounded-tr-md mt-2 px-1">
-          {username}
+          className="relative w-fit rounded-full shadow-md shadow-black">
+          <UserImage
+            src={avatar}
+            alt={username}
+            userName={username}
+            biggerImg
+          />
         </Link>
         <Link
-          href={`/user/${userID}/followers`}
-          className="flex justify-start items-center gap-x-1 text-xs bg-offWhite dark:bg-black rounded-bl-md rounded-br-md px-2">
-          <p className="text-sm text-black dark:text-white">Followers</p>
-          <p className="text-xs text-redColor">{followers}</p>
+          href={`/user/${userID}/posts`}
+          className="text-white bg-redColor px-3 pt-2 pb-[2px] -mt-[10px] rounded-lg">
+          <p className="text-sm font-descripFont font-bold capitalize  txt-center">
+            {username}
+          </p>
         </Link>
-      </div>
-      <div className="mt-2">
+      </header>
+      <div className="h-full  flex-col justify-end items-center gap-x-[-2px] hidden sm:flex">
+        <Link
+          href={`/user/${userID}/followers`}
+          className="flex justify-start items-center gap-x-1 text-xs h-fit">
+          <p className="text-sm text-black dark:text-white">Followers</p>
+          <p className="text-sm text-redColor bg-offWhite px-1 font-bold rounded-full">
+            {followers}
+          </p>
+        </Link>
         <LogoutButton />
       </div>
-    </div>
+    </section>
   );
 };
 export default UserCard;

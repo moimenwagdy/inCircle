@@ -12,7 +12,6 @@ const MessagesNotificationsContainer: React.FC<{ userID: string }> = ({
   const showMessages = useAppSelector(
     (state) => state.ProfileAlertsSlice.showMsssages
   );
-  console.log(notifications);
   return (
     <div>
       <MessagesButton notifLength={notificationCount} ulID="mes" />

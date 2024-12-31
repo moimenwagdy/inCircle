@@ -34,16 +34,22 @@ const NewCoversationSuggetions = () => {
   };
   return (
     <aside className="mt-10 w-full">
-      <header>
-        <h2 className="text-redColor text-center font-bold">Start New Chat</h2>
-        <p className="text-black/50 text-sm text-center">Select one or more</p>
-      </header>
+      {data?.success && (
+        <header>
+          <h2 className="text-redColor text-center font-bold">
+            Start New Chat
+          </h2>
+          <p className="text-black/50 text-sm text-center">
+            Select one or more
+          </p>
+        </header>
+      )}
       <form
         ref={formRef}
         onSubmit={handleNewChat}
         className="w-full flex flex-col items-center">
         {isSuccess && (
-          <ul className="space-y-2 w-full">
+          <ul className="space-y-2 w-full max-h-60 overflow-y-auto">
             {data.success &&
               data.users.map((user: usersuggestion) => {
                 return (
@@ -54,11 +60,14 @@ const NewCoversationSuggetions = () => {
               })}
           </ul>
         )}
-        <button
-          className="w-fit mx-auto mt-3 bg-black text-white dark:text-black dark:bg-offWhite px-3 py-1 font-descripFont text-sm"
-          type="submit">
-          Start Chat
-        </button>
+        {!data?.success && <p>{data?.error}</p>}
+        {data?.success && (
+          <button
+            className="w-fit mx-auto mt-3 bg-black text-white dark:text-black dark:bg-offWhite px-3 py-1 font-descripFont text-sm"
+            type="submit">
+            Start Chat
+          </button>
+        )}
       </form>
       <>
         <StartNewConversation participantsIDs={users!} key={users?.length} />
