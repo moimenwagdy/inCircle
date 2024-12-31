@@ -33,11 +33,12 @@ const NewMessageForm: React.FC<{
     e.preventDefault();
     mutate();
   };
-  
 
   useEffect(() => {
     console.log(data);
   }, [data]);
+
+  
 
   return (
     <form
