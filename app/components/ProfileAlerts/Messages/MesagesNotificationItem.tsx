@@ -26,7 +26,6 @@ const MesagesNotificationItem: React.FC<{ notification: notification }> = ({
     }, 1000);
     clearTimeout(timeout);
   };
-  console.log(notification);
   return (
     <>
       <button

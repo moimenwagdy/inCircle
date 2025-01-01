@@ -25,7 +25,6 @@ const Navbar = () => {
   const tAuth = useTranslations("auth");
   const notLandingPage = path.includes("auth") || path !== "/en";
   const notAuthPage = !path.includes("auth");
-  console.log(session.data?.user);
   return (
     <nav className="h-16 w-full flex justify-between items-center relative bg-blueColor mt-1 overflow-hidden">
       <NavBackgroundImage />

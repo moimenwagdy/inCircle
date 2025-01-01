@@ -34,12 +34,6 @@ const NewMessageForm: React.FC<{
     mutate();
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  
-
   return (
     <form
       autoComplete="off"

@@ -30,7 +30,6 @@ const NotificationItem: React.FC<{ notification: notification }> = ({
   };
   const likeOrComment =
     notification.type === "like" || notification.type === "comment";
-  console.log(notification);
   return (
     <>
       <Link

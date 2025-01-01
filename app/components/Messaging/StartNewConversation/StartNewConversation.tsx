@@ -12,7 +12,6 @@ const StartNewConversation: React.FC<{
   const [conversationID, setConversationID] = useState<string>();
   const dispatch = useAppDispatch();
   const session = useSession();
-  console.log(participantsIDs);
 
   useEffect(() => {
     const conversationExist = async () => {
@@ -43,11 +42,6 @@ const StartNewConversation: React.FC<{
     };
     handleStartNewConversation();
   }, [conversationID]);
-
-  useEffect(() => {
-    console.log(conversationID);
-  }, [conversationID]);
-
   return <></>;
 };
 export default StartNewConversation;

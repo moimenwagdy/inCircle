@@ -28,8 +28,6 @@ const NewCoversationSuggetions = () => {
           formRef.current?.reset();
           clearTimeout(time);
         }, 500);
-      } else {
-        console.log("empty");
       }
     }
   };

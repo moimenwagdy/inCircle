@@ -15,7 +15,6 @@ export const MessagingSlice = createSlice({
   reducers: {
     setRecipientIDs: (state, action) => {
       state.recipientIDs = action.payload;
-      console.log("from participantsid", action.payload);
     },
     openChat: (state) => {
       state.chatState = true;
@@ -25,7 +24,6 @@ export const MessagingSlice = createSlice({
     },
     setConversationId: (state, action) => {
       state.conversationID = action.payload;
-      console.log("from conversationID", action.payload);
     },
     setParticipantsData: (state, action) => {
       state.participantsData = [...action.payload];

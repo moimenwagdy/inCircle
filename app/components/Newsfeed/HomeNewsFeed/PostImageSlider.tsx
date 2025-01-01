@@ -1,48 +1,47 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+
 const PostImageSlider: React.FC<{ imgURLs: string[] }> = ({ imgURLs }) => {
   const [imageIndex, setImageIndex] = useState<number>(0);
   const moreThanImage = imgURLs.length > 1;
   const hadleScrollToRigth = () => {
     setImageIndex((prv) => prv + 1);
   };
+
   const hadleScrollToleft = () => {
     setImageIndex((prv) => prv - 1);
   };
   const theEnd = imgURLs.length === imageIndex + 1;
-  const theStart = imgURLs.length === 0;
+  const theStart = imageIndex === 0;
+
+  console.log(imgURLs);
   return (
-    <section className="w-full relative">
+    <section className="w-full relative max-h-[500px] overflow-hidden">
       {moreThanImage && (
         <button
-          className="absolute text-xl right-5 bottom-5"
+          className="absolute text-xl right-5 bottom-5 bg-gray-800 text-white px-3 py-1 rounded shadow-md z-10"
           onClick={hadleScrollToRigth}
           disabled={theEnd}>
           👉
         </button>
       )}
-      <ul className="w-full flex max-h-[500px] overflow-hidden">
-        {imgURLs.map((img) => {
-          return (
-            <li
-              key={img.slice(2, 6)}
-              className="min-w-full max-h-full overflow-hidden">
-              <Image
-                priority
-                className="min-w-full"
-                src={imgURLs[imageIndex]}
-                width={600}
-                height={1}
-                alt="PostImg"
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="flex">
+        <div className="w-full flex-shrink-0 -z-10">
+          <div className="relative w-full h-[360px]">
+            <Image
+              priority
+              src={imgURLs[imageIndex]}
+              alt="PostImg"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      </div>
       {moreThanImage && (
         <button
-          className="absolute text-xl left-5 bottom-5"
+          className="absolute text-xl left-5 bottom-5 bg-gray-800 text-white px-3 py-1 rounded shadow-md"
           disabled={theStart}
           onClick={hadleScrollToleft}>
           👈
