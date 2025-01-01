@@ -32,7 +32,7 @@ const FeelingsSelections = () => {
                 <li key={i}>
                   <p
                     onClick={() => handleFeelSelect(feel)}
-                    className="text-sm"
+                    className="text-sm cursor-pointer"
                     dangerouslySetInnerHTML={{
                       __html: feel,
                     }}></p>
