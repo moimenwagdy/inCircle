@@ -5,7 +5,8 @@ import React, { Suspense } from "react";
 
 const page = ({ params }: { params: Params }) => {
   return (
-    <Suspense fallback={<LoadingNormalIndicator className="mt-16"/>}>
+    <Suspense
+      fallback={<LoadingNormalIndicator className="mt-16 dark:text-white" />}>
       <UserFollowers userID={params.userID} />;
     </Suspense>
   );

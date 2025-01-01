@@ -6,7 +6,7 @@ const UserFollowers: React.FC<{ userID: string }> = async ({ userID }) => {
   const result = await getUserFollowers(userID);
   return (
     <>
-      <ul className="w-3/4 md:w-1/2 mx-auto flex flex-col justify-center items-center mt-16 gap-y-2">
+      <ul className="w-3/4 md:w-1/2 mx-auto flex flex-col justify-center items-center mt-16 gap-y-2 dark:text-white">
         {result.success &&
           result.followers.map((follower: usersuggestion) => {
             return (

@@ -12,7 +12,7 @@ const UserAbout: React.FC<{ userID: string }> = async ({ userID }) => {
   const age = data.age.toString();
   data.verified = true;
   return (
-    <section className="flex flex-col justify-center items-start gap-y-1 mx-auto mt-4 w-fit">
+    <section className="flex flex-col justify-center items-start gap-y-1 mx-auto mt-4 w-fit dark:text-white">
       <UserAboutItem label="User name :" value={data.username} />
       <div className="flex gap-x-2">
         <UserAboutItem label="E-mail :" value={data.email} />
