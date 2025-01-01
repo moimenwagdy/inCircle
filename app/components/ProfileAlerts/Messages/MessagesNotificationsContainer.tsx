@@ -13,7 +13,7 @@ const MessagesNotificationsContainer: React.FC<{ userID: string }> = ({
     (state) => state.ProfileAlertsSlice.showMsssages
   );
   return (
-    <div>
+    <div className="relative">
       <MessagesButton notifLength={notificationCount} ulID="mes" />
       {showMessages && (
         <MesagesNotificationsList notifications={notifications} ulID="mes" />

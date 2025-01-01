@@ -3,6 +3,7 @@ import { useState } from "react";
 import PostComment from "./PostComment";
 import { PostCommentForm } from "./PostCommentForm";
 import { useComments } from "./customHook/useComments";
+import { useSession } from "next-auth/react";
 const PostComments: React.FC<{ postId: string }> = ({ postId }) => {
   const {
     handleCommentChange,
@@ -13,6 +14,9 @@ const PostComments: React.FC<{ postId: string }> = ({ postId }) => {
     formRef,
     loading,
   } = useComments(postId);
+
+  const session = useSession();
+  const isLoggedIn = session.status === "authenticated";
   return (
     <>
       <>
@@ -39,11 +43,15 @@ const PostComments: React.FC<{ postId: string }> = ({ postId }) => {
           <div className="min-h-10 min-w-[90%] animate-pulse bg-black/5 mt-2"></div>
         )}
       </>
-      <PostCommentForm
-        onCommentChange={handleCommentChange}
-        onSubmit={submitComment}
-        ref={formRef}
-      />
+      {isLoggedIn ? (
+        <PostCommentForm
+          onCommentChange={handleCommentChange}
+          onSubmit={submitComment}
+          ref={formRef}
+        />
+      ) : (
+        <p className=" text-sm text-center">Login to write comments</p>
+      )}
     </>
   );
 };

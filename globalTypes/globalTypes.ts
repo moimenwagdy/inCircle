@@ -11,6 +11,7 @@ export interface user {
   verified: boolean;
   status: string;
   gender: string;
+  image?: string;
 }
 
 export interface post {

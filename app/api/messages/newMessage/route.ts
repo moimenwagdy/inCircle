@@ -3,11 +3,6 @@ import { NextResponse } from "next/server";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
-export function diff_minutes(dt2: Date, dt1: Date): number {
-  const diff = (dt2.getTime() - dt1.getTime()) / 1000 / 60;
-  return Math.abs(Math.round(diff));
-}
-
 export async function POST(req: Request) {
   try {
     const {
@@ -40,7 +35,7 @@ export async function POST(req: Request) {
         participants: participantsIDS,
         lastMessageId: messageID,
         createdAt: currentDate,
-        updatedAt: currentDate, 
+        updatedAt: currentDate,
       };
       await conversationsCollection.insertOne(conversation);
       sendNotification = true;
@@ -49,7 +44,8 @@ export async function POST(req: Request) {
         ? new Date(conversation.updatedAt)
         : new Date(conversation.createdAt);
 
-      const timeDifference = diff_minutes(now, lastUpdated);
+      const diff = (now.getTime() - lastUpdated.getTime()) / 1000 / 60;
+      const timeDifference = Math.abs(Math.round(diff));
 
       if (timeDifference > 15) {
         sendNotification = true;
@@ -60,7 +56,7 @@ export async function POST(req: Request) {
         {
           $set: {
             lastMessageId: messageID,
-            updatedAt: currentDate, 
+            updatedAt: currentDate,
           },
         }
       );

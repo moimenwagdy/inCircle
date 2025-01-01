@@ -10,21 +10,19 @@ const UserImage: React.FC<{
 }> = ({ src, alt, biggerImg, userName, profilePageImage }) => {
   const defaultImage = src.includes("defaultProfileImage");
   let userImgwidth = "max-w-8 max-h-8";
-
   if (biggerImg) {
     userImgwidth = "max-w-10 max-h-10";
   }
   if (profilePageImage) {
     userImgwidth = "max-w-40 max-h-40";
   }
-
   return (
     <>
       <Image
         src={src!}
         alt={alt}
         width={1600}
-        height={1600}
+        height={2000}
         className={`  ${userImgwidth}  rounded-full bg-blueColor`}
       />
       {defaultImage && (

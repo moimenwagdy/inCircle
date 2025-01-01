@@ -20,6 +20,9 @@ const FollowFriendButton: React.FC<{
     const result = await followUser(userToFollowId, currentUserId!);
     setState(result);
     queryClient.invalidateQueries({ queryKey: ["suggetions"] });
+    queryClient.invalidateQueries({
+      queryKey: ["userFollowersMessagingStatus"],
+    });
   };
   useEffect(() => {
     if (session.data?.user._id) {

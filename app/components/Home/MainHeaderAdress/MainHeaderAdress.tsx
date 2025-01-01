@@ -8,9 +8,7 @@ const MainHeaderAdress = () => {
 
   return (
     <h1
-      className={`text-6xl md:text-8xl text-headed dark:text-offWhite   ${
-        ar ? "font-arBasic font-extrabold" : "font-heavyFont"
-      }   mt-[30%] md:mt-[15%] -translate-y-[50%]`}>
+      className={`text-6xl md:text-8xl text-headed dark:text-offWhite  font-heavyFont mt-[30%] md:mt-[15%] -translate-y-[50%]`}>
       {tHome("Name")}
     </h1>
   );

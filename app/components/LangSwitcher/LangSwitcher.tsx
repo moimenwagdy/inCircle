@@ -20,7 +20,9 @@ const LanguageSwitcher = () => {
   };
   return (
     <section className=" justify-start items-start gap-x-3 min-w-36 h-6 hidden sm:flex">
-      <button className="text-xl  text-white " onClick={handleShowLangSwitcher}>
+      <button
+        className="text-2xl flex  text-white "
+        onClick={handleShowLangSwitcher}>
         <FontAwesomeIcon icon={faGlobe} />
       </button>
       {showLangSwitcher && (

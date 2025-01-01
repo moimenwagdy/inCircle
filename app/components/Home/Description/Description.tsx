@@ -23,7 +23,7 @@ const Description = () => {
   const ar = locale === "ar";
   return (
     <>
-      <div className="w-4/5 md:w-2/4 mx-auto ">
+      <div className="w-4/5 md:w-2/4 mx-auto">
         <p
           className={`${
             ar ? "font-arFreehand text-sm" : "text-normal text-sm "

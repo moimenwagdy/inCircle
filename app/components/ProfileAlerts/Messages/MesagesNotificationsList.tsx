@@ -14,7 +14,7 @@ const MesagesNotificationsList: React.FC<{
       {!isEmpty && (
         <ul
           id={ulID}
-          className="flex flex-col justify-start items-start gap-y-1 w-fit bg-trnsparent rounded-md absolute min-w-96 left-[108%] sm:left-1/2 -translate-x-[50%]  ">
+          className="flex flex-col justify-start items-start gap-y-1 w-fit bg-trnsparent rounded-md absolute min-w-80 sm:min-w-96 left-0 sm:left-1/2 -translate-x-[50%]">
           <ClearNotifsButton userID={notifications[0].toUserId} />
           {notifications.length > 0 &&
             notifications?.map((notif) => {
@@ -27,7 +27,7 @@ const MesagesNotificationsList: React.FC<{
         </ul>
       )}
       {notifications.length === 0 && (
-        <div className="absolute min-w-96 left-[108%] bg-redColor rounded-md sm:left-1/2 -translate-x-[50%] mt-4 shadow-sm dark:shadow-white/5">
+        <div className="absolute min-w-96 left-0 bg-redColor rounded-md sm:left-1/2 -translate-x-[50%] mt-4 shadow-sm dark:shadow-white/5">
           <p className="py-1 px-3 text-white"> No New Messages !</p>
         </div>
       )}

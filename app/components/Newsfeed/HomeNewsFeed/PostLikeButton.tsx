@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "next-auth/react";
 import { useLikeFeature } from "./customHook/useLikeFeature";
 
 const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
@@ -10,7 +11,8 @@ const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
     handleInteraction,
     currentUserLike,
   } = useLikeFeature(postId);
-
+  const session = useSession();
+  const isLoggedIn = session.status === "authenticated";
   return (
     <aside className="flex flex-row-reverse justify-between w-full self-start items-center">
       <div
@@ -30,13 +32,14 @@ const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
         )}
       </div>
       <button
+        disabled={!isLoggedIn}
         onClick={handleInteraction}
-        className={`group  ${
+        className={`group  disabled:hover:text-black/50 hover:text-blueColor ${
           likeAdded || currentUserLike
             ? "text-blueColor font-bold"
             : "text-black dark:text-white "
         }`}>
-        <p className="hover:text-blueColor">{likeAdded || currentUserLike ? "Liked" : "Like"}</p>
+        <p className="">{likeAdded || currentUserLike ? "Liked" : "Like"}</p>
       </button>
     </aside>
   );

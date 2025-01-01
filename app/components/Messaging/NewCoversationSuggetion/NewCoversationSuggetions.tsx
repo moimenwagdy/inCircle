@@ -6,12 +6,13 @@ import { usersuggestion } from "@/globalTypes/globalTypes";
 import NewCoversationSuggetion from "./NewCoversationSuggetion";
 import { FormEvent, useRef, useState } from "react";
 import StartNewConversation from "../StartNewConversation/StartNewConversation";
+import SuggestionsLoading from "../../FriendSuggetions/SuggestionsLoading";
 
 const NewCoversationSuggetions = () => {
   const [users, setUsers] = useState<string[]>();
   const session = useSession();
   const formRef = useRef<HTMLFormElement>(null);
-  const { data, isSuccess } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["suggetions"],
     queryFn: () => getConversationsSuggetions(session.data?.user._id!),
     enabled: session.data?.user !== undefined,
@@ -48,8 +49,9 @@ const NewCoversationSuggetions = () => {
         ref={formRef}
         onSubmit={handleNewChat}
         className="w-full flex flex-col items-center">
+        {isLoading && <SuggestionsLoading />}
         {isSuccess && (
-          <ul className="space-y-2 w-full max-h-60 overflow-y-auto">
+          <ul className="space-y-2 w-full max-h-60 overflow-y-auto py-1 px-1">
             {data.success &&
               data.users.map((user: usersuggestion) => {
                 return (
@@ -60,7 +62,7 @@ const NewCoversationSuggetions = () => {
               })}
           </ul>
         )}
-        {!data?.success && <p>{data?.error}</p>}
+        {!data?.success && <p className="dark:text-white">{data?.error}</p>}
         {data?.success && (
           <button
             className="w-fit mx-auto mt-3 bg-black text-white dark:text-black dark:bg-offWhite px-3 py-1 font-descripFont text-sm"

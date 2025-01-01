@@ -12,7 +12,10 @@ const layout = ({
 }) => {
   return (
     <main>
-      <Suspense fallback={<LoadingNormalIndicator className="min-h-64"/>}>
+      <Suspense
+        fallback={
+          <LoadingNormalIndicator className="min-h-64 flex justify-center items-center" />
+        }>
         <UserProfile userID={params.userID} />
       </Suspense>
       <ProfileNavbar userID={params.userID} />
