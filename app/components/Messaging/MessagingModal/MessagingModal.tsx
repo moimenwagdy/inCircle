@@ -37,7 +37,7 @@ const MessagingModal: React.FC<{}> = () => {
     <dialog
       onCancel={handleCloseModal}
       ref={modalRef}
-      className="backdrop:bg-black/20 w-full md:w-3/4 lg:w-1/2 bg-white dark:bg-black ring-2 ring-blueColor/50 ring-offset-transparent px-3 py-2 rounded-md shadow-lg">
+      className="backdrop:bg-black/20 backdrop:backdrop-blur-sm w-full md:w-3/4 lg:w-1/2 bg-white dark:bg-black ring-2 ring-blueColor/50 ring-offset-transparent px-3 py-2 rounded-md shadow-lg">
       <section>
         <ConversationUsersData participants={participantsData} />
       </section>

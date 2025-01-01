@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { deletePost } from "./functions/DeletePost";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 const PostDeleteOption: React.FC<{ postId: string }> = ({ postId }) => {
   const [openList, setOpenList] = useState<boolean>(false);
   const [loading, setIsLoading] = useState<boolean>(false);
@@ -29,8 +31,8 @@ const PostDeleteOption: React.FC<{ postId: string }> = ({ postId }) => {
       <button
         type="button"
         onClick={handleListState}
-        className="text-lg -mt-7 text-blueColor cursor-pointer">
-        *
+        className="text-lg -mt-10 text-blueColor cursor-pointer">
+        <FontAwesomeIcon icon={faGear} />
       </button>
       {openList && (
         <ul className="absolute right-1/5 w-32 bg-offWhite dark:bg-black dark:text-white">
