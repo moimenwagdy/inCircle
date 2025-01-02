@@ -29,13 +29,7 @@ const PostComment: React.FC<{
       </div>
       <div className="flex justify-between items-center ms-9">
         <div className="flex justify-start items-center gap-x-2">
-          <div className="space-x-2 flex">
-            <button
-              className="
-              text-xs hover:text-blueColor">
-              Like
-            </button>
-          </div>
+          <div className="space-x-2 flex"></div>
           <div className="flex justify-start items-center gap-x-2">
             {allowDel && (
               <button

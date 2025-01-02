@@ -30,7 +30,7 @@ const Navbar = () => {
       <NavBackgroundImage />
       <Logo />
       <div className="dark:text-white gap-x-2 flex w-fit h-full z-50 ">
-        <div className="absolute min-h-full flex justify-center items-center left-40  z-50 gap-x-2 ">
+        <div className="absolute min-h-full flex justify-center items-center left-40  z-50 gap-x-14 ">
           <DarkLightMood />
           <LanguageSwitcher />
         </div>

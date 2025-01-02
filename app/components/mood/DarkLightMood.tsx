@@ -1,7 +1,4 @@
 "use client";
-import { faSun } from "@fortawesome/free-regular-svg-icons";
-import {  faMoon } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTheme } from "next-themes";
 
 const DarkLightMood = () => {
@@ -11,13 +8,19 @@ const DarkLightMood = () => {
   };
 
   return (
-    <div className="bg-transparent hidden sm:flex h-full w-8">
-      <div className=" cursor-pointer flex" onClick={moodToggler}>
-        {theme === "dark" ? (
-          <FontAwesomeIcon icon={faSun} className=" text-yellow-400 text-2xl" />
-        ) : (
-          <FontAwesomeIcon icon={faMoon} className=" text-blue-900  text-2xl" />
-        )}
+    <div className="bg-transparent hidden sm:flex h-full w-8 text-white">
+      <div className=" cursor-pointer flex gap-x-1" onClick={moodToggler}>
+        <button
+          disabled={theme === "light"}
+          className={`tex-xs ${theme === "light" ? "font-bold" : ""}`}>
+          Light
+        </button>
+        /
+        <button
+          disabled={theme === "dark"}
+          className={`tex-xs ${theme === "dark" ? "font-bold" : ""}`}>
+          Dark
+        </button>
       </div>
     </div>
   );

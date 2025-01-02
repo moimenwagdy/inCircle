@@ -1,8 +1,8 @@
 "use client";
-import React, { Suspense, useEffect, useState } from "react";
-import CommentedUserImage from "./CommentedUserImage";
+import React, { useEffect, useState } from "react";
 import { getUserCommentData } from "./functions/getUserCommentData";
 import UserImage from "@/app/components/UserImage/UserImage";
+import Link from "next/link";
 
 const CommentHeader: React.FC<{ userID: string }> = ({ userID }) => {
   const [userData, setUserData] = useState<{
@@ -23,7 +23,9 @@ const CommentHeader: React.FC<{ userID: string }> = ({ userID }) => {
   return (
     <>
       {!loading ? (
-        <div className=" flex justify-start items-center gap-x-2 ">
+        <Link
+          href={`/user/${userID}/posts`}
+          className=" flex justify-start items-center gap-x-2 ">
           {userData && (
             <div className="relative">
               <UserImage
@@ -38,7 +40,7 @@ const CommentHeader: React.FC<{ userID: string }> = ({ userID }) => {
             {" "}
             {userData?.username}
           </h2>
-        </div>
+        </Link>
       ) : (
         <div className="flex animate-pulse h-10 justify-start items-center gap-x-4">
           <span className="w-10 h-10 rounded-full bg-black/5"></span>
