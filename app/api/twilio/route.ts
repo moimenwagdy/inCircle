@@ -27,7 +27,6 @@ export async function POST(request: Request) {
       },
     });
 
-    // Send the email
     const info = await transporter.sendMail({
       from: process.env.NEXT_PUBLIC_EMAIL_USER,
       to: userEmail,

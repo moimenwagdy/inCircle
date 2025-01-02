@@ -44,7 +44,7 @@ const EmailValidation = () => {
         />
       </form>
       {validate && (
-        <p className="text-xs text-white/50">
+        <p className="text-xs text-black  dark:text-white/50">
           check your inbox,{" "}
           {!formState?.success ? "Sending email..." : formState?.data?.message}.
         </p>

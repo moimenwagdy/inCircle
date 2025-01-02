@@ -47,8 +47,15 @@ const UserValidatationCodeForm = () => {
         />
         <button type="submit">{tButtons("submit")}</button>
       </form>
-      {formState?.success && (
-        <p className="text-xs text-center">{formState?.message}</p>
+      {formState?.success || (
+        <p className="text-xs text-center text-black dark:text-white">
+          {formState?.message}
+        </p>
+      )}
+      {!formState?.success || (
+        <p className="text-xs text-center text-black dark:text-white">
+          {formState?.message}
+        </p>
       )}
     </>
   );

@@ -10,7 +10,6 @@ const UserAbout: React.FC<{ userID: string }> = async ({ userID }) => {
     day: "numeric",
   });
   const age = data.age.toString();
-  data.verified = true;
   return (
     <section className="flex flex-col justify-center items-start gap-y-1 mx-auto mt-4 w-fit dark:text-white">
       <UserAboutItem label="User name :" value={data.username} />
