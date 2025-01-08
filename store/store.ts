@@ -4,6 +4,7 @@ import newPost from "./slices/newPostSlice/slice";
 import commentsSlice from "./slices/commentsSlice/commentsSlice";
 import ProfileAlertsSlice from "./slices/ProfileAlertsSlice/ProfileAlertsSlice";
 import MessagingSlice from "./slices/MessagingSlice/MessagingSlice";
+import NavListSlice from "./slices/NavListSlice/NavListSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     commentsSlice,
     ProfileAlertsSlice,
     MessagingSlice,
+    NavListSlice,
   },
 });
 

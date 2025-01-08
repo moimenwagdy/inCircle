@@ -7,7 +7,7 @@ import PostInteractButtons from "./PostInteractButtons";
 
 const Post: React.FC<{ post: post }> = ({ post }) => {
   return (
-    <li className="w-full flex flex-col gap-y-1 ring-[1px] ring-black/5 dark:ring-white/5 px-3">
+    <li className="w-full flex flex-col gap-y-1 ring-[1px] ring-black/10 dark:ring-white/10 px-3 shadow-sm dark:shadow-sm dark:shadow-white/10">
       <div className=" py-6 px-3 h-full space-y-3 border-b-[1px] border-black/5">
         <PostUserData
           avatar={post.author?.profile.avatar}

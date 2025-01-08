@@ -10,7 +10,7 @@ const UserCard: React.FC<{
   userID: string;
 }> = ({ avatar, followers, username, userID }) => {
   return (
-    <section className=" flex justify-start items-center h-full gap-x-1 pe-6">
+    <section className=" flex justify-start items-center h-full gap-x-1">
       <header className=" flex flex-col justify-center items-center ">
         <Link
           href={`/user/${userID}/posts`}

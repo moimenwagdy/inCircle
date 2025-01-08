@@ -12,6 +12,7 @@ const UserProfile: React.FC<{ userID: string }> = async ({ userID }) => {
         bio={response?.profile?.bio}
         userName={response.username}
         userID={userID}
+        addMargin={true}
       />
     </main>
   );

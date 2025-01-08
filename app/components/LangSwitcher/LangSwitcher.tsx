@@ -19,14 +19,14 @@ const LanguageSwitcher = () => {
     setShowLangSwitcher((prv) => !prv);
   };
   return (
-    <section className=" justify-start items-start gap-x-3 min-w-36 h-6 hidden sm:flex">
+    <section className=" justify-start items-start gap-x-3 min-w-36 h-6  sm:flex">
       <button
         className="text-2xl flex  text-white "
         onClick={handleShowLangSwitcher}>
         <FontAwesomeIcon icon={faGlobe} />
       </button>
       {showLangSwitcher && (
-        <div className="bg-transparent hidden sm:flex gap-x-1 h-fit mt-3">
+        <div className="bg-transparent  sm:flex gap-x-1 h-fit mt-3">
           <button
             onClick={() => switchLanguage("en")}
             className="px-1 bg-blue-500 text-white rounded text-sm">

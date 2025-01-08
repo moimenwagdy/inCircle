@@ -11,6 +11,7 @@ import { authActions } from "@/store/slices/authSlice/Slice";
 import Button from "../../Buttons/Button";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import ListButton from "./ListButton";
 
 const Navbar = () => {
   const session = useSession();
@@ -28,24 +29,28 @@ const Navbar = () => {
   return (
     <nav className="h-16 w-full flex justify-between items-center relative bg-blueColor mt-1 overflow-hidden">
       <NavBackgroundImage />
-      <Logo />
-      <div className="dark:text-white gap-x-2 flex w-fit h-full z-50 ">
+        <Logo />
+      <ListButton />
+      <div className="dark:text-white gap-x-2 hidden sm:flex w-fit h-full z-50 ">
         <div className="absolute min-h-full flex justify-center items-center left-40  z-50 gap-x-14 ">
-          <DarkLightMood />
+          <DarkLightMood fixedWidth={true} />
           <LanguageSwitcher />
         </div>
         {session.data && (
-          <UserCard
-            userID={session.data.user._id}
-            avatar={
-              session.data?.user.profile?.avatar! || session.data?.user.image!
-            }
-            email={session.data?.user.email}
-            followers={session.data?.user.followers.length}
-            username={session.data.user.username}
-          />
+          <div className="pe-6 h-full  ">
+            <UserCard
+              key={session.data.user._id}
+              userID={session.data.user._id}
+              avatar={
+                session.data?.user.profile?.avatar! || session.data?.user.image!
+              }
+              email={session.data?.user.email}
+              followers={session.data?.user.followers.length}
+              username={session.data.user.username}
+            />
+          </div>
         )}
-        {!session.data && notLandingPage && notAuthPage && (
+        {!session?.data?.user && notLandingPage && notAuthPage && (
           <div onClick={toSignin} className="w-48 flex justify-start font-bold">
             <Button margin key="blue" dir={-1} color="red">
               {tAuth("formHeaderSignIn")}

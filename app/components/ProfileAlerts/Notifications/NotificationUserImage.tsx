@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserCommentData } from "../../Newsfeed/HomeNewsFeed/PostComments/functions/getUserCommentData";
+import { getUserCommentData } from "../../Newsfeed/Posts/PostComments/functions/getUserCommentData";
 import UserImage from "../../UserImage/UserImage";
 
 const NotificationUserImage: React.FC<{ userId: string }> = ({ userId }) => {

@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import PostForm from "../../NewPost/NewPostForm/PostForm";
 import PostImagesPreviewer from "../../NewPost/NewPostForm/PostImagesPreviewer";
-import Posts from "../../Newsfeed/HomeNewsFeed/Posts";
-import PostLoading from "../../Newsfeed/HomeNewsFeed/PostLoading";
+import Posts from "../../Newsfeed/Posts/Posts";
+import PostLoading from "../../Newsfeed/Posts/PostLoading";
 import MoreNewsFeed from "../../Newsfeed/MoreNewsFeed/MoreNewsFeed";
 
 const MiddleSide = () => {

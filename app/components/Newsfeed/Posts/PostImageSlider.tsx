@@ -15,7 +15,6 @@ const PostImageSlider: React.FC<{ imgURLs: string[] }> = ({ imgURLs }) => {
   const theEnd = imgURLs.length === imageIndex + 1;
   const theStart = imageIndex === 0;
 
-  console.log(imgURLs);
   return (
     <section className="w-full relative max-h-[500px] overflow-hidden">
       {moreThanImage && (

@@ -1,4 +1,4 @@
-import PostsContainer from "./PostContainer";
+import PostsContainer from "../../PostsContainer/PostsContainer";
 
 const PostLoading = () => {
   const arr = [1, 2, 3, 4];

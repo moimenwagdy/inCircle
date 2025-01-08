@@ -38,7 +38,7 @@ const NewCoversationSuggetions = () => {
           <h2 className="text-redColor text-center font-bold">
             Start New Chat
           </h2>
-          <p className="text-black/50 text-sm text-center">
+          <p className="text-black/50 dark:text-white/50 text-sm text-center">
             Select one or more
           </p>
         </header>

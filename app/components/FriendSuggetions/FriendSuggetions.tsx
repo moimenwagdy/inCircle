@@ -73,7 +73,7 @@ const FriendSuggetions = () => {
                 })}
             </ul>
           ) : (
-            <p className="dark:text-white">No result round</p>
+            <p className="dark:text-white mt-2">No result round</p>
           )}
         </>
       ) : (

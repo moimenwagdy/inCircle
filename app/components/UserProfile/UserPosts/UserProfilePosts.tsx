@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { post } from "@/globalTypes/globalTypes";
-import Post from "../../Newsfeed/HomeNewsFeed/Post";
-import PostsContainer from "../../Newsfeed/HomeNewsFeed/PostContainer";
+import Post from "../../Newsfeed/Posts/Post";
+import PostsContainer from "../../PostsContainer/PostsContainer";
 import { getCurrentUserPosts } from "./functions/getCurrentUserPosts";
 import LoadingNormalIndicator from "../../LoadingNormalIndicator/LoadingNormalIndicator";
 

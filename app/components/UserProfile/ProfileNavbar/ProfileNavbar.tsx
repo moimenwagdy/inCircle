@@ -14,7 +14,6 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
   const openChat = useAppSelector(
     (state) => state.MessagingSlice.profileChatState
   );
-
   return (
     <nav className="w-fit px-2 relative rounded mx-auto h-8 bg-black/10 dark:bg-white/10 mt-4 flex justify-center items-center gap-x-2">
       <NavItem
@@ -41,7 +40,7 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
         href={`/user/${userID}/following`}>
         Following
       </NavItem>
-      <ProfileNavbarMessagingButton userID={userID} />
+      {!isCurrentUser && <ProfileNavbarMessagingButton userID={userID} />}
       {!isCurrentUser && session.data && openChat && (
         <StartNewConversation
           participantsIDs={[session.data.user._id, userID]}

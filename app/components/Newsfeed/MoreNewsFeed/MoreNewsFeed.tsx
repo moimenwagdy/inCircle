@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { post } from "@/globalTypes/globalTypes";
-import PostsContainer from "../HomeNewsFeed/PostContainer";
-import Post from "../HomeNewsFeed/Post";
-import { getFollowingPosts } from "../HomeNewsFeed/functions/getFollowingPosts";
+import PostsContainer from "../../PostsContainer/PostsContainer";
+import Post from "../Posts/Post";
+import { getFollowingPosts } from "../Posts/functions/getFollowingPosts";
 import { useSession } from "next-auth/react";
 
 const MoreNewsFeed = () => {
@@ -65,8 +65,6 @@ const MoreNewsFeed = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-
   return (
     <>
       <PostsContainer>
@@ -82,5 +80,4 @@ const MoreNewsFeed = () => {
     </>
   );
 };
-
 export default MoreNewsFeed;

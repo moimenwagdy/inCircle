@@ -1,4 +1,4 @@
-import Post from "../Newsfeed/HomeNewsFeed/Post";
+import Post from "../Newsfeed/Posts/Post";
 import { getSinglePost } from "./functions/getSinglePost";
 
 const SinglePost: React.FC<{ postID: string }> = async ({ postID }) => {
