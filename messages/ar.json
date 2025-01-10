@@ -6,7 +6,10 @@
         "emailInput": "البريد الالكترونى",
         "passwordInput": "كلمة السر",
         "passwordRepeatInput": " اعادة كلمة السر",
-        "ageInput": "تاريخ الميلاد"
+        "ageInput": "تاريخ الميلاد",
+        "haveAccount": "لديك حساب ؟",
+        "createNewAccount": "انشاء حساب جديد",
+        "googleSignIn": "تسجيل دخول  "
     },
     "authPlaceholders": {
         "usernamePlaceholder": "اسم المستخدم",
@@ -30,5 +33,40 @@
     "homePage": {
         "Name": "inCircle",
         "welcomeMessage": "كل واحد منا دائرة فريدة، يشارك أجزاء مختلفة من نفسه مع الآخرين من حوله. تمامًا مثل الدوائر التي تتداخل لتخلق مساحات مشتركة جميلة هنا الأصدقاء والعائلة يتواصلوا ويشاركوا اللحظات المهمة. نحن نحترم بشدة المساحة الشخصية لكل فرد، والأجزاء من دائرتهم التي يختارون الاحتفاظ بها خاصة, اردنا بناء مجتمع يشعر فيه  الجميع بالترابط والاحترام والتقدير. شكرًا لانضمامكم إلينا، ومرحبًا بكم في"
+    },
+    "newPostForm": {
+        "NewPostPlaceholder": "ماذا يدور فى بالك ",
+        "postSubmit": "نشر",
+        "postSubmitLoading": "جارى النشر",
+        "imagesButton": "صور"
+    },
+    "friendSuggetion": {
+        "follow": "متابعه",
+        "unfollow": "الغاء  متابعه",
+        "suggetionsHeader": "اشخاص قد تعرفهم ",
+        "suggetionEmpty": "لا مزيد من الاقتراحات",
+        "suggetionFilterEmpty": "لا يوجد نتائج",
+        "inputPlaceholder": "ابحث عن اصدقاء "
+    },
+    "singlePost": {
+        "like": "اعجبنى",
+        "liked": "الغاء اعجبنى",
+        "comments": "تعليقات",
+        "hide": "اخفاء",
+        "newCommentPlaceholder": "اضـف تعليقك هنا ",
+        "deleteComment": "مسح",
+        "yes": "نعم",
+        "no": "لا",
+        "deletePost": "مسح المنشور",
+        "deletePostWarn": "اذا قمت بمسح المنشور لن تستطيع ارجاعه مره اخرى",
+        "deleteAgree": "تأكيد",
+        "deleteDisagree": "رجوع",
+        "deleteingPost": "جارى المسح ..."
+    },
+    "conversations": {
+        "conversationHeader": "محادثات",
+        "startNewChat": "ابدأ محادثة جديدة  ",
+        "selectOneOreMore": "اختر صديق او اكثر ",
+        "startChat": "ابدأ المحادثة"
     }
 }

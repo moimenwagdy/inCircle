@@ -9,7 +9,7 @@ const SignupInput: React.FC<{
   defaultValue?: string;
   className?: string;
   error?: string;
-  value?:string
+  value?: string;
 }> = ({
   id,
   name,

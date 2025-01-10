@@ -5,6 +5,7 @@ import { ondrop } from "./functions/ondrop";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { postImageUpload } from "@/globalTypes/globalTypes";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
+import { useTranslations } from "next-intl";
 const PostImageUploader = () => {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(false);
@@ -23,6 +24,8 @@ const PostImageUploader = () => {
     },
     accept: { "image/*": [] },
   });
+  const tForm = useTranslations("newPostForm");
+
   return (
     <>
       <div {...getRootProps()} className="hidden">
@@ -33,7 +36,7 @@ const PostImageUploader = () => {
         disabled={loading}
         className="px-4 bg-whiteColor disabled:bg-gray-500 "
         onClick={open}>
-        photo
+        {tForm("imagesButton")}
       </button>
       <p>{loading ? "uploading" : ""}</p>
     </>

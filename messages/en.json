@@ -6,7 +6,10 @@
     "emailInput": "Email",
     "passwordInput": "Password",
     "passwordRepeatInput": "Password Check",
-    "ageInput": "birth date"
+    "ageInput": "birth date",
+    "haveAccount": "Have an account?",
+    "createNewAccount": "Creat new account",
+    "googleSignIn": "SignIn with"
   },
   "authPlaceholders": {
     "usernamePlaceholder": " your name ",
@@ -30,5 +33,40 @@
   "homePage": {
     "Name": "inCircle",
     "welcomeMessage": "Each of us is a unique circle, sharing different parts of ourselves with others around us. Just like circles that overlap and create beautiful shared spaces, inCircle is where friends and family come together, connect, and share moments that matter. We deeply respect each person’s personal space the parts of their circle they choose to keep private. InCircle is all about building a community where everyone can feel connected, respected, and valued. Thank you for joining us, and welcome to inCircle!"
+  },
+  "newPostForm": {
+    "NewPostPlaceholder": "What's on your mind",
+    "postSubmit": "Post",
+    "postSubmitLoading": "Posting",
+    "imagesButton": "Photos"
+  },
+  "friendSuggetion": {
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "suggetionsHeader": "People you may know",
+    "suggetionEmpty": "No more suggetions",
+    "suggetionFilterEmpty": "No result found",
+    "inputPlaceholder": "Find Friends"
+  },
+  "singlePost": {
+    "like": "Like",
+    "liked": "Liked",
+    "comments": "Comments",
+    "hide": "Hide",
+    "newCommentPlaceholder": "Add your comment here",
+    "deleteComment": "Delete",
+    "yes": "Yes",
+    "no": "No",
+    "deletePost": "Delete Post",
+    "deletePostWarn": "You won&#39;t be able to undo this action",
+    "deleteAgree": "Ok",
+    "deleteDisagree": "Back",
+    "deleteingPost": "deleting ..."
+  },
+  "conversations": {
+    "conversationHeader": "Conversations",
+    "startNewChat": "Start New Chat",
+    "selectOneOreMore": "Select one or more",
+    "startChat": "Start Chat"
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useLikeFeature } from "./customHook/useLikeFeature";
+import { useLocale, useTranslations } from "next-intl";
 
 const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
   const {
@@ -13,6 +14,9 @@ const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
   } = useLikeFeature(postId);
   const session = useSession();
   const isLoggedIn = session.status === "authenticated";
+  const tPost = useTranslations("singlePost");
+  const locale = useLocale();
+  const isAr = locale === "ar";
   return (
     <aside className="flex flex-row-reverse justify-between w-full self-start items-center">
       <div
@@ -39,7 +43,11 @@ const PostLikeButton: React.FC<{ postId: string }> = ({ postId }) => {
             ? "text-blueColor font-bold"
             : "text-black dark:text-white "
         }`}>
-        <p className="">{likeAdded || currentUserLike ? "Liked" : "Like"}</p>
+        <p className={`${isAr ? "text-xs" : ""}`}>
+          {likeAdded || currentUserLike
+            ? `${tPost("liked")}`
+            : `${tPost("like")}`}
+        </p>
       </button>
     </aside>
   );

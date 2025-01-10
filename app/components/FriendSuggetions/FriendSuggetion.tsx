@@ -9,7 +9,7 @@ const FriendSuggetion: React.FC<{
   return (
     <>
       <div className="flex justify-between items-center gap-x-2 w-full">
-        <div className="w-3/4 flex gap-x-2 justify-start items-center">
+        <div className="max-w-[75%] flex gap-x-2 justify-start items-center">
           <Link
             href={`/user/${userSuggetion._id}/posts`}
             className="relative cursor-pointer">

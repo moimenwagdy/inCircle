@@ -22,6 +22,7 @@ const PostForm = () => {
     if (!formState?.success) formState?.success;
     dispatch(newPostActions.enableErrorMsg());
   }, [dispatch, formState]);
+
   return (
     <form
       ref={formRef}

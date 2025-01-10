@@ -11,10 +11,13 @@ const signupSchema = z
   .object({
     username: z.string().min(3, "Username is required"),
     email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters"),
+    password: z.string().min(8, "Password must be at least 8 character(s)"),
     repeatedPassword: z.string().min(8),
-    age: z.number().min(18, "You must be at least 18"),
-    imgPath: z.string().min(0, "Username is required"),
+    age: z
+      .number()
+      .min(18, "You must be at least 18")
+      .max(90, "using our web services is not recommended for you"),
+    imgPath: z.string().optional(),
   })
   .refine((data) => data.password === data.repeatedPassword, {
     message: "Passwords must match",

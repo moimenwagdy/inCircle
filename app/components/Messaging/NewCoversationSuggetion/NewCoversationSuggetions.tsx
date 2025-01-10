@@ -7,6 +7,7 @@ import NewCoversationSuggetion from "./NewCoversationSuggetion";
 import { FormEvent, useRef, useState } from "react";
 import StartNewConversation from "../StartNewConversation/StartNewConversation";
 import SuggestionsLoading from "../../FriendSuggetions/SuggestionsLoading";
+import { useTranslations } from "next-intl";
 
 const NewCoversationSuggetions = () => {
   const [users, setUsers] = useState<string[]>();
@@ -31,15 +32,17 @@ const NewCoversationSuggetions = () => {
       }
     }
   };
+  const tConversation = useTranslations("conversations");
+
   return (
     <aside className="mt-10 w-full">
       {data?.success && (
         <header>
           <h2 className="text-redColor text-center font-bold">
-            Start New Chat
+            {tConversation("startNewChat")}
           </h2>
           <p className="text-black/50 dark:text-white/50 text-sm text-center">
-            Select one or more
+            {tConversation("selectOneOreMore")}
           </p>
         </header>
       )}
@@ -65,7 +68,7 @@ const NewCoversationSuggetions = () => {
           <button
             className="w-fit mx-auto mt-3 bg-black text-white dark:text-black dark:bg-offWhite px-3 py-1 font-descripFont text-sm"
             type="submit">
-            Start Chat
+            {tConversation("startChat")}
           </button>
         )}
       </form>

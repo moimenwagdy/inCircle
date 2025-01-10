@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PostComments from "./PostComments";
 import { getCommetsLength } from "./functions/getCommetsLength";
 import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
 const PostCommentsContainer: React.FC<{ postId: string }> = ({ postId }) => {
   const [enableGetComments, setEnableGetComments] = useState<boolean>(false);
@@ -24,7 +25,9 @@ const PostCommentsContainer: React.FC<{ postId: string }> = ({ postId }) => {
       setEnableGetComments(true);
     }
   }, [path]);
-
+  const tPost = useTranslations("singlePost");
+  const locale = useLocale();
+  const isAr = locale === "ar";
   return (
     <aside
       className={`flex m-0 ${
@@ -41,9 +44,12 @@ const PostCommentsContainer: React.FC<{ postId: string }> = ({ postId }) => {
         {enableGetComments && <PostComments postId={postId} key={postId} />}
       </div>
       <button
-        className={`${enableGetComments ? "text-xs my-2" : ""}`}
+        dir={`${isAr ? "rtl" : "ltr"}`}
+        className={`${enableGetComments ? "text-xs my-2" : ""} ${
+          isAr ? "text-xs" : ""
+        } `}
         onClick={handleGetCommentsState}>
-        {enableGetComments ? "Hide" : "Comments"}
+        {enableGetComments ? `${tPost("hide")}` : `${tPost("comments")}`}
       </button>
     </aside>
   );

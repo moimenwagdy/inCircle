@@ -1,7 +1,11 @@
+"use client";
 import { signIn } from "next-auth/react";
 import Button from "../../Buttons/Button";
+import { useTranslations } from "next-intl";
 
 const GoogleSigninButton = () => {
+  const tAuth = useTranslations("auth");
+
   return (
     <div className="w-72">
       <Button
@@ -10,7 +14,7 @@ const GoogleSigninButton = () => {
         onclick={() => {
           signIn("google");
         }}>
-        signIn with
+        {tAuth("googleSignIn")}
         <span className=" ms-2 space-x-[1px] rounded bg-white/50 px-1">
           <span className=" text-[#4285F4]">G</span>
           <span className=" text-[#DB4437]">o</span>

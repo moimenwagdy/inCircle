@@ -24,8 +24,9 @@ const Navbar = () => {
     router.push("/auth");
   };
   const tAuth = useTranslations("auth");
-  const notLandingPage = path.includes("auth") || path !== "/en";
+  const notLandingPage = path.includes("auth")
   const notAuthPage = !path.includes("auth");
+
   return (
     <nav className="h-16 w-full flex justify-between items-center relative bg-blueColor mt-1 overflow-hidden">
       <NavBackgroundImage />
@@ -52,7 +53,7 @@ const Navbar = () => {
         )}
         {!session?.data?.user && notLandingPage && notAuthPage && (
           <div onClick={toSignin} className="w-48 flex justify-start font-bold">
-            <Button margin key="blue" dir={-1} color="red">
+            <Button margin key="red" dir={-1} color="red">
               {tAuth("formHeaderSignIn")}
             </Button>
           </div>

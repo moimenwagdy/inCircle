@@ -4,6 +4,7 @@ import CommentHeader from "./CommentHeader";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import TimePrint from "@/app/components/TimePrint/TimePrint";
+import { useTranslations } from "next-intl";
 
 const PostComment: React.FC<{
   comment: comment;
@@ -19,6 +20,7 @@ const PostComment: React.FC<{
   const disableAllowDelete = () => {
     setShowDelete(false);
   };
+  const tPost = useTranslations("singlePost");
   return (
     <article className="bg-blueColor/[.03] px-2 py-1 space-y-1 rounded-md">
       <div className="w-full">
@@ -35,7 +37,7 @@ const PostComment: React.FC<{
               <button
                 className="text-xs hover:text-redColor"
                 onClick={handleAllowDelete}>
-                {showDelete ? "Delete ?" : "Delete"}
+                {showDelete ? `${tPost("deleteComment")} ?` : `${tPost("deleteComment")} ?`}
               </button>
             )}
             {
@@ -43,11 +45,11 @@ const PostComment: React.FC<{
                 {showDelete && (
                   <div className="text-xs">
                     <button className="" onClick={() => onClick(comment._id)}>
-                      Yes
+                      {tPost("yes")}
                     </button>{" "}
                     /{" "}
                     <button className="" onClick={disableAllowDelete}>
-                      No
+                      {tPost("no")}
                     </button>
                   </div>
                 )}

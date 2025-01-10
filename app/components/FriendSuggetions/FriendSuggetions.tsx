@@ -8,6 +8,7 @@ import FriendSuggetion from "./FriendSuggetion";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import SuggestionsLoading from "./SuggestionsLoading";
+import { useLocale, useTranslations } from "next-intl";
 
 const FriendSuggetions = () => {
   const [suggestions, setSuggetions] = useState<usersuggestion[]>();
@@ -46,16 +47,21 @@ const FriendSuggetions = () => {
     getSug();
   }, [session?.data, queryPayload]);
   const SuggestionsAreEmpty = suggestions?.length === 0;
-
+  const tSuggetions = useTranslations("friendSuggetion");
+  const locale = useLocale();
+  const isAr = locale === "ar";
   return (
     <>
       <input
+        dir={`${isAr ? "rtl" : "ltr"}`}
         type="text"
         id="searchFriends"
-        placeholder="Find Friends"
+        placeholder={`${tSuggetions("inputPlaceholder")}`}
         defaultValue={""}
         onChange={handleQueryChange}
-        className="w-[85%] px-2 py-1 mx-auto ring-1 ring-black/5 dark:ring-white/5"
+        className={`${
+          isAr ? "text-xs" : ""
+        } w-[85%] px-2 py-1 mx-auto ring-1 ring-black/5 dark:ring-white/5 `}
       />
       {!loading ? (
         <>
@@ -73,7 +79,17 @@ const FriendSuggetions = () => {
                 })}
             </ul>
           ) : (
-            <p className="dark:text-white mt-2">No result round</p>
+            <>
+              {queryPayload !== "" ? (
+                <p className={` ${isAr ? "text-xs" : ""} dark:text-white mt-2`}>
+                  {tSuggetions("suggetionFilterEmpty")}
+                </p>
+              ) : (
+                <p className={` ${isAr ? "text-xs" : ""} dark:text-white mt-2`}>
+                  {tSuggetions("suggetionEmpty")}
+                </p>
+              )}
+            </>
           )}
         </>
       ) : (

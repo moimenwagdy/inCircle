@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { followUser } from "./functions/followUser";
 import { getFollowing } from "./functions/getFollowing";
 import { queryClient } from "@/app/QueryClient/QueryClientOBJ";
+import { useTranslations } from "next-intl";
 
 const FollowFriendButton: React.FC<{
   userToFollowId: string;
@@ -44,11 +45,12 @@ const FollowFriendButton: React.FC<{
       setAreFriends(false);
     }
   }, [following, userToFollowId]);
+  const tSuggetion = useTranslations("friendSuggetion");
   return (
     <button
       onClick={handleFollowUser}
       className="text-xs text-blueColor hover:text-black dark:hover:text-white disabled:text-gray-500 me-2">
-      {areFriends ? "Unfollow" : "Follow"}
+      {areFriends ? `${tSuggetion("unfollow")}` : `${tSuggetion("follow")}`}
     </button>
   );
 };
