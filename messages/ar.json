@@ -5,27 +5,27 @@
         "usernameInput": "الأسم ",
         "emailInput": "البريد الالكترونى",
         "passwordInput": "كلمة السر",
-        "passwordRepeatInput": " اعادة كلمة السر",
+        "passwordRepeatInput": " إعادة كلمة السر",
         "ageInput": "تاريخ الميلاد",
         "haveAccount": "لديك حساب ؟",
-        "createNewAccount": "انشاء حساب جديد",
+        "createNewAccount": "إنشاء حساب جديد",
         "googleSignIn": "تسجيل دخول  "
     },
     "authPlaceholders": {
-        "usernamePlaceholder": "اسم المستخدم",
-        "emailPlaceholder": " ادخل البريد الالكترونى ",
-        "passwordPlaceholder": " ادخل كلمة السر",
-        "passwordRepeatPlaceholder": " اعد ادخال كلمة السر"
+        "usernamePlaceholder": "إسم المستخدم",
+        "emailPlaceholder": " أدخل البريد الالكترونى ",
+        "passwordPlaceholder": " أدخل كلمة السر",
+        "passwordRepeatPlaceholder": " أعد إدخال كلمة السر"
     },
     "buttons": {
         "submit": "تأكيد",
-        "chooseDragImage": "اسحب و ادرج هنا او اضغط لتحديد صورة",
+        "chooseDragImage": "إسحب و إدرج هنا أو إضغط لتحديد صورة",
         "submitting": "جارى الارسال",
         "logout": "تسجيل خروج",
-        "sendEmail": "ارسل كود التفعيل",
-        "validateEmail": "تفعيل البريد الالكترونى",
+        "sendEmail": "إرسل كود التفعيل",
+        "validateEmail": "تفعيل البريد الإلكترونى",
         "skipStep": "تخطى التفعيل",
-        "code": "ادخل الكود"
+        "code": "أدخل الكود"
     },
     "validation": {
         "validationDescription": "للتحقق من حسابك، سنرسل رمزًا إلى صندوق الوارد الخاص بك. اضغط  \"تفعيل البريد الالكترونى\" ثم أدخل الرمز أدناه لإكمال التحقق. يمكنك تخطي هذه الخطوة، لكن يُنصح بها لمزيد من الأمان."
@@ -41,32 +41,56 @@
         "imagesButton": "صور"
     },
     "friendSuggetion": {
-        "follow": "متابعه",
-        "unfollow": "الغاء  متابعه",
-        "suggetionsHeader": "اشخاص قد تعرفهم ",
-        "suggetionEmpty": "لا مزيد من الاقتراحات",
+        "follow": "متابعة",
+        "unfollow": "إلغاء  متابعة",
+        "suggetionsHeader": "أشخاص قد تعرفهم ",
+        "suggetionEmpty": "لا مزيد من الإقتراحات",
         "suggetionFilterEmpty": "لا يوجد نتائج",
-        "inputPlaceholder": "ابحث عن اصدقاء "
+        "inputPlaceholder": "إبحث عن اصدقاء "
     },
     "singlePost": {
         "like": "اعجبنى",
-        "liked": "الغاء اعجبنى",
+        "liked": "إلغاء الاعجاب",
         "comments": "تعليقات",
         "hide": "اخفاء",
-        "newCommentPlaceholder": "اضـف تعليقك هنا ",
+        "newCommentPlaceholder": "أضـف تعليقك هنا ",
         "deleteComment": "مسح",
         "yes": "نعم",
         "no": "لا",
         "deletePost": "مسح المنشور",
-        "deletePostWarn": "اذا قمت بمسح المنشور لن تستطيع ارجاعه مره اخرى",
+        "deletePostWarn": "اذا قمت بمسح المنشور لن تستطيع إرجاعه مره أخرى",
         "deleteAgree": "تأكيد",
         "deleteDisagree": "رجوع",
         "deleteingPost": "جارى المسح ..."
     },
     "conversations": {
         "conversationHeader": "محادثات",
-        "startNewChat": "ابدأ محادثة جديدة  ",
-        "selectOneOreMore": "اختر صديق او اكثر ",
+        "startNewChat": "إبدأ محادثة جديدة  ",
+        "selectOneOreMore": "إختر صديق أو أكثر ",
         "startChat": "ابدأ المحادثة"
+    },
+    "alerts": {
+        "noNotifications": "لا يوجد إشعارات جديدة",
+        "noMessages": "لا يوجد رسائل جديدة "
+    },
+    "profile": {
+        "editBio": "تعديل",
+        "change": "تم",
+        "cancel": "إلغاء",
+        "about": "معلومات",
+        "posts": "منشورات",
+        "followers": "متابعون",
+        "following": "يتابع",
+        "sendMessage": "ارسال رساله",
+        "userName": "الاسم",
+        "email": "البريد الإلكترونى",
+        "age": "العمر",
+        "joinedAt": "قام بالتسجيل",
+        "gender": "الجنس",
+        "status": "الحاله الاجتماعية",
+        "verified": "الحساب مفعل",
+        "notVerified": "حساب غير مفعل",
+        "loading": "جارى التحميل",
+        "noPosts": "لا يوجد منشورات"
     }
 }

@@ -5,6 +5,8 @@ import Post from "../../Newsfeed/Posts/Post";
 import PostsContainer from "../../PostsContainer/PostsContainer";
 import { getCurrentUserPosts } from "./functions/getCurrentUserPosts";
 import LoadingNormalIndicator from "../../LoadingNormalIndicator/LoadingNormalIndicator";
+import { useTranslations } from "next-intl";
+import useLan from "@/lib/useLan";
 
 const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
   const [posts, setPosts] = useState<post[]>([]);
@@ -63,7 +65,8 @@ const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  const tProfile = useTranslations("profile");
+  const isAr = useLan();
   return (
     <>
       <PostsContainer>
@@ -75,7 +78,9 @@ const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
         <span className="w-fit mx-auto h-2">
           {loading && <LoadingNormalIndicator />}
           {!MoreExist && !loading && (
-            <p className="text-center">No posts anymore</p>
+            <p className={`${isAr ? "text-sm" : ""} text-center`}>
+              {tProfile("noPosts")}
+            </p>
           )}
         </span>
       </PostsContainer>

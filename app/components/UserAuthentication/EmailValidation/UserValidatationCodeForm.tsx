@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { verfiySentCode } from "../functions/verfiySentCode";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/navigation";
 import { useTranslations } from "next-intl";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { authActions } from "@/store/slices/authSlice/Slice";

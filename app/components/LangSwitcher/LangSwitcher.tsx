@@ -23,7 +23,10 @@ const LanguageSwitcher = () => {
       <button
         className="text-2xl flex  text-white "
         onClick={handleShowLangSwitcher}>
-        <FontAwesomeIcon icon={faGlobe} />
+        <FontAwesomeIcon
+          icon={faGlobe}
+          className="shadow-lg shadow-black/30 rounded-xl"
+        />
       </button>
       {showLangSwitcher && (
         <div className="bg-transparent  sm:flex gap-x-1 h-fit mt-3">

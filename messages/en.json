@@ -3,7 +3,7 @@
     "formHeaderSignUP": "SignUp",
     "formHeaderSignIn": "SignIn",
     "usernameInput": "User name",
-    "emailInput": "Email",
+    "emailInput": "E-mail",
     "passwordInput": "Password",
     "passwordRepeatInput": "Password Check",
     "ageInput": "birth date",
@@ -68,5 +68,29 @@
     "startNewChat": "Start New Chat",
     "selectOneOreMore": "Select one or more",
     "startChat": "Start Chat"
+  },
+  "alerts": {
+    "noNotifications": "No New Notifications",
+    "noMessages": "No New Messages"
+  },
+  "profile": {
+    "editBio": "Edit",
+    "change": "Change",
+    "cancel": "Cancel",
+    "about": "About",
+    "posts": "Posts",
+    "followers": "Followers",
+    "following": "Following",
+    "sendMessage": "Send message",
+    "userName": "User name",
+    "email": "E-mail",
+    "age": "Age",
+    "joinedAt": "Joined At",
+    "gender": "Gender",
+    "status": "Status",
+    "verfied": "Verified",
+    "notVerified": "Not Verified",
+    "loading": "Loading",
+    "noPosts": "No posts anymore"
   }
 }

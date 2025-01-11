@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getUserCommentData } from "./functions/getUserCommentData";
 import UserImage from "@/app/components/UserImage/UserImage";
-import Link from "next/link";
+import { Link } from "@/navigation";
 
 const CommentHeader: React.FC<{ userID: string }> = ({ userID }) => {
   const [userData, setUserData] = useState<{

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import TimePrint from "../../TimePrint/TimePrint";
 import UserImage from "../../UserImage/UserImage";
 import { useSession } from "next-auth/react";

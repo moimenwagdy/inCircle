@@ -1,7 +1,7 @@
 "use client";
 import ListBg from "./ListBg";
 import ListItem from "./ListItem";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import DarkLightMood from "../mood/DarkLightMood";
 import { signOut, useSession } from "next-auth/react";
 import LanguageSwitcher from "../LangSwitcher/LangSwitcher";

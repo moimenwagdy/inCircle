@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { sendEmail } from "../functions/sendEmail";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/navigation";
 import UserValidatationCodeForm from "./UserValidatationCodeForm";
 import { useTranslations } from "next-intl";
 import { useAppDispatch } from "@/store/reduxHooks";

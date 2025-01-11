@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import changeBio from "../functions/changeBio";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import useLan from "@/lib/useLan";
 const UserBio: React.FC<{ bio: string; userID: string }> = ({
   bio,
   userID,
@@ -24,6 +26,8 @@ const UserBio: React.FC<{ bio: string; userID: string }> = ({
   }, [formState?.success]);
 
   const isCurrentUser = session.data?.user._id === userID;
+  const tProfile = useTranslations("profile");
+  const isAr = useLan()
   return (
     <div className="dark:text-white flex justify-center items-center gap-x-2 mt-2">
       {!editBio && <p className="text-black dark:text-white">{bio}</p>}
@@ -46,13 +50,13 @@ const UserBio: React.FC<{ bio: string; userID: string }> = ({
             className="hidden"
           />
           <button type="submit" className="text-xs text-blueColor">
-            change
+            {tProfile("change")}
           </button>
           <button
             onClick={cancelEditBio}
             type="button"
             className="text-xs text-redColor">
-            cancel
+            {tProfile("cancel")}
           </button>
         </form>
       )}
@@ -62,7 +66,7 @@ const UserBio: React.FC<{ bio: string; userID: string }> = ({
             <button
               className="text-xs text-black/50 dark:text-white/50"
               onClick={handleBio}>
-              Edit
+              {tProfile("editBio")}
             </button>
           )}
         </>

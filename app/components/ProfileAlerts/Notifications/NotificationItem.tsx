@@ -3,7 +3,7 @@ import { notification } from "@/globalTypes/globalTypes";
 import React, { ReactNode, useState } from "react";
 import TimePrint from "../../TimePrint/TimePrint";
 import NotificationUserImage from "./NotificationUserImage";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
 import NotificationBG from "./NotificationBG";

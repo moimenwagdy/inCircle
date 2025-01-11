@@ -1,6 +1,8 @@
-import Link from "next/link";
+import { Link } from "@/navigation";
 import UserImage from "../../UserImage/UserImage";
 import LogoutButton from "../LogoutButton";
+import { useTranslations } from "next-intl";
+import useLan from "@/lib/useLan";
 
 const UserCard: React.FC<{
   avatar: string;
@@ -9,6 +11,8 @@ const UserCard: React.FC<{
   followers: number;
   userID: string;
 }> = ({ avatar, followers, username, userID }) => {
+  const tProfile = useTranslations("profile");
+  const isAr = useLan();
   return (
     <section className=" flex justify-start items-center h-full gap-x-1">
       <header className=" flex flex-col justify-center items-center ">
@@ -24,7 +28,7 @@ const UserCard: React.FC<{
         </Link>
         <Link
           href={`/user/${userID}/posts`}
-          className="text-white bg-redColor px-3 pt-2 pb-[2px] -mt-[10px] rounded-lg">
+          className="text-white bg-redColor shadow-md shadow-black/50 px-3 pt-2 pb-[2px] -mt-[10px] rounded-lg">
           <p className="text-sm font-descripFont font-bold capitalize  txt-center">
             {username}
           </p>
@@ -34,7 +38,12 @@ const UserCard: React.FC<{
         <Link
           href={`/user/${userID}/followers`}
           className="flex justify-start items-center gap-x-1 text-xs h-fit">
-          <p className="text-sm text-black dark:text-white">Followers</p>
+          <p
+            className={`${
+              isAr ? "text-sx" : "text-sm"
+            }  text-black dark:text-white`}>
+            {tProfile("followers")}
+          </p>
           <p className="text-sm text-redColor bg-offWhite px-1 font-bold rounded-full">
             {followers}
           </p>

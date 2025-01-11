@@ -1,11 +1,19 @@
-import React from "react";
+"use client";
+
+import useLan from "@/lib/useLan";
+import { useTranslations } from "next-intl";
 
 const LoadingNormalIndicator: React.FC<{ className?: string }> = ({
   className,
 }) => {
+  const tProfile = useTranslations("profile");
+  const isAr = useLan();
   return (
-    <p className={`${className ? className : ""} text-center tracking-widest`}>
-      Loading
+    <p
+      className={`${className ? className : ""} text-center  ${
+        isAr ? "text-xs" : "tracking-widest"
+      } `}>
+      {tProfile("loading")}
     </p>
   );
 };

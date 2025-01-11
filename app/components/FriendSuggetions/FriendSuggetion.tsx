@@ -1,7 +1,7 @@
 import { usersuggestion } from "@/globalTypes/globalTypes";
 import FollowFriendButton from "./FollowFriendButton";
 import UserImage from "../UserImage/UserImage";
-import Link from "next/link";
+import { Link } from "@/navigation";
 
 const FriendSuggetion: React.FC<{
   userSuggetion: usersuggestion;

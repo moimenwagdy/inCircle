@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { getUserFollowers } from "../UserFollowers/functions/getUserFollowers";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import useLan from "@/lib/useLan";
 
 const ProfileNavbarMessagingButton: React.FC<{ userID: string }> = ({
   userID,
@@ -34,14 +36,17 @@ const ProfileNavbarMessagingButton: React.FC<{ userID: string }> = ({
       }
     }
   }, [data, isSuccess, isPending]);
-
+  const tProfile = useTranslations("profile");
+  const isAR = useLan();
   return (
     <div className="group">
       <button
         disabled={!enableMessaing}
-        className={`absolute right-0 top-full sm:static px-2 text-white bg-redColor rounded-md mt-2 sm:mt-0 text-sm disabled:bg-black/30 `}
+        className={` ${
+          isAR ? "text-xs " : "text-sm"
+        } absolute right-0 top-full sm:static px-2 text-white bg-redColor rounded-md mt-2 sm:mt-0 disabled:bg-black/30`}
         onClick={handleOpenChat}>
-        Send message
+        {tProfile("sendMessage")}
       </button>
       <p
         className={` hidden absolute text-xs w-60  top-full mt-2 right-1/2 translate-x-[50%] sm:right-16 sm:mt-0 ${

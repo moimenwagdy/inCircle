@@ -3,12 +3,16 @@ import { notification } from "@/globalTypes/globalTypes";
 import ClearNotifsButton from "../Notifications/ClearNotifsButton";
 import MesagesNotificationItem from "./MesagesNotificationItem";
 import MessagingModal from "../../Messaging/MessagingModal/MessagingModal";
+import { useTranslations } from "next-intl";
+import useLan from "@/lib/useLan";
 
 const MesagesNotificationsList: React.FC<{
   notifications: notification[];
   ulID: string;
 }> = ({ notifications, ulID }) => {
   const isEmpty = notifications.length === 0;
+  const tAlerts = useTranslations("alerts");
+  const isAr = useLan();
   return (
     <>
       {!isEmpty && (
@@ -28,7 +32,9 @@ const MesagesNotificationsList: React.FC<{
       )}
       {notifications.length === 0 && (
         <div className="absolute min-w-96 left-0 bg-redColor rounded-md sm:left-1/2 -translate-x-[50%] mt-4 shadow-sm dark:shadow-white/5">
-          <p className="py-1 px-3 text-white"> No New Messages !</p>
+          <p dir={`${isAr ? "rtl" : "ltr"}`} className="py-1 px-3 text-white">
+            {tAlerts("noMessages")} !
+          </p>
         </div>
       )}
       <MessagingModal />

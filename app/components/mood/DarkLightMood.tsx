@@ -26,7 +26,7 @@ const DarkLightMood: React.FC<{ fixedWidth?: boolean }> = ({ fixedWidth }) => {
           className={`tex-xs ${!isDark ? "scale-110 font-bold" : ""}
           ${!fixedWidth && !isDark ? "scale-125" : ""}
           `}>
-          Light
+          <p>Light</p>
         </button>
         /
         <button
@@ -34,7 +34,7 @@ const DarkLightMood: React.FC<{ fixedWidth?: boolean }> = ({ fixedWidth }) => {
           className={`tex-xs ${isDark ? "scale-110 font-bold" : ""}
             ${!fixedWidth && isDark ? "scale-125" : ""}
           `}>
-          Dark
+          <p>Dark</p>
         </button>
       </div>
     </div>
