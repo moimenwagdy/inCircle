@@ -16,7 +16,6 @@ const SmallScreenList = () => {
   const listStatus = useAppSelector(
     (state) => state.NavListSlice.navListStatus
   );
-
   const dispatch = useAppDispatch();
   const handleListStatus = () => {
     dispatch(NavListSliceActions.closeList());
@@ -24,13 +23,11 @@ const SmallScreenList = () => {
   const handleLogout = () => {
     signOut();
   };
-
   useEffect(() => {
     if (!session.data) {
       setLoggedin(false);
     } else setLoggedin(true);
   }, [session.data]);
-
   return (
     <>
       {listStatus && (

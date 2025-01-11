@@ -6,6 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 
 const PostTextContentInput = () => {
   const userName = useUserName();
+  const firstLetter = userName.slice(0,1);
+  const fullUserName = `${firstLetter.toUpperCase()}${userName.slice(1)}`;
   const feeling = useAppSelector((state) => state.newPost.feeling);
   const dispatch = useAppDispatch();
   const handlePostState = () => {
@@ -37,10 +39,10 @@ const PostTextContentInput = () => {
           id="postContent"
           name="postContent"
           rows={3}
-          placeholder={` ${tForm("NewPostPlaceholder")} ${
-            userName && userName
-          } ?`}
-          className="placeholder:text-sm w-full resize-none p-3 border rounded-lg focus:outline-none dark:text-white focus:ring-1 focus:ring-blueColor focus:border-blueColor"
+          placeholder={`${userName && fullUserName}, ${tForm(
+            "NewPostPlaceholder"
+          )} `}
+          className="placeholder:text-sm placeholder:first-letter:capitalize w-full resize-none p-3 border rounded-lg focus:outline-none dark:text-white focus:ring-1 focus:ring-blueColor focus:border-blueColor"
         />
       </div>
     </div>
