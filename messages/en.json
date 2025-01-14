@@ -92,5 +92,12 @@
     "notVerified": "Not Verified",
     "loading": "Loading",
     "noPosts": "No posts anymore"
+  },
+  "smallScreenList": {
+    "findFriends": "Find Friends",
+    "conversationHistory": "Conversations history",
+    "startNewConversation": "Start new Conversation",
+    "logout": "Logout",
+    "authRedirect": "Visit authentication page"
   }
 }

@@ -37,7 +37,7 @@ const PostComment: React.FC<{
               <button
                 className="text-xs hover:text-redColor"
                 onClick={handleAllowDelete}>
-                {showDelete ? `${tPost("deleteComment")} ?` : `${tPost("deleteComment")} ?`}
+                {showDelete ? `${tPost("deleteComment")} ?` : `${tPost("deleteComment")} `}
               </button>
             )}
             {

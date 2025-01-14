@@ -10,7 +10,7 @@ const UserAbout: React.FC<{ userID: string }> = async ({ userID }) => {
     month: "short",
     day: "numeric",
   });
-  const age = data.age.toString();
+  const age = data?.age?.toString();
   const tProfile = await getTranslations("profile");
   const locale = await getLocale();
   const isAr = locale === "ar";

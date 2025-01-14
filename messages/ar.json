@@ -92,5 +92,12 @@
         "notVerified": "حساب غير مفعل",
         "loading": "جارى التحميل",
         "noPosts": "لا يوجد منشورات"
+    },
+    "smallScreenList": {
+        "findFriends": "بحث عن اصدقاء",
+        "conversationHistory": "محادثات سابقة",
+        "startNewConversation": "إبدأ محادثة جديدة",
+        "logout": "تسجيل خروج",
+        "authRedirect": "إذهب لتسجيل الدخول"
     }
 }

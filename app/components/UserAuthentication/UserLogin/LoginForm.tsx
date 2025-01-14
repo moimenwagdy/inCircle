@@ -8,6 +8,7 @@ import LoginSubmitButton from "./LoginSubmitButton";
 import { handleSignIn } from "../functions/login";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import useLan from "@/lib/useLan";
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -36,12 +37,17 @@ const LoginForm = () => {
   const tInputs = useTranslations("auth");
   const tPlaceholders = useTranslations("authPlaceholders");
   const t_inputs = useTranslations("auth");
+  const isAr = useLan();
   return (
     <FormContainer>
       <form
+        dir={isAr ? "rtl" : "ltr"}
         onSubmit={formHandler}
         className="flex flex-col w-1/2 mx-auto py-8 gap-y-4">
-        <label className="text-6xl md:text-7xl text-center font-bold font-headerFont mb-4 text-redColor ">
+        <label
+          className={`${
+            isAr ? "text-3xl md:text-5xl" : "text-6xl md:text-7xl"
+          }  text-center font-bold font-headerFont mb-4 text-redColor `}>
           {t_inputs("formHeaderSignIn")}
         </label>
         <LoginInput

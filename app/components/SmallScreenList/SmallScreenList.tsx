@@ -9,6 +9,7 @@ import ProfileHeader from "../UserProfile/ProfileHeader/ProfileHeader";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { NavListSliceActions } from "@/store/slices/NavListSlice/NavListSlice";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const SmallScreenList = () => {
   const [loggedIn, setLoggedin] = useState<boolean>(true);
@@ -28,6 +29,8 @@ const SmallScreenList = () => {
       setLoggedin(false);
     } else setLoggedin(true);
   }, [session.data]);
+
+  const tSmallScreenList = useTranslations("smallScreenList");
   return (
     <>
       {listStatus && (
@@ -39,7 +42,7 @@ const SmallScreenList = () => {
             </li>
             {!loggedIn && (
               <Link onClick={handleListStatus} href="/auth">
-                Visit authentication page
+                {tSmallScreenList("authRedirect")}
               </Link>
             )}
             {loggedIn && (
@@ -60,17 +63,17 @@ const SmallScreenList = () => {
                 </li>
                 <ListItem>
                   <Link onClick={handleListStatus} href="/friends">
-                    Find Friends
+                    {tSmallScreenList("findFriends")}
                   </Link>
                 </ListItem>
                 <ListItem>
                   <Link onClick={handleListStatus} href="/convHistory">
-                    Conversations history
+                    {tSmallScreenList("conversationHistory")}
                   </Link>
                 </ListItem>
                 <ListItem>
                   <Link onClick={handleListStatus} href="/newChat">
-                    Start new Conversation
+                    {tSmallScreenList("startNewConversation")}
                   </Link>
                 </ListItem>
               </>
@@ -83,7 +86,9 @@ const SmallScreenList = () => {
             </li>
             {loggedIn && (
               <ListItem>
-                <button onClick={handleLogout}> Logout</button>
+                <button onClick={handleLogout}>
+                  {tSmallScreenList("logout")}
+                </button>
               </ListItem>
             )}
           </ul>
