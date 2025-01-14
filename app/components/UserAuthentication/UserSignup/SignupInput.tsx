@@ -1,3 +1,4 @@
+import { afacad } from "@/lib/fonts/basicFont";
 import React from "react";
 
 const SignupInput: React.FC<{
@@ -23,7 +24,7 @@ const SignupInput: React.FC<{
   return (
     <div className="w-full flex flex-col justify-between">
       <div className="w-full flex justify-between gap-x-3">
-        <label className="font-basicFont" htmlFor={id}>
+        <label className={`${afacad.className}`} htmlFor={id}>
           {text}
         </label>
         <input

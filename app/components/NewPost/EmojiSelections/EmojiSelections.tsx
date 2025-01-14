@@ -1,4 +1,5 @@
 "use client";
+import { afacad } from "@/lib/fonts/basicFont";
 import { Emojis } from "./EmojiCodes";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
@@ -44,7 +45,7 @@ const EmojiSelections = () => {
       )}
       <p>
         <button
-          className="bg-redColor px-1 font-basicFont"
+          className={`${afacad.className} bg-redColor px-1`}
           type="button"
           onClick={handleOpenEmojis}
           dangerouslySetInnerHTML={{

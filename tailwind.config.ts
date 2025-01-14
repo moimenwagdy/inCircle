@@ -24,7 +24,6 @@ const config: Config = {
       fontFamily: {
         headerFont: "Young Serif, serif",
         descripFont: "Mali, cursive",
-        basicFont: "Afacad Flux, sans-serif",
         heavyFont: "Alfa Slab One, serif",
         arBasic: "Almarai, sans-serif",
         arFreehand: "Marhey, sans-serif",
@@ -39,4 +38,3 @@ const config: Config = {
   plugins: [require("tailwind-scrollbar")],
 };
 export default config;
-("FFF9E8");

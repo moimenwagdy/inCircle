@@ -13,12 +13,14 @@ import QueryClientProivderComponent from "../QueryClient/QueryClient";
 import DocumentBG from "../components/DocumentBG/DocumentBG";
 import MessagingModal from "../components/Messaging/MessagingModal/MessagingModal";
 import SmallScreenList from "../components/SmallScreenList/SmallScreenList";
+import { afacad } from "@/lib/fonts/basicFont";
 
 export const metadata: Metadata = {
   title: "inCircle",
   description:
     "an online club where family and friends connect, chat, and share moments together.",
 };
+
 export default async function RootLayout({
   children,
   params,
@@ -28,13 +30,13 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   const locale = params.locale;
-
   return (
     <SessionWrapper>
       <StoreProvider>
         <NextIntlClientProvider messages={messages}>
           <html lang={locale} suppressHydrationWarning>
-            <body className="bg-offWhite dark:bg-black font-basicFont relative overflow-x-hidden">
+            <body
+              className={`bg-offWhite dark:bg-black ${afacad.className}  relative overflow-x-hidden`}>
               <DocumentBG />
               <ThemeProvider
                 attribute="class"

@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import TimePrint from "@/app/components/TimePrint/TimePrint";
 import { useTranslations } from "next-intl";
-
 const PostComment: React.FC<{
   comment: comment;
   onClick: (commentID: string) => void;
@@ -37,7 +36,9 @@ const PostComment: React.FC<{
               <button
                 className="text-xs hover:text-redColor"
                 onClick={handleAllowDelete}>
-                {showDelete ? `${tPost("deleteComment")} ?` : `${tPost("deleteComment")} `}
+                {showDelete
+                  ? `${tPost("deleteComment")} ?`
+                  : `${tPost("deleteComment")} `}
               </button>
             )}
             {

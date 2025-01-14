@@ -1,4 +1,5 @@
 "use client";
+import { afacad } from "@/lib/fonts/basicFont";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 import React, { ReactNode } from "react";
@@ -27,7 +28,7 @@ const Button: React.FC<{
       } 
       ${color === "blue" && "bg-blueColor"} 
       ${color === "black" && "bg-black dark:bg-offWhite dark:text-black "}
-      text-lg font-basicFont text-white self-center 
+      text-lg ${afacad.className} text-white self-center 
        ${margin ? "mt-10 md:mt-0" : ""}
       `}>
       {children}
