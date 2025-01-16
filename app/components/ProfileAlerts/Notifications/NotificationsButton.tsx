@@ -5,6 +5,7 @@ import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileA
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NotifFlag from "./NotifFlag";
+import { motion } from "framer-motion";
 
 const NotificationsButton: React.FC<{ notifLength: number; ulID: string }> = ({
   ulID,
@@ -43,16 +44,18 @@ const NotificationsButton: React.FC<{ notifLength: number; ulID: string }> = ({
   }, [showNotifs, dispatch]);
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 500 }}
       ref={buttonRef}
       onClick={handleShowNotifs}
       type="button"
-      className="relative bg-blueColor flex justify-center items-center text-start px-5 py-2 gap-x-[1px] rounded-md shadow-md shadow-black/20 hover:scale-95">
+      className="relative bg-blueColor flex justify-center items-center text-start px-5 py-2 gap-x-[1px] rounded-md shadow-md shadow-black/20">
       <FontAwesomeIcon icon={faBell} className="text-white text-xl" />
       {Notifications && (
         <NotifFlag notifLength={notifLength} key={notifLength} />
       )}
-    </button>
+    </motion.button>
   );
 };
 

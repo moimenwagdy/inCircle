@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import PostComment from "./PostComment";
 import { PostCommentForm } from "./PostCommentForm";
 import { useComments } from "./customHook/useComments";
@@ -22,18 +21,19 @@ const PostComments: React.FC<{ postId: string }> = ({ postId }) => {
       <>
         {!isEmpty && (
           <ul className="space-y-1 mt-2">
-            {comments &&
-              comments?.map((comment) => {
-                return (
-                  <li key={comment._id}>
-                    <PostComment
-                      comment={comment}
-                      key={comment._id}
-                      onClick={handleDeleteComment}
-                    />
-                  </li>
-                );
-              })}
+            {comments?.map((comment) => {
+              return (
+                <li
+               
+                  key={comment._id}>
+                  <PostComment
+                    comment={comment}
+                    key={comment._id}
+                    onClick={handleDeleteComment}
+                  />
+                </li>
+              );
+            })}
           </ul>
         )}
         {isEmpty && !loading && (

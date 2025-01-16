@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 
 const MessagesButton: React.FC<{ notifLength: number; ulID: string }> = ({
@@ -43,7 +44,9 @@ const MessagesButton: React.FC<{ notifLength: number; ulID: string }> = ({
 
   return (
     <>
-      <button
+      <motion.button
+        whileHover={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 500 }}
         name="messagesButton"
         ref={buttonRef}
         onClick={handleShowNotifs}
@@ -55,7 +58,7 @@ const MessagesButton: React.FC<{ notifLength: number; ulID: string }> = ({
             {notifLength}
           </p>
         )}
-      </button>
+      </motion.button>
     </>
   );
 };

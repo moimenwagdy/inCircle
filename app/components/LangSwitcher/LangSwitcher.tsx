@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence, motion } from "framer-motion";
 
 const LanguageSwitcher = () => {
   const [showLangSwitcher, setShowLangSwitcher] = useState<boolean>(false);
@@ -29,20 +30,26 @@ const LanguageSwitcher = () => {
           className="shadow-lg shadow-black/30 rounded-xl"
         />
       </button>
-      {showLangSwitcher && (
-        <div className="bg-transparent  sm:flex gap-x-1 h-fit mt-3">
-          <button
-            onClick={() => switchLanguage("en")}
-            className="px-1 bg-blue-500 text-white rounded text-sm">
-            English
-          </button>
-          <button
-            onClick={() => switchLanguage("ar")}
-            className="px-1 bg-green-500 text-white rounded text-sm">
-            العربية
-          </button>
-        </div>
-      )}
+      <AnimatePresence>
+        {showLangSwitcher && (
+          <motion.div
+            initial={{ opacity: 0, translateX: -20 }}
+            animate={{ opacity: 1, translateX: 0 }}
+            exit={{ opacity: 0, translateX: -10 }}
+            className="bg-transparent  sm:flex gap-x-1 h-fit mt-3">
+            <button
+              onClick={() => switchLanguage("en")}
+              className="px-1 bg-blue-500 text-white rounded text-sm">
+              English
+            </button>
+            <button
+              onClick={() => switchLanguage("ar")}
+              className="px-1 bg-green-500 text-white rounded text-sm">
+              العربية
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

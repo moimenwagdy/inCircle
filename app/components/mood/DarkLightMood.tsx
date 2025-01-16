@@ -23,18 +23,20 @@ const DarkLightMood: React.FC<{ fixedWidth?: boolean }> = ({ fixedWidth }) => {
       <div className=" cursor-pointer flex gap-x-1" onClick={moodToggler}>
         <button
           disabled={!isDark}
-          className={`tex-xs ${!isDark ? "scale-110 font-bold" : ""}
+          className={`transition-all duration-300 text-xs ${
+            !isDark ? "scale-110 font-bold " : ""
+          }
           ${!fixedWidth && !isDark ? "scale-125" : ""}
           `}>
-          <p>Light</p>
+          Light
         </button>
-        /
+        <p className="text-xs">/</p>
         <button
           disabled={isDark}
-          className={`tex-xs ${isDark ? "scale-110 font-bold" : ""}
+          className={`text-xs ${isDark ? "scale-110 font-bold" : ""}
             ${!fixedWidth && isDark ? "scale-125" : ""}
           `}>
-          <p>Dark</p>
+          Dark
         </button>
       </div>
     </div>
