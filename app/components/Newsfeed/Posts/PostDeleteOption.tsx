@@ -4,6 +4,7 @@ import { deletePost } from "./functions/DeletePost";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { useLocale, useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 const PostDeleteOption: React.FC<{ postId: string }> = ({ postId }) => {
   const [openList, setOpenList] = useState<boolean>(false);
   const [loading, setIsLoading] = useState<boolean>(false);
@@ -32,12 +33,13 @@ const PostDeleteOption: React.FC<{ postId: string }> = ({ postId }) => {
   const isAr = locale === "ar";
   return (
     <>
-      <button
+      <motion.button
+        whileHover={{ rotate: 30 }}
         type="button"
         onClick={handleListState}
         className="text-lg -mt-10 text-blueColor cursor-pointer">
         <FontAwesomeIcon icon={faGear} />
-      </button>
+      </motion.button>
       {openList && (
         <ul
           className={`${

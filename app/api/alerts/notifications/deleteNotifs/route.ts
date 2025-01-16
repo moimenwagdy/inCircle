@@ -2,7 +2,6 @@ import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 
 const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
-
 export async function POST(req: Request) {
   try {
     const { notifID } = await req.json();
@@ -22,4 +21,3 @@ export async function POST(req: Request) {
     );
   }
 }
-

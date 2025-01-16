@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NotifFlag from "./NotifFlag";
 
 const NotificationsButton: React.FC<{ notifLength: number; ulID: string }> = ({
   ulID,
@@ -49,9 +50,7 @@ const NotificationsButton: React.FC<{ notifLength: number; ulID: string }> = ({
       className="relative bg-blueColor flex justify-center items-center text-start px-5 py-2 gap-x-[1px] rounded-md shadow-md shadow-black/20 hover:scale-95">
       <FontAwesomeIcon icon={faBell} className="text-white text-xl" />
       {Notifications && (
-        <p className="text-white font-bold bg-redExtra absolute -top-1 right-0 rounded-md w-5 h-5 text-sm text-center">
-          {notifLength}
-        </p>
+        <NotifFlag notifLength={notifLength} key={notifLength} />
       )}
     </button>
   );

@@ -3,6 +3,7 @@ import { afacad } from "@/lib/fonts/basicFont";
 import { Emojis } from "./EmojiCodes";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
+import { AnimatePresence, motion } from "framer-motion";
 
 const EmojiSelections = () => {
   const emojiISOpened = useAppSelector((state) => state.newPost.emojisIsOpened);
@@ -29,20 +30,26 @@ const EmojiSelections = () => {
   };
   return (
     <section className=" space-y-2">
-      {emojiISOpened && (
-        <ul className="flex bg-offWhite dark:bg-black w-40 flex-wrap h-24 overflow-y-scroll scrollbar-thumb-redColor scrollbar-thin scrollbar-track-transparent">
-          {Emojis.map((emo, i) => {
-            return (
-              <li key={i} id={i.toFixed(1)}>
-                <p
-                  className="cursor-pointer"
-                  onClick={() => handleSelectedEmoji(emo.shape)}
-                  dangerouslySetInnerHTML={{ __html: emo.code }}></p>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <AnimatePresence>
+        {emojiISOpened && (
+          <motion.ul
+            initial={{ translateY: -20, opacity: 0 }}
+            animate={{ translateY: 0, opacity: 1 }}
+            exit={{ translateY: -5, opacity: 0 }}
+            className="flex bg-offWhite dark:bg-black w-40 flex-wrap h-24 overflow-y-scroll scrollbar-thumb-redColor scrollbar-thin scrollbar-track-transparent">
+            {Emojis.map((emo, i) => {
+              return (
+                <li key={i} id={i.toFixed(1)}>
+                  <p
+                    className="cursor-pointer"
+                    onClick={() => handleSelectedEmoji(emo.shape)}
+                    dangerouslySetInnerHTML={{ __html: emo.code }}></p>
+                </li>
+              );
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
       <p>
         <button
           className={`${afacad.className} bg-redColor px-1`}

@@ -1,11 +1,11 @@
 "use client";
 import PostCommentsContainer from "./PostComments/PostCommentsContainer";
-import PostLikeButton from "./PostLikeButton";
+import PostLike from "./Like/PostLike";
 
 const PostInteractButtons: React.FC<{ postId: string }> = ({ postId }) => {
   return (
     <section className="">
-      <PostLikeButton postId={postId} />
+      <PostLike postId={postId} />
       <PostCommentsContainer postId={postId} />
     </section>
   );

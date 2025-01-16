@@ -30,6 +30,7 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   const locale = params.locale;
+
   return (
     <SessionWrapper>
       <StoreProvider>
@@ -46,7 +47,6 @@ export default async function RootLayout({
                   <Navbar />
                   <ProfileAlerts />
                   <SmallScreenList />
-                  <MessagingModal />
                   {children}
                 </QueryClientProivderComponent>
               </ThemeProvider>

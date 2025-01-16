@@ -19,6 +19,7 @@ const clearNotifications = async (userID: string) => {
   if (!response.ok) {
     return result;
   }
+  revalidatePath("/api/alerts/");
   return result.notifications;
 };
 

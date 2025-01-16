@@ -29,11 +29,11 @@ const PostImageSlider: React.FC<{ imgURLs: string[] }> = ({ imgURLs }) => {
         <div className="w-full flex-shrink-0 -z-10">
           <div className="relative w-full h-[360px]">
             <Image
-              priority
               src={imgURLs[imageIndex]}
               alt="PostImg"
               fill
               className="object-contain"
+              loading="lazy"
             />
           </div>
         </div>

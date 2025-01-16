@@ -15,7 +15,6 @@ export const useLikeFeature = (postId: string) => {
   const fetchLikes = async (id: string) => {
     const likesArray = await getLikes(id);
     setLikes(likesArray);
-    return likesArray;
   };
 
   const handleInteraction = async () => {
@@ -26,11 +25,14 @@ export const useLikeFeature = (postId: string) => {
     if (result.removed) {
       setLikeAdded(false);
     }
-    const result2 = await fetchLikes(postId);
+    await fetchLikes(postId);
   };
 
   useEffect(() => {
-    fetchLikes(postId);
+    const getInitial = async () => {
+      await fetchLikes(postId);
+    };
+    getInitial();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -56,5 +58,12 @@ export const useLikeFeature = (postId: string) => {
 
   const LikesIsNOtEmpty = userNames.length > 0;
 
-  return { LikesIsNOtEmpty, likeAdded, likes, userNames,handleInteraction,currentUserLike };
+  return {
+    LikesIsNOtEmpty,
+    likeAdded,
+    likes,
+    userNames,
+    handleInteraction,
+    currentUserLike,
+  };
 };

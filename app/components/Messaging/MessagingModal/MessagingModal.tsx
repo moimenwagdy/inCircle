@@ -5,6 +5,8 @@ import React, { useEffect, useRef } from "react";
 import ConversationUsersData from "../Conversations/ConversationUsersData";
 import ChatContentMessages from "../Messages/Chat/ChatContentMessages";
 import NewMessageForm from "../Messages/NewMesageForm/NewMessageForm";
+import { AnimatePresence, motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 const MessagingModal: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
@@ -22,19 +24,21 @@ const MessagingModal: React.FC<{}> = () => {
 
   useEffect(() => {
     chatState && modalRef.current?.showModal();
+    !chatState && modalRef.current?.close();
   }, [chatState]);
 
   const handleCloseModal = () => {
-    modalRef.current?.close();
-    dispatch(MessagingSliceActions.closeChat());
     dispatch(MessagingSliceActions.setRecipientIDs([]));
     dispatch(MessagingSliceActions.setConversationId(""));
     dispatch(MessagingSliceActions.setParticipantsData([]));
     dispatch(MessagingSliceActions.closeProfileChat());
+    dispatch(MessagingSliceActions.closeChat());
   };
-
   return (
-    <dialog
+    <motion.dialog
+      key={nanoid(3)}
+      initial={{ scale: 0.5, opacity: 0, translateY: 150 }}
+      animate={{ scale: 1, opacity: 1, translateY: 0 }}
       onCancel={handleCloseModal}
       ref={modalRef}
       className="backdrop:bg-black/20 backdrop:backdrop-blur-sm w-full md:w-3/4 lg:w-1/2 bg-white dark:bg-black ring-2 ring-blueColor/50 ring-offset-transparent px-3 py-2 rounded-md shadow-lg">
@@ -60,7 +64,7 @@ const MessagingModal: React.FC<{}> = () => {
           Close
         </button>
       </div>
-    </dialog>
+    </motion.dialog>
   );
 };
 export default MessagingModal;

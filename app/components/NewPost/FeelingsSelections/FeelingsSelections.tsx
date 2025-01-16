@@ -2,6 +2,7 @@
 import { feelings } from "./FellingsTags";
 import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { newPostActions } from "@/store/slices/newPostSlice/slice";
+import { AnimatePresence, motion } from "framer-motion";
 
 const FeelingsSelections = () => {
   const feelingIsOpened = useAppSelector(
@@ -24,9 +25,13 @@ const FeelingsSelections = () => {
   };
   return (
     <section className="space-y-2">
-      {feelingIsOpened && (
-        <>
-          <ul className="w-24 max-h-32 overflow-y-scroll bg-offWhite dark:bg-black dark:text-white scrollbar-thin scrollbar-thumb-blueColor scrollbar-track-transparent">
+      <AnimatePresence>
+        {feelingIsOpened && (
+          <motion.ul
+            initial={{ translateY: -20, opacity: 0 }}
+            animate={{ translateY: 0, opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="w-24 max-h-32 overflow-y-scroll bg-offWhite dark:bg-black dark:text-white scrollbar-thin scrollbar-thumb-blueColor scrollbar-track-transparent">
             {feelings.map((feel, i) => {
               return (
                 <li key={i}>
@@ -39,9 +44,9 @@ const FeelingsSelections = () => {
                 </li>
               );
             })}
-          </ul>
-        </>
-      )}
+          </motion.ul>
+        )}
+      </AnimatePresence>
       <div className="space-x-1">
         <button
           className="bg-blueColor px-2  text-white -z-20 "

@@ -1,6 +1,6 @@
 "use client";
 import { notification } from "@/globalTypes/globalTypes";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import TimePrint from "../../TimePrint/TimePrint";
 import NotificationUserImage from "./NotificationUserImage";
 import { Link } from "@/navigation";

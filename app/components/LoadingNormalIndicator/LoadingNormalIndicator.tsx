@@ -10,7 +10,7 @@ const LoadingNormalIndicator: React.FC<{ className?: string }> = ({
   const isAr = useLan();
   return (
     <p
-      className={`${className ? className : ""} text-center  ${
+      className={`${className ? className : ""} dark:text-white text-center  ${
         isAr ? "text-xs" : "tracking-widest"
       } `}>
       {tProfile("loading")}

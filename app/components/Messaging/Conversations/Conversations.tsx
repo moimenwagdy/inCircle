@@ -18,7 +18,8 @@ const Conversations: React.FC<{ UnlimitedHight?: boolean }> = async ({
       <ul
         className={`w-full space-y-3 px-2 py-2  ${
           !UnlimitedHight ? "max-h-72" : "max-h-screen"
-        } overflow-y-auto overflow-x-hidden scrollbar-thin`}>
+        } overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-redColor
+        `}>
         {result.success &&
           result?.conversations?.map((conversation) => {
             return (

@@ -1,18 +1,20 @@
 "use client";
-import { useAppDispatch } from "@/store/reduxHooks";
+import { useAppDispatch, useAppSelector } from "@/store/reduxHooks";
 import { MessagingSliceActions } from "@/store/slices/MessagingSlice/MessagingSlice";
 import { useSession } from "next-auth/react";
 import getConversationsUsersData from "./functions/getConversationsUsersData";
 import { useEffect, useState } from "react";
 import checkConversationExist from "./functions/checkConversationExist";
 import { nanoid } from "nanoid";
+import MessagingModal from "../MessagingModal/MessagingModal";
+import { AnimatePresence } from "framer-motion";
 const StartNewConversation: React.FC<{
   participantsIDs: string[];
 }> = ({ participantsIDs }) => {
   const [conversationID, setConversationID] = useState<string>();
   const dispatch = useAppDispatch();
   const session = useSession();
-
+  const chatState = useAppSelector((state) => state.MessagingSlice.chatState);
   useEffect(() => {
     const conversationExist = async () => {
       const result = await checkConversationExist(participantsIDs);
@@ -26,7 +28,6 @@ const StartNewConversation: React.FC<{
     };
     participantsIDs && conversationExist();
   }, [participantsIDs]);
-
   useEffect(() => {
     const handleStartNewConversation = async () => {
       if (conversationID) {
@@ -38,10 +39,11 @@ const StartNewConversation: React.FC<{
         dispatch(MessagingSliceActions.setRecipientIDs(participantsIDs));
         dispatch(MessagingSliceActions.setParticipantsData(usersData));
         dispatch(MessagingSliceActions.openChat());
+        setConversationID("");
       }
     };
     handleStartNewConversation();
   }, [conversationID]);
-  return <></>;
+  return <MessagingModal />;
 };
 export default StartNewConversation;

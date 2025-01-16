@@ -44,6 +44,7 @@ const MessagesButton: React.FC<{ notifLength: number; ulID: string }> = ({
   return (
     <>
       <button
+        name="messagesButton"
         ref={buttonRef}
         onClick={handleShowNotifs}
         type="button"

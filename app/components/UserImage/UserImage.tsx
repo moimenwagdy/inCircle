@@ -16,17 +16,21 @@ const UserImage: React.FC<{
   if (profilePageImage) {
     userImgwidth = "max-w-40 max-h-40";
   }
+
   return (
     <>
       <Image
+        loading="lazy"
         src={src!}
         alt={alt}
         width={1600}
         height={2000}
         className={`  ${userImgwidth}  rounded-full bg-blueColor`}
+        role="img"
       />
       {defaultImage && (
         <p
+          aria-label={`initial of ${userName}`}
           className={`capitalize absolute px-1 rounded-full font-bold left-[50%]  -translate-x-[50%] font-descripFont text-white ${
             profilePageImage ? "text-5xl" : "text-md"
           } top-[50%] -translate-y-[50%]`}>

@@ -33,7 +33,6 @@ const NewCoversationSuggetions = () => {
     }
   };
   const tConversation = useTranslations("conversations");
-
   return (
     <aside className="mt-10 w-full">
       {data?.success && (
@@ -52,7 +51,7 @@ const NewCoversationSuggetions = () => {
         className="w-full flex flex-col items-center">
         {isLoading && <SuggestionsLoading />}
         {isSuccess && (
-          <ul className="space-y-2 w-full max-h-60 overflow-y-auto py-1 px-1">
+          <ul className="space-y-2 w-full max-h-60 overflow-y-auto py-1 px-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-redColor">
             {data.success &&
               data.users.map((user: usersuggestion) => {
                 return (
@@ -73,7 +72,7 @@ const NewCoversationSuggetions = () => {
         )}
       </form>
       <>
-        <StartNewConversation participantsIDs={users!} key={users?.length} />
+        <StartNewConversation participantsIDs={users!}  />
       </>
     </aside>
   );

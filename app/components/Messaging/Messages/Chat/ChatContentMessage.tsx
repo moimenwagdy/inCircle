@@ -2,6 +2,7 @@
 import TimePrint from "@/app/components/TimePrint/TimePrint";
 import { message } from "@/globalTypes/globalTypes";
 import { useAppSelector } from "@/store/reduxHooks";
+import { motion } from "framer-motion";
 const ChatContentMessage: React.FC<{ message: message; isMe: boolean }> = ({
   message,
   isMe,
@@ -13,7 +14,10 @@ const ChatContentMessage: React.FC<{ message: message; isMe: boolean }> = ({
     return user._id === message.senderID;
   });
   return (
-    <li className={`max-w-[75%] w-fit ${isMe ? "self-start " : "self-end "}`}>
+    <motion.li
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={`max-w-[75%] w-fit ${isMe ? "self-start " : "self-end "}`}>
       <p className="text-xs px-1 capitalize dark:text-white">
         {user?.username}
       </p>
@@ -31,7 +35,7 @@ const ChatContentMessage: React.FC<{ message: message; isMe: boolean }> = ({
         } w-full px-2 -mt-[2px] text-black/50 dark:text-white/50 text-[2px]`}>
         <TimePrint createdAt={message.createdAt.toString()} />
       </div>
-    </li>
+    </motion.li>
   );
 };
 export default ChatContentMessage;
