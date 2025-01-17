@@ -38,7 +38,7 @@ const SmallScreenList = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0  bg-blueColor dark:bg-black  w-full z-50">
+          className="fixed inset-0  bg-blueColor dark:bg-black  w-full z-50 ">
           <ul className=" flex flex-col justify-center items-center gap-y-3 w-full mx-auto relative">
             <ListBg />
             <li className="w-full text-end px-10 pt-4 text-2xl font-sans dark:text-white">
@@ -82,9 +82,9 @@ const SmallScreenList = () => {
                 </ListItem>
               </>
             )}
-            <ListItem>
+            <li>
               <DarkLightMood />
-            </ListItem>
+            </li>
             <li className=" ms-32 h-16">
               <LanguageSwitcher />
             </li>

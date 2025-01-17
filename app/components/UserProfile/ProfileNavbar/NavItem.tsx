@@ -15,13 +15,13 @@ const NavItem: React.FC<{
       id="activePill"
       className={` relative ${className ? className : ""} 
       min-w-16  flex justify-center items-center rounded ${
-        active ? " text-white" : " dark:bg-black/50"
-      }   text-black dark:text-white  hover:bg-redColor/90 hover:text-white`}>
+        active ? " text-white" : " dark:bg-black/50 hover:text-black/70"
+      }   text-black dark:text-white  `}>
       <p className="z-10"> {children}</p>
       {active && (
         <motion.div
           layoutId="activePill"
-          className="absolute inset-0 bg-redColor rounded-md "
+          className="absolute inset-0 bg-blueColor rounded "
         />
       )}
     </Link>

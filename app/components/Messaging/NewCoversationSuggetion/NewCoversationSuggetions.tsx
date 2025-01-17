@@ -41,13 +41,13 @@ const NewCoversationSuggetions = () => {
           <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-redColor text-center font-bold">
+            className="text-redColor text-center font-bold text-sm">
             {tConversation("startNewChat")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-black/50 dark:text-white/50 text-sm text-center">
+            className="text-black/50 dark:text-white/50 text-xs text-center">
             {tConversation("selectOneOreMore")}
           </motion.p>
         </header>

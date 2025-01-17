@@ -1,7 +1,6 @@
 import { useRouter } from "@/navigation";
 import Image from "next/image";
 
-
 const Logo = () => {
   const router = useRouter();
   const handleNavigation = () => {

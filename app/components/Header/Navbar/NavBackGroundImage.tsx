@@ -4,7 +4,7 @@ import navBG from "@/public/backgrounds/navBG.png";
 const NavBackgroundImage = () => {
   return (
     <Image
-      className="absolute min-w-[100.8%] -left-1  opacity-50"
+      className="absolute min-w-[100.8%] -left-1  opacity-40"
       alt="bg"
       width={2000}
       height={2000}
