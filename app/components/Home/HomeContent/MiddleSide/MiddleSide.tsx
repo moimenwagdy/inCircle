@@ -1,9 +1,9 @@
+import PostForm from "@/app/components/NewPost/NewPostForm/PostForm";
+import PostImagesPreviewer from "@/app/components/NewPost/NewPostForm/PostImagesPreviewer";
+import MoreNewsFeed from "@/app/components/Newsfeed/MoreNewsFeed/MoreNewsFeed";
+import PostLoading from "@/app/components/Newsfeed/Posts/PostLoading";
+import Posts from "@/app/components/Newsfeed/Posts/Posts";
 import { Suspense } from "react";
-import PostForm from "../../NewPost/NewPostForm/PostForm";
-import PostImagesPreviewer from "../../NewPost/NewPostForm/PostImagesPreviewer";
-import Posts from "../../Newsfeed/Posts/Posts";
-import PostLoading from "../../Newsfeed/Posts/PostLoading";
-import MoreNewsFeed from "../../Newsfeed/MoreNewsFeed/MoreNewsFeed";
 
 const MiddleSide = () => {
   return (

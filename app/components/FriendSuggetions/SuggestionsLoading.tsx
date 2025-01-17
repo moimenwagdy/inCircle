@@ -1,8 +1,7 @@
-const SuggestionsLoading = () => {
-  const arr = [5, 10, 15, 20, 25, 30, 35, 40];
+const SuggestionsLoading: React.FC<{ arr: number[] }> = ({ arr }) => {
   return (
     <ul className="w-full dark:text-white flex flex-col gap-y-2 justify-center items-center">
-      {arr.map((ele) => {
+      {arr?.map((ele) => {
         return (
           <li
             key={ele}

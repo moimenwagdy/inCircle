@@ -10,15 +10,14 @@ const PostAdditionOptions = () => {
       <div className="self-start">
         <PostImageUploader />
       </div>
-      <div className="z-10 w-7">
+      <div className="z-20 w-7">
         <EmojiSelections />
       </div>
-      <div className="z-0 ">
+      <div className="z-10 ">
         <FeelingsSelections />
       </div>
       <PostSubmitButton />
     </div>
   );
 };
-
 export default PostAdditionOptions;

@@ -31,7 +31,7 @@ const FeelingsSelections = () => {
             initial={{ translateY: -20, opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="w-24 max-h-32 overflow-y-scroll bg-offWhite dark:bg-black dark:text-white scrollbar-thin scrollbar-thumb-blueColor scrollbar-track-transparent">
+            className="w-24 max-h-32 overflow-y-scroll bg-offWhite dark:bg-black dark:text-white scrollbar-thin scrollbar-thumb-blueColor scrollbar-track-transparent z-10">
             {feelings.map((feel, i) => {
               return (
                 <li key={i}>
@@ -54,7 +54,6 @@ const FeelingsSelections = () => {
           onClick={handleOpenFeeling}>
           {feelingIsOpened ? "close" : "feeling"}
         </button>
-
         {feelingIsOpened && (
           <button
             className="bg-black dark:bg-offWhite  px-1 text-white dark:text-black -z-20"

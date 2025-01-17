@@ -8,6 +8,7 @@ import { FormEvent, useRef, useState } from "react";
 import StartNewConversation from "../StartNewConversation/StartNewConversation";
 import SuggestionsLoading from "../../FriendSuggetions/SuggestionsLoading";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 const NewCoversationSuggetions = () => {
   const [users, setUsers] = useState<string[]>();
@@ -34,33 +35,47 @@ const NewCoversationSuggetions = () => {
   };
   const tConversation = useTranslations("conversations");
   return (
-    <aside className="mt-10 w-full">
+    <aside className=" w-full">
       {data?.success && (
         <header>
-          <h2 className="text-redColor text-center font-bold">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-redColor text-center font-bold">
             {tConversation("startNewChat")}
-          </h2>
-          <p className="text-black/50 dark:text-white/50 text-sm text-center">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-black/50 dark:text-white/50 text-sm text-center">
             {tConversation("selectOneOreMore")}
-          </p>
+          </motion.p>
         </header>
       )}
-      <form
+      <motion.form
+        variants={{ basic: { translateY: 1 }, move: { translateX: 0 } }}
+        initial="basic"
+        animate="move"
         ref={formRef}
         onSubmit={handleNewChat}
         className="w-full flex flex-col items-center">
-        {isLoading && <SuggestionsLoading />}
+        {isLoading && <SuggestionsLoading arr={[1, 2, 3, 4, 5]} />}
         {isSuccess && (
-          <ul className="space-y-2 w-full max-h-60 overflow-y-auto py-1 px-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-redColor">
+          <motion.ul
+            variants={{ move: { transition: { staggerChildren: 0.1 } } }}
+            className="space-y-2 w-full max-h-60 overflow-y-auto py-1 px-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-redColor">
             {data.success &&
               data.users.map((user: usersuggestion) => {
                 return (
-                  <li key={user._id}>
+                  <motion.li
+                    variants={{ move: { opacity: 1 } }}
+                    initial={{ opacity: 0 }}
+                    key={user._id}>
                     <NewCoversationSuggetion user={user} />
-                  </li>
+                  </motion.li>
                 );
               })}
-          </ul>
+          </motion.ul>
         )}
         {!data?.success && <p className="dark:text-white">{data?.error}</p>}
         {data?.success && (
@@ -70,9 +85,9 @@ const NewCoversationSuggetions = () => {
             {tConversation("startChat")}
           </button>
         )}
-      </form>
+      </motion.form>
       <>
-        <StartNewConversation participantsIDs={users!}  />
+        <StartNewConversation participantsIDs={users!} />
       </>
     </aside>
   );

@@ -1,5 +1,6 @@
 "use client";
 import { Link } from "@/navigation";
+import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
 
 const NavItem: React.FC<{
@@ -11,12 +12,18 @@ const NavItem: React.FC<{
   return (
     <Link
       href={href}
-      className={` ${className ? className : ""} 
-    ${active ? "active" : ""}
+      id="activePill"
+      className={` relative ${className ? className : ""} 
       min-w-16  flex justify-center items-center rounded ${
-        active ? "bg-blueColor text-white" : " bg-white/50 dark:bg-black/50"
-      }   text-black dark:text-white hover:bg-blueColor dark:hover:bg-blueColor hover:duration-200 text-sm hover:text-white`}>
-      {children}
+        active ? " text-white" : " dark:bg-black/50"
+      }   text-black dark:text-white  hover:bg-redColor/90 hover:text-white`}>
+      <p className="z-10"> {children}</p>
+      {active && (
+        <motion.div
+          layoutId="activePill"
+          className="absolute inset-0 bg-redColor rounded-md "
+        />
+      )}
     </Link>
   );
 };

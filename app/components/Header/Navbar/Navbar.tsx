@@ -32,9 +32,9 @@ const Navbar = () => {
       <NavBackgroundImage />
         <Logo />
       <ListButton />
-      <div className="dark:text-white gap-x-2 hidden sm:flex w-fit h-full z-50 ">
-        <div className="absolute min-h-full flex justify-center items-center left-40  z-50 gap-x-14 ">
-          <DarkLightMood fixedWidth={true} />
+      <div className="dark:text-white gap-x-2 hidden md:flex w-fit h-full z-50 ">
+        <div className="absolute min-h-full flex justify-center items-center left-40  z-50 gap-x-10 ">
+          <DarkLightMood />
           <LanguageSwitcher />
         </div>
         {session.data && (

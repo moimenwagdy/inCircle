@@ -1,7 +1,7 @@
 import React from "react";
-import RightSide from "./RightSide";
-import MiddleSide from "./MiddleSide";
-import LeftSide from "./LeftSide";
+import RightSide from "./RightSide/RightSide";
+import LeftSide from "./LeftSide/LeftSide";
+import MiddleSide from "./MiddleSide/MiddleSide";
 
 const HomeContent = async () => {
   return (
@@ -10,7 +10,6 @@ const HomeContent = async () => {
         <LeftSide />
         <MiddleSide />
         <RightSide />
-        {/* <MessagingModal /> */}
       </section>
     </main>
   );

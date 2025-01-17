@@ -46,7 +46,6 @@ const NewMessageForm: React.FC<{
         type="text"
         name="message"
         id="message"
-        autoFocus
         autoComplete="off"
       />
       <button

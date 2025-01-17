@@ -31,12 +31,14 @@ const ProfileNavbar: React.FC<{ userID: string }> = ({ userID }) => {
         {tProfile("posts")}
       </NavItem>
       <NavItem
+        className="px-2"
         key="followers"
         active={pathName.includes("followers")}
         href={`/user/${userID}/followers`}>
         {tProfile("followers")}
       </NavItem>
       <NavItem
+        className="px-2"
         key="following"
         active={pathName.includes("following")}
         href={`/user/${userID}/following`}>
