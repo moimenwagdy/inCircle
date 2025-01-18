@@ -14,7 +14,7 @@ const ProfileHeader: React.FC<{
       className={`flex flex-col justify-center items-center ${
         addMargin ? "mt-16" : ""
       }`}>
-      <div className="relative w-fit after:w-[200%] after:h-20 after:bg-redColor after:absolute after:-z-10 after:top-full after:-translate-y-1/2 after:left-1/2 after:-translate-x-1/2 after:shadow-xl rounded-full shadow-md shadow-black after:rounded-3xl">
+      <div className="relative w-fit rounded-full shadow-md shadow-black ">
         <UserImage
           profilePageImage
           src={imgURL}
@@ -22,7 +22,7 @@ const ProfileHeader: React.FC<{
           userName={userName}
         />
       </div>
-      <div className="text-white ">
+      <div className="text-white bg-redColor px-14 pt-9 pb-2 -mt-9 rounded-3xl shadow-black/20 shadow-md">
         <p className="text-3xl font-descripFont font-bold capitalize">
           {userName}
         </p>

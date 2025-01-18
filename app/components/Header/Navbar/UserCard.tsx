@@ -18,7 +18,7 @@ const UserCard: React.FC<{
       <header className=" flex flex-col justify-center items-center ">
         <Link
           href={`/user/${userID}/posts`}
-          className="relative w-fit rounded-full shadow-md shadow-black">
+          className="relative w-fit rounded-full shadow-md shadow-black/50">
           <UserImage
             src={avatar}
             alt={username}
@@ -29,7 +29,7 @@ const UserCard: React.FC<{
         <Link
           href={`/user/${userID}/posts`}
           className="text-white bg-redColor shadow-md shadow-black/50 px-3 pt-2 pb-[2px] -mt-[10px] rounded-lg">
-          <p className="text-sm font-descripFont font-bold capitalize  txt-center">
+          <p className=" text-sm font-descripFont font-bold capitalize  text-center">
             {username}
           </p>
         </Link>

@@ -5,6 +5,7 @@ import { useRouter } from "@/navigation";
 import { useAppDispatch } from "@/store/reduxHooks";
 import { authActions } from "@/store/slices/authSlice/Slice";
 import { useLocale, useTranslations } from "next-intl";
+import QuickAccess from "./QuickAccess";
 
 const Description = () => {
   const router = useRouter();
@@ -22,12 +23,12 @@ const Description = () => {
   const locale = useLocale();
   const ar = locale === "ar";
   return (
-    <>
+    <section>
       <div className="w-4/5 md:w-2/4 mx-auto">
         <p
           className={`${
             ar ? "font-arFreehand text-sm" : "text-normal text-sm "
-          }  dark:text-white/80`}>
+          }  dark:text-gray-100`}>
           {tHome("welcomeMessage")}
         </p>
       </div>
@@ -43,7 +44,8 @@ const Description = () => {
           </Button>
         </div>
       </div>
-    </>
+      <QuickAccess />
+    </section>
   );
 };
 

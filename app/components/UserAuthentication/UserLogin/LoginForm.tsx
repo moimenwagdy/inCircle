@@ -67,7 +67,6 @@ const LoginForm = () => {
         </div>
         <section className="space-y-3 mt-2">
           <LoginSubmitButton loading={loading} />
-          <GoogleSigninButton />
         </section>
       </form>
     </FormContainer>

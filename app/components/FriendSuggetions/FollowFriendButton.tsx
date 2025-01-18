@@ -46,6 +46,8 @@ const FollowFriendButton: React.FC<{
     }
   }, [following, userToFollowId]);
   const tSuggetion = useTranslations("friendSuggetion");
+
+  
   return (
     <button
       onClick={handleFollowUser}

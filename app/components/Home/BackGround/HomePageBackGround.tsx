@@ -1,16 +1,19 @@
 import Image from "next/image";
 import React from "react";
+import LandingBg from "@/public/backgrounds/LandingBg.webp";
 
 const HomePageBackGround = () => {
   return (
-    <Image
-      priority
-      width={2000}
-      height={1}
-      alt="noimage"
-      className="mx-auto absolute top-24 sm:top-10  left-[50%] -translate-x-[50%] opacity-30 scale-[1.6] sm:scale-125 -z-10 "
-      src="https://firebasestorage.googleapis.com/v0/b/incircle-f2a58.appspot.com/o/backgrounds%2Fcircular7.png?alt=media&token=a56e5b06-026a-40d8-9041-f2a11bbfa196"
-    />
+    <>
+      <Image
+        priority
+        width={1000}
+        height={1000}
+        alt="landingImg"
+        className=" -z-50 fixed top-44 sm:top-28  scale-[1.6] sm:scale-125 opacity-30 left-1/2 -translate-x-[50%]"
+        src={LandingBg}
+      />
+    </>
   );
 };
 export default HomePageBackGround;

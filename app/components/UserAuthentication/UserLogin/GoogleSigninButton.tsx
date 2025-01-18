@@ -7,11 +7,10 @@ const GoogleSigninButton = () => {
   const tAuth = useTranslations("auth");
 
   return (
-    <div className="w-72">
-      <Button
-        color="blue"
-        dir={-1}
-        onclick={() => {
+    <div className="">
+      <button
+        className="px-10 py-2 bg-blueColor"
+        onClick={() => {
           signIn("google");
         }}>
         {tAuth("googleSignIn")}
@@ -23,7 +22,7 @@ const GoogleSigninButton = () => {
           <span className=" text-[#0F9D58]">l</span>
           <span className="text-[#DB4437]">e</span>
         </span>
-      </Button>
+      </button>
     </div>
   );
 };

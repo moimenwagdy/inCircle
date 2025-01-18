@@ -1,11 +1,16 @@
+"use client";
 import { usersuggestion } from "@/globalTypes/globalTypes";
 import FollowFriendButton from "./FollowFriendButton";
 import UserImage from "../UserImage/UserImage";
 import { Link } from "@/navigation";
+import { useSession } from "next-auth/react";
 
 const FriendSuggetion: React.FC<{
   userSuggetion: usersuggestion;
 }> = ({ userSuggetion }) => {
+  const session = useSession();
+  const currentUserId = session.data?.user._id;
+  const isNotCurrentUser = currentUserId !== userSuggetion._id;
   return (
     <>
       <div className="flex justify-between items-center gap-x-2 w-full">
@@ -26,10 +31,12 @@ const FriendSuggetion: React.FC<{
             {userSuggetion.username}
           </Link>
         </div>
-        <FollowFriendButton
-          key={userSuggetion._id}
-          userToFollowId={userSuggetion._id}
-        />
+        {isNotCurrentUser && (
+          <FollowFriendButton
+            key={userSuggetion._id}
+            userToFollowId={userSuggetion._id}
+          />
+        )}
       </div>
     </>
   );
