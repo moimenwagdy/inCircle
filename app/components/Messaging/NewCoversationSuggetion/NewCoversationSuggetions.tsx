@@ -35,7 +35,7 @@ const NewCoversationSuggetions = () => {
   };
   const tConversation = useTranslations("conversations");
   return (
-    <aside className=" w-full">
+    <aside className=" w-full min-h-60">
       {data?.success && (
         <header>
           <motion.h2

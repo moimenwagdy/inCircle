@@ -35,7 +35,9 @@ const SignUpForm = () => {
       dir={ar ? "rtl" : "ltr"}
       action={formAction}
       ref={formRef}
-      className="w-fit mx-auto py-7 bg-offWhite/5 px-40">
+      className="w-fit mx-auto py-7   px-40 rounded-xl"
+      >
+      {/* // className="w-fit mx-auto py-7 bg-light bg-cover bg-blend-difference px-40 rounded-xl" */}
       <label className="text-6xl md:text-7xl text-center font-bold font-headerFont mb-10 text-redColor ">
         {t_inputs("formHeaderSignUP")}
       </label>
@@ -45,7 +47,7 @@ const SignUpForm = () => {
         </div>
         <ImageUploader url={url} />
       </section>
-      <div className=" max-w-12  mt-4">
+      <div className=" max-w-12 mt-4  md:mt-0">
         <SubmitButton />
       </div>
       {!formState?.success && formState?.message && <p>{formState?.message}</p>}

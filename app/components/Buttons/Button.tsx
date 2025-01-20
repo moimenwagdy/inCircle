@@ -29,7 +29,7 @@ const Button: React.FC<{
       ${color === "blue" && "bg-blueColor"} 
       ${color === "black" && "bg-black dark:bg-offWhite dark:text-black "}
       text-lg ${afacad.className} text-white self-center 
-       ${margin ? "mt-10 md:mt-0" : ""}
+       ${margin ? "mt-2 md:mt-0" : ""}
       `}>
       {children}
     </motion.button>

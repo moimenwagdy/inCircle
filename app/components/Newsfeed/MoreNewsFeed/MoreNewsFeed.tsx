@@ -16,18 +16,15 @@ const MoreNewsFeed = () => {
 
   const getPosts = async () => {
     setLoading(true);
-    const responsePosts: post[] = await getFollowingPosts(
-      session.data?.user._id!,
-      page,
-      3
-    );
+    const result: { success: boolean; posts: post[]; message?: string } =
+      await getFollowingPosts(session.data?.user._id!, page, 3);
     setLoading(false);
-    if (responsePosts) {
-      setPosts((prev) => [...prev, ...responsePosts]);
+    if (result.success) {
+      setPosts((prev) => [...prev, ...result.posts]);
       setAllowGetMorePosts(false);
       setPage((prev) => prev + 1);
     }
-    if (responsePosts.length === 0) {
+    if (result.success && result.posts.length === 0) {
       setAllowGetMorePosts(false);
       setMoreExist(false);
     }

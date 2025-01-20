@@ -1,4 +1,3 @@
-import React from "react";
 import HomePageBackGround from "../BackGround/HomePageBackGround";
 import Description from "../Description/Description";
 import MainHeaderAdress from "../MainHeaderAdress/MainHeaderAdress";

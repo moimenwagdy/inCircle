@@ -23,7 +23,7 @@ const Description = () => {
   const locale = useLocale();
   const ar = locale === "ar";
   return (
-    <section>
+    <section className="-mt-4 ">
       <div className="w-4/5 md:w-2/4 mx-auto">
         <p
           className={`${
@@ -32,7 +32,7 @@ const Description = () => {
           {tHome("welcomeMessage")}
         </p>
       </div>
-      <div className="flex w-full justify-center gap-x-3 mt-4">
+      <div className="flex w-full justify-center gap-x-3 mt-4 sm:mt-10">
         <div className="w-48 flex justify-end">
           <Button margin key="red" dir={1} color="red" onclick={toSignup}>
             {tAuth("formHeaderSignUP")}

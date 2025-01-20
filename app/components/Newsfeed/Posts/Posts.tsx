@@ -1,20 +1,23 @@
 import { post } from "@/globalTypes/globalTypes";
 import PostsContainer from "../../PostsContainer/PostsContainer";
-import Post from "./Post";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
 import { getFollowingPosts } from "./functions/getFollowingPosts";
-import { motion } from "framer-motion";
 import PostsList from "./PostsList";
 
 const Posts = async () => {
   const session = await getServerSession(authOptions);
-  const posts: post[] = await getFollowingPosts(session?.user._id!, 1, 3);
-
+  const result: { success: boolean; posts: post[]; message?: string } =
+    await getFollowingPosts(session?.user._id!, 1, 3);
   return (
     <>
       <PostsContainer>
-        <PostsList posts={posts} />
+        {!result.success && (
+          <p className="text-sm text-center mx-auto text-black dark:text-white w-4/5 ">
+            {result.message}
+          </p>
+        )}
+        {result.success && <PostsList posts={result.posts} />}
       </PostsContainer>
     </>
   );

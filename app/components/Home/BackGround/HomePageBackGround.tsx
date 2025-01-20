@@ -7,10 +7,10 @@ const HomePageBackGround = () => {
     <>
       <Image
         priority
-        width={1000}
-        height={1000}
+        width={3000}
+        height={3000}
         alt="landingImg"
-        className=" -z-50 fixed top-44 sm:top-28  scale-[1.6] sm:scale-125 opacity-30 left-1/2 -translate-x-[50%]"
+        className=" -z-50 fixed top-16 min-w-[160%] sm:min-w-[120%] md:min-w-[115%]  opacity-50  dark:opacity-30 left-1/2 -translate-x-[50%]"
         src={LandingBg}
       />
     </>

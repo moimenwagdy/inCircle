@@ -59,7 +59,7 @@ const FriendSuggetions = () => {
         placeholder={`${tSuggetions("inputPlaceholder")}`}
         defaultValue={""}
         onChange={handleQueryChange}
-        className={`${
+        className={`dark:text-white ${
           isAr ? "text-xs" : ""
         } w-[85%] px-2 py-1 mx-auto ring-1 ring-black/5 dark:ring-white/5 `}
       />

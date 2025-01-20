@@ -4,6 +4,7 @@ import React from "react";
 import getConversations from "./functions/getConversations";
 import { conversationItemResponse } from "@/globalTypes/globalTypes";
 import ConversationItem from "./ConversationItem";
+import LeftSideHeader from "../../Home/HomeContent/LeftSide/LeftSideHeader";
 
 const Conversations: React.FC<{ UnlimitedHight?: boolean }> = async ({
   UnlimitedHight,
@@ -13,8 +14,16 @@ const Conversations: React.FC<{ UnlimitedHight?: boolean }> = async ({
     success: boolean;
     conversations: conversationItemResponse[];
   } = await getConversations(session?.user._id!);
+  console.log("from Server ", result.conversations);
   return (
     <>
+      {result.success && result.conversations.length === 0 ? (
+        <p className="dark:text-white rounded px-2 py-2 ring-1 dark:ring-white ring-black">
+          No Conversations History Yet
+        </p>
+      ) : (
+        <LeftSideHeader />
+      )}
       <ul
         className={`w-full space-y-3 px-2 py-2  ${
           !UnlimitedHight ? "max-h-72" : "max-h-screen"

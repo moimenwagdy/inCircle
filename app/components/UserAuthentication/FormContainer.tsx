@@ -3,13 +3,13 @@ import { ReactNode } from "react";
 import authBackground from "@/public/backgrounds/initialBG.webp";
 const FormContainer: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <section className="relative  mt-10  flex justify-center items-center mx-auto overflow-hidden">
+    <section className="relative mt-10 bg-white/50 dark:bg-white/5 flex justify-center items-center mx-auto overflow-hidden">
       <Image
-        className="fixed right-0 md:inset-0 min-w-full min-h-full -z-20 opacity-50 dark:opacity-50 rotate-90 md:rotate-0 "
+        className="fixed md:inset-0 min-w-full -z-20 opacity-10 dark:opacity-50 rotate-90 md:rotate-0 "
         priority
-        width={1000}
-        height={1}
-        alt="dsd"
+        width={2000}
+        height={2000}
+        alt="authBG"
         src={authBackground}
       />
       {children}

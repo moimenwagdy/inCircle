@@ -1,5 +1,4 @@
 import { signIn } from "next-auth/react";
-import { revalidatePath } from "next/cache";
 
 export const handleSignIn = async (email: string, password: string) => {
   const response = await signIn("credentials", {

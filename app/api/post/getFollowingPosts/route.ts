@@ -31,6 +31,17 @@ export async function POST(req: Request) {
     const authorIds = [...user.following, userId];
     const skip = (page - 1) * limit;
 
+    if (user.following.length === 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "It looks like you haven’t connected with anyone yet. Start by inviting your family and friends to join you here, and watch your feed come to life with their moments and updates.",
+        },
+        { status: 200 }
+      );
+    }
+
     const postsWithUserData = await postsCollection
       .aggregate([
         { $match: { authorId: { $in: authorIds } } },
@@ -64,7 +75,10 @@ export async function POST(req: Request) {
       .toArray();
 
     await client.close();
-    return NextResponse.json(postsWithUserData);
+    return NextResponse.json(
+      { success: true, posts: postsWithUserData },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error fetching posts:", error);
     return NextResponse.json(

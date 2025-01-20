@@ -2,7 +2,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useTranslations } from "next-intl";
 import FormContainer from "../FormContainer";
-import GoogleSigninButton from "./GoogleSigninButton";
 import LoginInput from "./LoginInput";
 import LoginSubmitButton from "./LoginSubmitButton";
 import { handleSignIn } from "../functions/login";
@@ -43,7 +42,7 @@ const LoginForm = () => {
       <form
         dir={isAr ? "rtl" : "ltr"}
         onSubmit={formHandler}
-        className="flex flex-col w-1/2 mx-auto py-8 gap-y-4">
+        className="flex flex-col w-full mx-2 sm:w-2/4  sm:mx-auto py-8 gap-y-4  p-10 rounded-xl">
         <label
           className={`${
             isAr ? "text-3xl md:text-5xl" : "text-6xl md:text-7xl"
