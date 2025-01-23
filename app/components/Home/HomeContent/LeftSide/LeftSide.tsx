@@ -2,7 +2,7 @@
 
 import Conversations from "../../../Messaging/Conversations/Conversations";
 import NewCoversationSuggetions from "../../../Messaging/NewCoversationSuggetion/NewCoversationSuggetions";
-import LeftSideHeader from "./LeftSideHeader";
+import LeftSideHeader from "../../../Messaging/Conversations/ConversationsHeader";
 
 const LeftSide = () => {
   return (

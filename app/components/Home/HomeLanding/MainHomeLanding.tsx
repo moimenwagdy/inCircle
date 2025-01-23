@@ -4,7 +4,7 @@ import MainHeaderAdress from "../MainHeaderAdress/MainHeaderAdress";
 
 const MainHomeLanding = () => {
   return (
-    <main className="relative overflow-hidden z-0">
+    <main className=" relative overflow-hidden z-0">
       <HomePageBackGround />
       <section className=" text-center">
         <MainHeaderAdress />

@@ -77,7 +77,9 @@ const NewCoversationSuggetions = () => {
               })}
           </motion.ul>
         )}
-        {!data?.success && <p className="dark:text-white">{data?.error}</p>}
+        {!data?.success && (
+          <p className="dark:text-white text-xs lg:text-sm">{data?.error}</p>
+        )}
         {data?.success && (
           <button
             className="w-fit mx-auto mt-3 bg-black text-white dark:text-black dark:bg-offWhite px-3 py-1 font-descripFont text-sm"

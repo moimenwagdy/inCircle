@@ -7,6 +7,7 @@ import { getCurrentUserPosts } from "./functions/getCurrentUserPosts";
 import LoadingNormalIndicator from "../../LoadingNormalIndicator/LoadingNormalIndicator";
 import { useTranslations } from "next-intl";
 import useLan from "@/lib/useLan";
+import NoFollowMessage from "../NoFollowersMessage";
 
 const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
   const [posts, setPosts] = useState<post[]>([]);
@@ -78,9 +79,9 @@ const UserProfilePosts: React.FC<{ userID: string }> = ({ userID }) => {
         <span className="w-fit mx-auto h-2">
           {loading && <LoadingNormalIndicator />}
           {!MoreExist && !loading && (
-            <p className={`${isAr ? "text-sm" : ""} text-center`}>
-              {tProfile("noPosts")}
-            </p>
+            <div className={`${isAr ? "text-sm" : ""} text-center`}>
+              <NoFollowMessage message={tProfile("noPosts")} />
+            </div>
           )}
         </span>
       </PostsContainer>

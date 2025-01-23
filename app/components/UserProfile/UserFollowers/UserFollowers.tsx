@@ -1,6 +1,8 @@
 import { usersuggestion } from "@/globalTypes/globalTypes";
 import FriendSuggetion from "../../FriendSuggetions/FriendSuggetion";
 import { getUserFollowers } from "./functions/getUserFollowers";
+import { AnimatePresence } from "framer-motion";
+import NoFollowMessage from "../NoFollowersMessage";
 
 const UserFollowers: React.FC<{ userID: string }> = async ({ userID }) => {
   const result = await getUserFollowers(userID);
@@ -18,7 +20,11 @@ const UserFollowers: React.FC<{ userID: string }> = async ({ userID }) => {
             );
           })}
       </ul>
-      {!result.success && <p className="text-center">{result.message}</p>}
+      {!result.success && (
+        <AnimatePresence>
+          <NoFollowMessage message={result.message} />
+        </AnimatePresence>
+      )}
     </>
   );
 };

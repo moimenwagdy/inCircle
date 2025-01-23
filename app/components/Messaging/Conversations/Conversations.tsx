@@ -4,7 +4,7 @@ import React from "react";
 import getConversations from "./functions/getConversations";
 import { conversationItemResponse } from "@/globalTypes/globalTypes";
 import ConversationItem from "./ConversationItem";
-import LeftSideHeader from "../../Home/HomeContent/LeftSide/LeftSideHeader";
+import ConversationsHeader from "./ConversationsHeader";
 
 const Conversations: React.FC<{ UnlimitedHight?: boolean }> = async ({
   UnlimitedHight,
@@ -18,11 +18,11 @@ const Conversations: React.FC<{ UnlimitedHight?: boolean }> = async ({
   return (
     <>
       {result.success && result.conversations.length === 0 ? (
-        <p className="dark:text-white rounded px-2 py-2 ring-1 dark:ring-white ring-black">
-          No Conversations History Yet
+        <p className="dark:text-white rounded px-2 py-2 ring-1 dark:ring-white ring-black text-xs lg:text-sm">
+          No Conversations Yet
         </p>
       ) : (
-        <LeftSideHeader />
+        <ConversationsHeader />
       )}
       <ul
         className={`w-full space-y-3 px-2 py-2  ${

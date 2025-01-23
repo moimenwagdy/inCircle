@@ -31,12 +31,14 @@ export async function POST(req: Request) {
     const authorIds = [...user.following, userId];
     const skip = (page - 1) * limit;
 
-    if (user.following.length === 0) {
+    const userHasPosts = await postsCollection.findOne({ authorId: userId });
+
+    if (user.following.length === 0 && !userHasPosts) {
       return NextResponse.json(
         {
           success: false,
           message:
-            "It looks like you haven’t connected with anyone yet. Start by inviting your family and friends to join you here, and watch your feed come to life with their moments and updates.",
+            "It looks like you haven’t connected with anyone yet or shared any posts. Start by inviting your family and friends to join you here, and watch your feed come to life with their moments and updates.",
         },
         { status: 200 }
       );

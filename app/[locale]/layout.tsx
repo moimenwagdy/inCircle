@@ -11,7 +11,6 @@ import StoreProvider from "@/store/StoreProvider";
 import ProfileAlerts from "../components/ProfileAlerts/ProfileAlerts";
 import QueryClientProivderComponent from "../QueryClient/QueryClient";
 import DocumentBG from "../components/DocumentBG/DocumentBG";
-import MessagingModal from "../components/Messaging/MessagingModal/MessagingModal";
 import SmallScreenList from "../components/SmallScreenList/SmallScreenList";
 import { afacad } from "@/lib/fonts/basicFont";
 

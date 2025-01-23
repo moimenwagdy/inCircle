@@ -23,11 +23,15 @@ const Button: React.FC<{
         paddingRight: ar || dir === -1 ? "40px" : undefined,
       }}
       transition={{ type: "spring", stiffness: 90 }}
-      className={`  ${dir === -1 ? "pe-3 ps-10" : "ps-3 pe-10"}  py-2 ${
-        color === "red" && "bg-redColor"
-      } 
-      ${color === "blue" && "bg-blueColor"} 
-      ${color === "black" && "bg-black dark:bg-offWhite dark:text-black "}
+      className={`
+        ${dir === -1 && "pe-3 ps-10"} 
+        ${dir === 1 && "ps-3 pe-10"} 
+        ${color === "red" && "bg-redColor py-2"} 
+      ${color === "blue" && "bg-blueColor py-2"} 
+      ${
+        color === "black" &&
+        "bg-black dark:bg-offWhite dark:text-black text-sm px-6 py-1 me-3"
+      }
       text-lg ${afacad.className} text-white self-center 
        ${margin ? "mt-2 md:mt-0" : ""}
       `}>

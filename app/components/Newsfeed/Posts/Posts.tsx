@@ -12,12 +12,12 @@ const Posts = async () => {
   return (
     <>
       <PostsContainer>
-        {!result.success && (
+        {!result?.success && (
           <p className="text-sm text-center mx-auto text-black dark:text-white w-4/5 ">
-            {result.message}
+            {result?.message}
           </p>
         )}
-        {result.success && <PostsList posts={result.posts} />}
+        {result?.success && <PostsList posts={result.posts} />}
       </PostsContainer>
     </>
   );
