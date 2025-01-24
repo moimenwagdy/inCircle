@@ -14,7 +14,6 @@ const Conversations: React.FC<{ UnlimitedHight?: boolean }> = async ({
     success: boolean;
     conversations: conversationItemResponse[];
   } = await getConversations(session?.user._id!);
-  console.log("from Server ", result.conversations);
   return (
     <>
       {result.success && result.conversations.length === 0 ? (
