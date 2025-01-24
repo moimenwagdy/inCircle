@@ -13,6 +13,9 @@ export default function middleware(req: NextRequest) {
   if (url.startsWith("/api")) {
     return NextResponse.next();
   }
+  if (url === "/google7c2eaea9be90bf5d.html") {
+    return NextResponse.next();
+  }
 
   return intlMiddleware(req);
 }
