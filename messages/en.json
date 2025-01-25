@@ -32,7 +32,11 @@
   },
   "homePage": {
     "Name": "inCircle",
-    "welcomeMessage": "Each of us is a unique circle, sharing different parts of ourselves with others around us. Just like circles that overlap and create beautiful shared spaces, inCircle is where friends and family come together, connect, and share moments that matter. We deeply respect each person’s personal space the parts of their circle they choose to keep private. InCircle is all about building a community where everyone can feel connected, respected, and valued. Thank you for joining us, and welcome to inCircle!"
+    "welcomeMessage": "Each of us is a unique circle, sharing different parts of ourselves with others around us. Just like circles that overlap and create beautiful shared spaces, inCircle is where friends and family come together, connect, and share moments that matter. We deeply respect each person’s personal space the parts of their circle they choose to keep private. InCircle is all about building a community where everyone can feel connected, respected, and valued. Thank you for joining us, and welcome to inCircle!",
+    "quickAccess": "Quick access, skipping authentication step, with prepared account, allowing you to use all features despite it is preferred to create an account or login with Google!.",
+    "quickAccessButton": "Quick Login",
+    "quickAccessButtonLoading": "Please Wait ...",
+    "basicMessage": "It looks like you haven’t connected with anyone yet or shared any posts. Start by inviting your family and friends to join you here, and watch your feed come to life with their moments and updates."
   },
   "newPostForm": {
     "NewPostPlaceholder": "What's on your mind ?",

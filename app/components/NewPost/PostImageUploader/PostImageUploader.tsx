@@ -38,7 +38,7 @@ const PostImageUploader = () => {
         onClick={open}>
         {tForm("imagesButton")}
       </button>
-      <p>{loading ? "uploading" : ""}</p>
+      <p className="dark:text-white mt-1 animate-pulse">{loading ? "Uploading" : ""}</p>
     </>
   );
 };
