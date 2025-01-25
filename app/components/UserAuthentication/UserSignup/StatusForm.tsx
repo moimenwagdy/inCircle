@@ -1,5 +1,3 @@
-import React from "react";
-
 const StatusForm = () => {
   return (
     <div className="flex justify-start items-center gap-x-6">
@@ -17,5 +15,4 @@ const StatusForm = () => {
     </div>
   );
 };
-
 export default StatusForm;
