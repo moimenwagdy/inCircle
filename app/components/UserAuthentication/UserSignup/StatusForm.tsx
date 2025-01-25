@@ -6,11 +6,11 @@ const StatusForm = () => {
         id="status"
         name="status"
         defaultValue="Single"
-        className="border rounded p-2 dark:text-black">
-        <option value="Single">Single</option>
-        <option value="Married">Married</option>
-        <option value="Engaged">Engaged</option>
-        <option value="Complicated">Complicated</option>
+        className="border rounded p-2   ">
+        <option className="dark:text-black" value="Single">Single</option>
+        <option className="dark:text-black" value="Married">Married</option>
+        <option className="dark:text-black" value="Engaged">Engaged</option>
+        <option className="dark:text-black" value="Complicated">Complicated</option>
       </select>
     </div>
   );
