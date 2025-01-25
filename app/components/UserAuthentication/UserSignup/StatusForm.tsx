@@ -6,7 +6,7 @@ const StatusForm = () => {
         id="status"
         name="status"
         defaultValue="Single"
-        className="border rounded p-2 dark:text-white">
+        className="border rounded p-2 dark:text-black">
         <option value="Single">Single</option>
         <option value="Married">Married</option>
         <option value="Engaged">Engaged</option>
