@@ -49,7 +49,7 @@ const ProfileNavbarMessagingButton: React.FC<{ userID: string }> = ({
         {tProfile("sendMessage")}
       </button>
       <p
-        className={` hidden absolute text-xs w-60  top-full mt-2 right-1/2 translate-x-[50%] sm:right-16 sm:mt-0 ${
+        className={` hidden absolute text-xs w-60 dark:text-white  top-full mt-2 right-1/2 translate-x-[50%] sm:right-16 sm:mt-0 ${
           !enableMessaing && "group-hover:block"
         }`}>
         follow to enable sending messages
