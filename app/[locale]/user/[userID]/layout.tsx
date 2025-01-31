@@ -2,9 +2,7 @@ import LoadingNormalIndicator from "@/app/components/LoadingNormalIndicator/Load
 import getUserProfileData from "@/app/components/UserProfile/functions/getUserProfileData";
 import ProfileNavbar from "@/app/components/UserProfile/ProfileNavbar/ProfileNavbar";
 import UserProfile from "@/app/components/UserProfile/UserProfile";
-import { user } from "@/globalTypes/globalTypes";
 import { getLocale } from "next-intl/server";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React, { Suspense } from "react";
 
 export const generateMetadata = async ({
@@ -13,8 +11,11 @@ export const generateMetadata = async ({
   params: { userID: string };
 }) => {
   const { userID } = params;
-  const response: user = await getUserProfileData(userID);
+  const response = await getUserProfileData(userID);
   const locale = await getLocale();
+  if (!response || response.success === false) {
+    return { title: "User Not Found | inCircle" };
+  }
   const { username, gender, status, email, age, profile } = response;
 
   return {
@@ -55,12 +56,12 @@ export const generateMetadata = async ({
   };
 };
 
-const layout = ({
+const Layout = ({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Params;
+  params: { userID: string };
 }) => {
   return (
     <main>
@@ -76,4 +77,4 @@ const layout = ({
   );
 };
 
-export default layout;
+export default Layout;
