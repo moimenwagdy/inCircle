@@ -1,6 +1,5 @@
 "use client";
 import { notification } from "@/globalTypes/globalTypes";
-import React, { useState } from "react";
 import TimePrint from "../../TimePrint/TimePrint";
 import NotificationUserImage from "./NotificationUserImage";
 import { Link } from "@/navigation";
@@ -8,19 +7,11 @@ import { useAppDispatch } from "@/store/reduxHooks";
 import { profileAlertsActions } from "@/store/slices/ProfileAlertsSlice/ProfileAlertsSlice";
 import NotificationBG from "./NotificationBG";
 import deleteNotification from "../functions/deleteNotifaications";
-import StartNewConversation from "../../Messaging/StartNewConversation/StartNewConversation";
-import TEST from "./TEST";
-import { MessagingSliceActions } from "@/store/slices/MessagingSlice/MessagingSlice";
 const NotificationItem: React.FC<{ notification: notification }> = ({
   notification,
 }) => {
-  const [isShow, setIsShow] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const isMessage = notification.type === "message";
   const handleOpenedNotif = async () => {
-    if (isMessage) {
-      setIsShow(true);
-    }
     const timeout = setTimeout(() => {
       dispatch(profileAlertsActions.closeNotifs());
       dispatch(profileAlertsActions.closeMessages());
@@ -35,9 +26,7 @@ const NotificationItem: React.FC<{ notification: notification }> = ({
       <Link
         id="not mes"
         href={
-          likeOrComment
-            ? `${notification.link}/${likeOrComment ? "" : "about"}`
-            : ""
+          likeOrComment ? `${notification.link}` : `${notification.link}/about`
         }
         key={notification._id}
         onClick={handleOpenedNotif}
@@ -56,7 +45,6 @@ const NotificationItem: React.FC<{ notification: notification }> = ({
           <TimePrint createdAt={notification.createdAt.toString()} />
         </div>
       </Link>
-      {isShow && <TEST ids={notification.link as string[]} />}
     </>
   );
 };

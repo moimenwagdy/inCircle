@@ -12,17 +12,20 @@ import deleteMessageNotification from "../functions/deleteMessageNotification";
 const MesagesNotificationItem: React.FC<{ notification: notification }> = ({
   notification,
 }) => {
-  const [s, setS] = useState<boolean>(false);
+  const [show, setSow] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const session = useSession();
   const handleOpenedNotif = async () => {
-    setS(true);
+    setSow(true);
     const timeout = setTimeout(() => {
       dispatch(profileAlertsActions.closeNotifs());
       dispatch(profileAlertsActions.closeMessages());
     }, 1000);
     setTimeout(async () => {
-      await deleteMessageNotification(notification._id,session.data?.user._id!);
+      await deleteMessageNotification(
+        notification._id,
+        session.data?.user._id!
+      );
     }, 1000);
     clearTimeout(timeout);
   };
@@ -47,7 +50,7 @@ const MesagesNotificationItem: React.FC<{ notification: notification }> = ({
           <TimePrint createdAt={notification.createdAt.toString()} />
         </div>
       </button>
-      {s && (
+      {show && (
         <StartNewConversation participantsIDs={notification.link as string[]} />
       )}
     </>
