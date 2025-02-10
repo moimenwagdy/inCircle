@@ -2,6 +2,8 @@ import LoadingNormalIndicator from "@/app/components/LoadingNormalIndicator/Load
 import getUserProfileData from "@/app/components/UserProfile/functions/getUserProfileData";
 import ProfileNavbar from "@/app/components/UserProfile/ProfileNavbar/ProfileNavbar";
 import UserProfile from "@/app/components/UserProfile/UserProfile";
+import { getAllPosts } from "@/lib/getAllPosts";
+import { getAllUsers } from "@/lib/getAllUsers";
 import React, { Suspense } from "react";
 
 export const generateMetadata = async ({
@@ -37,13 +39,15 @@ export const generateMetadata = async ({
   };
 };
 
-const Layout = ({
+const Layout =  ({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { userID: string };
 }) => {
+
+  
   return (
     <main>
       <Suspense

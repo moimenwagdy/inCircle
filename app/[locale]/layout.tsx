@@ -13,6 +13,7 @@ import QueryClientProivderComponent from "../QueryClient/QueryClient";
 import DocumentBG from "../components/DocumentBG/DocumentBG";
 import SmallScreenList from "../components/SmallScreenList/SmallScreenList";
 import { afacad } from "@/lib/fonts/basicFont";
+import { getAllPosts } from "@/lib/getAllPosts";
 
 export const metadata: Metadata = {
   title: {
@@ -69,7 +70,7 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   const locale = params.locale;
-
+ 
   return (
     <SessionWrapper>
       <StoreProvider>

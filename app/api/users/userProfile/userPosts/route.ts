@@ -5,7 +5,7 @@ const mongoCredentials = process.env.NEXT_PUBLIC_MONGO_STR;
 
 export async function POST(req: Request) {
   try {
-    const { userId, page, limit } = await req.json(); // Extract request body
+    const { userId, page, limit } = await req.json();
 
     if (!userId || !page || !limit) {
       return NextResponse.json(

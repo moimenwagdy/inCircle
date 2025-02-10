@@ -18,7 +18,7 @@ export const generateMetadata = async ({
   return {
     title: `post of ${result.post.author.username}`,
     description: result.post.content,
-    keywords: `inCircle, post, social media, user profile, connect, chat, likes, comments, posts, liked, like`,
+    keywords: `inCircle, post, social media, user profile, connect, chat, likes, comments, posts, liked, like ${result.post.content}`,
     openGraph: {
       title: `post of ${result.post.author.username}`,
       description: result.post.content,
