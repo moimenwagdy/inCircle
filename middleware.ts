@@ -16,6 +16,9 @@ export default function middleware(req: NextRequest) {
   if (url === "/google7c2eaea9be90bf5d.html") {
     return NextResponse.next();
   }
+  if (url.includes("robots")) {
+    return NextResponse.next();
+  }
 
   return intlMiddleware(req);
 }
