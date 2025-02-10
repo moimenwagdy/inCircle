@@ -1,9 +1,13 @@
 import AuthForm from "@/app/components/UserAuthentication/AuthForm";
 import { authOptions } from "@/lib/authOptions";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 
+export const metadata: Metadata = {
+  title: "Authenticate with",
+  description: "Login or Signup with credentials or google auhentication",
+};
 const page = async () => {
   const session = await getServerSession(authOptions);
 
