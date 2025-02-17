@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "inCircle – Social media platform",
     description:
-      "inCircle is an online social media platform where family and friends connect, chat, and share their special moments securely.",
+      "inCircle is a private social media platform where family and friends connect, chat, share photos, follow and unfollow, and engage in secure group conversations. Enjoy a safe and interactive community with seamless messaging and social networking.",
     url: "https://in-circle-iota.vercel.app/en",
     siteName: "inCircle",
     images: [
@@ -70,7 +70,7 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   const locale = params.locale;
- 
+
   return (
     <SessionWrapper>
       <StoreProvider>
