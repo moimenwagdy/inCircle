@@ -19,6 +19,9 @@ export const generateMetadata = async ({
     title: `post of ${result.post.author.username}`,
     description: result.post.content,
     keywords: `inCircle, post, social media, user profile, connect, chat, likes, comments, posts, liked, like ${result.post.content}`,
+    alternates: {
+      canonical: `https://in-circle-iota.vercel.app/en/activity/${params.postID}`,
+    },
     openGraph: {
       title: `post of ${result.post.author.username}`,
       description: result.post.content,

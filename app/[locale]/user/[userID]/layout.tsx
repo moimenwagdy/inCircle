@@ -2,8 +2,6 @@ import LoadingNormalIndicator from "@/app/components/LoadingNormalIndicator/Load
 import getUserProfileData from "@/app/components/UserProfile/functions/getUserProfileData";
 import ProfileNavbar from "@/app/components/UserProfile/ProfileNavbar/ProfileNavbar";
 import UserProfile from "@/app/components/UserProfile/UserProfile";
-import { getAllPosts } from "@/lib/getAllPosts";
-import { getAllUsers } from "@/lib/getAllUsers";
 import React, { Suspense } from "react";
 
 export const generateMetadata = async ({
@@ -24,6 +22,9 @@ export const generateMetadata = async ({
       0,
       4
     )}****${email.slice(8)}, Marital Status: ${status}, Gender: ${gender}.`,
+    alternates: {
+      canonical: `https://in-circle-iota.vercel.app/en/user/${userID}`,
+    },
     keywords: `inCircle, ${username}, social media, user profile, connect, chat, ${gender}, ${status}, new friends, posts, following, followers, message `,
     openGraph: {
       title: `${username} Profile`,
@@ -39,15 +40,13 @@ export const generateMetadata = async ({
   };
 };
 
-const Layout =  ({
+const Layout = ({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { userID: string };
 }) => {
-
-  
   return (
     <main>
       <Suspense

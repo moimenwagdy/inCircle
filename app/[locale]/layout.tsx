@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   },
   description:
     "inCircle is an online social media platform where family and friends connect, chat, and share special moments securely through messaging, group chat, photo sharing, and real-time conversation. Stay connected with followers and follow your loved ones easily.",
+  alternates: { canonical: "https://in-circle-iota.vercel.app/en" },
   keywords: [
     "inCircle",
     "in circle",
