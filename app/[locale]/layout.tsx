@@ -13,7 +13,6 @@ import QueryClientProivderComponent from "../QueryClient/QueryClient";
 import DocumentBG from "../components/DocumentBG/DocumentBG";
 import SmallScreenList from "../components/SmallScreenList/SmallScreenList";
 import { afacad } from "@/lib/fonts/basicFont";
-import { getAllPosts } from "@/lib/getAllPosts";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
     template: `%s | inCircle – Social media platform`,
   },
   description:
-    "inCircle is an online social media platform where family and friends connect, chat, and share their special moments securely.",
+    "inCircle is an online social media platform where family and friends connect, chat, and share special moments securely through messaging, group chat, photo sharing, and real-time conversation. Stay connected with followers and follow your loved ones easily.",
   keywords: [
     "inCircle",
     "in circle",
@@ -41,6 +40,22 @@ export const metadata: Metadata = {
     "secure messaging",
     "photo sharing",
     "group communication",
+    "connect with friends",
+    "chat with family",
+    "secure messaging",
+    "private group chat",
+    "photo sharing app",
+    "follow friends",
+    "gain followers",
+    "family social app",
+    "real-time conversation",
+    "find friends online",
+    "social network for family",
+    "share moments online",
+    "safe social platform",
+    "online chatting",
+    "group conversation",
+    "digital family album",
   ],
   authors: [{ name: "Moimen Wagdy", url: "https://moo-portfolio.vercel.app/" }],
   openGraph: {
