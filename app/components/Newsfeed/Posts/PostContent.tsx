@@ -13,7 +13,7 @@ const PostContent: React.FC<{ content: string; postMedia: string[] }> = ({
     setShowFullContent((prv) => !prv);
   };
   return (
-    <article onClick={handleShowFullContent} className="w-full space-y-2">
+    <article onClick={handleShowFullContent} className="min-w-full space-y-4">
       <p
         className={` -mb-2 ps-2 first-letter:capitalize ${
           isAR ? "text-sm" : ""

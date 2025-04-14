@@ -25,8 +25,8 @@ const PostImageSlider: React.FC<{ imgURLs: string[] }> = ({ imgURLs }) => {
           👉
         </button>
       )}
-      <div className="flex">
-        <div className="w-full flex-shrink-0 -z-10">
+      <div className="flex ">
+        <div className="w-full flex-shrink-0 -z-10 bg-black/10 dark:bg-white/10">
           <div className="relative w-full h-[360px]">
             <Image
               src={imgURLs[imageIndex]}

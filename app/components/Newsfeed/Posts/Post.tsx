@@ -11,7 +11,7 @@ const Post: React.FC<{ post: post }> = ({ post }) => {
     <motion.li
       initial={{ opacity: 0, translateY: -60 }}
       animate={{ opacity: 1, translateY: 0 }}
-      className="w-full flex flex-col gap-y-1 ring-[1px] ring-black/10 dark:ring-white/10 px-3 shadow-sm dark:shadow-sm dark:shadow-white/10">
+      className="w-full flex flex-col gap-y-1 ring-[1px] ring-black/10 dark:ring-white/10 px-2 shadow-sm dark:shadow-sm dark:shadow-white/10 rounded">
       <div className=" py-6 px-3 h-full space-y-3 border-b-[1px] border-black/5">
         <PostUserData
           avatar={post.author?.profile.avatar}
